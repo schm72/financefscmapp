@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+		<ColumnListItem   type="Navigation" press="handleSelectionChange" >
+			<cells>
+				<ObjectStatus  icon="{ 
+						path: 'Openitem', 
+                    	formatter: 'com.springer.springerfscmapp.util.Formatter.getOpenitemIcon'
+                    }"
+                    state="{ 
+                        path: 'Openitem', 
+                        formatter: 'com.springer.springerfscmapp.util.Formatter.OpenitemState'
+                    }"
+                    />
+				<ObjectNumber
+					wrapping="false"
+					number="{ 
+                        path: 'ItemAmountLocalCur', 
+                        formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                    }"
+					unit="{ 
+                        path: 'ItemLocalCur', 
+                        formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                    }" />
+				<Text wrapping="false" text="{SapDocumentId}"/>
+				<Text wrapping="false" text="{ 
+                                    path: 'DocumentDate', 
+                                    formatter: 'com.springer.springerfscmapp.util.Formatter.dateSimple2'
+                                }"/>
+			</cells>
+		</ColumnListItem>
+</core:FragmentDefinition>

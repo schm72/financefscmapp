@@ -1,0 +1,79 @@
+<mvc:View 
+    controllerName="com.springer.springerfscmapp.view.SecondLevel.Profile" 
+    xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:f="sap.ui.layout.form" 
+	xmlns="sap.m" 
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page 
+		title="{i18n>ProfileTitle}"
+		showNavButton="true"
+		navButtonPress="onNavBack"
+        class="sapUiFioriObjectPage" >
+		<content>
+          <List>
+            <StandardListItem
+              id="UserIdAnctive"
+              description="Activation Status for App"
+              icon="sap-icon://accounting-document-verification"
+              iconDensityAware="false"
+              iconInset="false"
+              type="Navigation"
+              press="onTriggerActivation" />
+            <StandardListItem
+              id="UserIdInfo"
+              description="Backend User / SAP ID"
+              icon="sap-icon://account" 
+              iconDensityAware="false"
+              iconInset="false" />
+            <StandardListItem
+              id="DeviceInfo"
+              description="Usage Details"
+              icon="sap-icon://customer-view"
+              iconDensityAware="false"
+              iconInset="false" />
+            <StandardListItem
+              id="SAPCollArea"
+              description="SAP Collection Area"
+              icon="sap-icon://geographic-bubble-chart" 
+              iconDensityAware="false"
+              iconInset="false" />
+            <StandardListItem
+              id="NewCountryArea"
+              description="Partner Countries"
+              icon="sap-icon://map" 
+              iconDensityAware="false"
+              iconInset="false"
+              type="Navigation"
+              press="onNewCountrySelection" />
+            <StandardListItem
+              id="UserIdViewMode"
+              description="View mode for Open Items"
+              iconDensityAware="false"
+              iconInset="false"
+              type="Navigation"
+              press="onChangeListStatus" />
+            <StandardListItem
+              id="UserIdWLmode"
+              description="Worklist Filter"
+              iconDensityAware="false"
+              iconInset="false"
+              type="Navigation"
+              press="onChangeWLmode" />
+          </List>
+		</content>
+		<!--<footer>
+			<Bar id="NewCollButton">
+				<contentMiddle>
+                    <Button
+                      id=""
+                      class="NewCollAreaButton"
+                      text="Change Collection Area" 
+                      press=""
+                      width="100%"
+                      />
+				</contentMiddle>
+			</Bar>
+		</footer>-->
+	</Page>
+</mvc:View>

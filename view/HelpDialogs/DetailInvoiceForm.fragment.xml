@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns="sap.m">
+	<l:Grid defaultSpan="L12 M12 S12" id="detailFragment" width="auto">
+		<l:content>
+			<f:SimpleForm columnsL="1" columnsM="1" editable="false" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3"
+				layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title="">
+				<f:content>
+					
+					<Label text="Net Due Date"/>
+					<Text text="{ path: 'NetDueDate', 
+						          formatter: 'com.springer.springerfscmapp.util.Formatter.dateSimple2' }"
+					/>
+					
+					<Label text="Days Since Due Date"/>
+					<Text class="margin_bottom_px" 
+					      text="{DaysSinceDueDate}"
+					/>
+					
+					<Label text="Amount Local Currency"/>
+					<Text  text="{ path: 'ItemAmountLocalCur', 
+						           formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt' } 
+						         { path: 'ItemLocalCur', 
+						           formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView' }"
+					/>
+					
+					<Label text="License ID"/>
+					<Text class="margin_bottom_px" text="{Lid}" />
+				
+					<Label text="Active Dispute Case"/>
+					<Switch type="AcceptReject" change="onAddFav" class="oiswitch margin_bottom_px" enabled="false"
+					    state="{ path: 'DisputeCase', formatter: 'com.springer.springerfscmapp.util.Formatter.isSomething' }" />
+					<Label id="DisV1" visible="false" text="Dispute Case ID"/> <Text id="DisV2" visible="false" text="{DisputeCase}"/>
+					<Label id="DisV3" visible="false" text="Reason"/> <Text id="DisV4" visible="false" text="{DisputeReason}"/>
+					
+				</f:content>
+			</f:SimpleForm>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

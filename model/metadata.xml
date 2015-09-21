@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="/SBMC/MOBILE_FIFS_SRV" sap:schema-version="0" xml:lang="de" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="APP_USER_PREFERENCES" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="UserId"/>
+				</Key>
+				<Property MaxLength="12" Name="UserId" Nullable="false" Type="Edm.String" sap:label="Benutzername"/>
+				<Property MaxLength="1" Name="UserActive" Type="Edm.String" sap:label="Flag"/>
+				<Property MaxLength="32" Name="UserCategory" Type="Edm.String"/>
+				<Property Name="CreationDate" Precision="0" Type="Edm.DateTime"/>
+				<Property Name="LastvisitTime" Precision="0" Type="Edm.DateTime"/>
+				<Property MaxLength="1" Name="PrefereListMode" Type="Edm.String" sap:label="Flag"/>
+				<Property Name="AppStartScreen" Type="Edm.Int16"/>
+				<Property MaxLength="120" Name="SapCollections" Type="Edm.String" sap:label="Country String"/>
+				<Property MaxLength="120" Name="Regions" Type="Edm.String" sap:label="Region String"/>
+				<Property MaxLength="255" Name="Countries" Type="Edm.String" sap:label="Country String"/>
+				<Property MaxLength="1" Name="NewMessage" Type="Edm.String" sap:label="Flag"/>
+				<Property MaxLength="10" Name="PreferedOiFilter" Type="Edm.String"/>
+				<Property Name="CountFscmSel" Type="Edm.Int32"/>
+				<Property Name="CountFscmFav" Type="Edm.Int32"/>
+				<Property Name="CountMessages" Type="Edm.Int32"/>
+			</EntityType>
+			<EntityType Name="REGION_SELECTION" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Region"/>
+				</Key>
+				<Property MaxLength="122" Name="Region" Nullable="false" Type="Edm.String" sap:creatable="false" sap:label="Region" sap:updatable="false"/>
+				<Property MaxLength="32" Name="RegionTxt" Type="Edm.String" sap:creatable="false" sap:label="Texto" sap:updatable="false"/>
+				<NavigationProperty FromRole="FromRole_REGION_TO_COUNTRY" Name="COUNTRY_SELECTIONSet" Relationship="/SBMC/MOBILE_FIFS_SRV.REGION_TO_COUNTRY"
+					ToRole="ToRole_REGION_TO_COUNTRY"/>
+			</EntityType>
+			<EntityType Name="COUNTRY_SELECTION" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Country"/>
+				</Key>
+				<Property MaxLength="3" Name="Country" Nullable="false" Type="Edm.String" sap:creatable="false" sap:label="Land" sap:updatable="false"/>
+				<Property MaxLength="50" Name="CountryText" Type="Edm.String" sap:creatable="false" sap:label="Bezeichnung lang" sap:updatable="false"/>
+				<Property MaxLength="16" Name="Region" Type="Edm.String" sap:creatable="false" sap:label="Region" sap:updatable="false"/>
+			</EntityType>
+			<EntityType Name="APP_MESSAGES" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="EntryId"/>
+				</Key>
+				<Property MaxLength="40" Name="EntryId" Nullable="false" Type="Edm.String"/>
+				<Property MaxLength="12" Name="UserId" Type="Edm.String"/>
+				<Property MaxLength="32" Name="Application" Type="Edm.String"/>
+				<Property MaxLength="32" Name="Origin" Type="Edm.String"/>
+				<Property MaxLength="1" Name="MessageType" Type="Edm.String"/>
+				<Property MaxLength="1024" Name="Message" Type="Edm.String"/>
+				<Property MaxLength="1" Name="Solved" Type="Edm.String" sap:label="Flag"/>
+				<Property Name="ChangeTime" Precision="7" Type="Edm.DateTime"/>
+				<Property MaxLength="12" Name="ChangeUser" Type="Edm.String" sap:label="Benutzername"/>
+				<Property MaxLength="10" Name="MessageStatus" Type="Edm.String"/>
+			</EntityType>
+			<EntityType Name="OPEN_ITEM_BP_DETAILVIEW" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="SapDocumentId"/>
+					<PropertyRef Name="SprCompany"/>
+					<PropertyRef Name="FiscalYear"/>
+				</Key>
+				<Property MaxLength="10" Name="SapDocumentId" Nullable="false" Type="Edm.String" sap:label="Belegnummer"/>
+				<Property MaxLength="4" Name="SprCompany" Nullable="false" Type="Edm.String" sap:label="Buchungskreis"/>
+				<Property MaxLength="4" Name="FiscalYear" Nullable="false" Type="Edm.String" sap:label="Geschäftsjahr"/>
+				<Property Name="DocumentDate" Precision="7" Type="Edm.DateTime" sap:label="Belegdatum"/>
+				<Property Name="ItemAmountLocalCur" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Betrag" sap:unit="ItemLocalCur"/>
+				<Property MaxLength="5" Name="ItemLocalCur" Type="Edm.String" sap:label="Währung" sap:semantics="currency-code"/>
+				<Property MaxLength="5" Name="ItemItemCur" Type="Edm.String" sap:label="Währung" sap:semantics="currency-code"/>
+				<Property Name="NetDueDate" Precision="7" Type="Edm.DateTime" sap:label="Nettofälligkeit"/>
+				<Property MaxLength="10" Name="Partner" Type="Edm.String" sap:label="GeschPartner"/>
+				<Property MaxLength="1" Name="Openitem" Type="Edm.String"/>
+				<Property MaxLength="50" Name="SegmentTxt" Type="Edm.String" sap:label="Text"/>
+				<Property MaxLength="35" Name="Lid" Type="Edm.String" sap:label="Bestellnummer"/>
+				<Property MaxLength="1" Name="SalesRelated" Type="Edm.String"/>
+				<Property Name="DaysSinceDueDate" Type="Edm.Int32" sap:label="Zahl"/>
+				<Property Name="FinPromisedAmt" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Versprochen" sap:unit="FinP2pCurr"/>
+				<Property Name="FinPaidAmount" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Gezahlt" sap:unit="FinP2pCurr"/>
+				<Property Name="FinP2pDueDate" Precision="7" Type="Edm.DateTime" sap:label="Versprochen bis"/>
+				<Property MaxLength="1" Name="FinP2pState" Type="Edm.String" sap:label="Stand"/>
+				<Property Name="FinNoOfInst" Type="Edm.Int32" sap:label="Raten"/>
+				<Property Name="FinNxtInstDue" Precision="7" Type="Edm.DateTime"/>
+				<Property Name="FinNxtInstAmt" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Offener Betrag" sap:unit="FinP2pCurr"/>
+				<Property MaxLength="5" Name="FinP2pCurr" Type="Edm.String" sap:label="Währung" sap:semantics="currency-code"/>
+				<Property MaxLength="12" Name="DisputeCase" Type="Edm.String" sap:label="Fall-ID"/>
+				<Property MaxLength="60" Name="DisputeReason" Type="Edm.String" sap:label="Text"/>
+				<Property Name="LastUpdate" Precision="0" Type="Edm.DateTime" sap:label="Zeitstempel"/>
+				<NavigationProperty FromRole="FromRole_INVOICE_TO_ATTACHMENT_LIST" Name="ATTACHMENT_INFO_LISTSet"
+					Relationship="/SBMC/MOBILE_FIFS_SRV.INVOICE_TO_ATTACHMENT_LIST" ToRole="ToRole_INVOICE_TO_ATTACHMENT_LIST"/>
+			</EntityType>
+			<EntityType Name="OPEN_ITEMS_SAVED_PER_USER" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="UserId"/>
+					<PropertyRef Name="Partner"/>
+				</Key>
+				<Property MaxLength="12" Name="UserId" Nullable="false" Type="Edm.String" sap:label="Benutzername"/>
+				<Property MaxLength="10" Name="Partner" Nullable="false" Type="Edm.String" sap:label="GeschPartner"/>
+				<Property MaxLength="50" Name="PartnerDesc" Type="Edm.String" sap:label="Beschreibung"/>
+				<Property MaxLength="50" Name="ContactName" Type="Edm.String" sap:label="Name/Ort Hauptanspr."/>
+				<Property Name="TotalAmt" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Außenstände" sap:unit="Currency"/>
+				<Property Name="OverdueAmt" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Überfälliger Betrag" sap:unit="Currency"/>
+				<Property Name="PromisedAmt" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Versprochen" sap:unit="Currency"/>
+				<Property MaxLength="5" Name="Currency" Type="Edm.String" sap:label="Währung" sap:semantics="currency-code"/>
+				<Property Name="LastPayDate" Precision="7" Type="Edm.DateTime" sap:label="Letzte Zahlung"/>
+				<Property Name="LastDunndate" Precision="7" Type="Edm.DateTime" sap:label="Ltz. Mahnung"/>
+				<Property Name="OverdueAmtInt1" Precision="15" Scale="14" Type="Edm.Decimal" sap:unit="Currency"/>
+				<Property Name="OverdueAmtInt2" Precision="15" Scale="14" Type="Edm.Decimal" sap:unit="Currency"/>
+				<Property Name="OverdueAmtInt3" Precision="15" Scale="14" Type="Edm.Decimal" sap:unit="Currency"/>
+				<Property Name="OverdueAmtInt4" Precision="15" Scale="14" Type="Edm.Decimal" sap:unit="Currency"/>
+				<Property MaxLength="1" Name="DeliveryBlock" Type="Edm.String" sap:label="Flag"/>
+				<Property Name="Creditlimit" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Kreditlimit" sap:unit="Currency"/>
+				<Property Name="DeltaToLimit" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Kreditlimit" sap:unit="Currency"/>
+				<Property MaxLength="35" Name="Lid" Type="Edm.String" sap:label="Bestellnummer"/>
+				<Property MaxLength="10" Name="AppFilter" Type="Edm.String"/>
+				<Property Name="FscmPrio" Type="Edm.Int32" sap:label="Bewertung"/>
+				<Property Name="ThisYearSales" Precision="15" Scale="14" Type="Edm.Decimal" sap:unit="SalesCurrency"/>
+				<Property MaxLength="5" Name="SalesCurrency" Type="Edm.String" sap:label="Währung" sap:semantics="currency-code"/>
+				<Property MaxLength="40" Name="SalesBukrs" Type="Edm.String"/>
+				<Property MaxLength="1" Name="AddedFavorite" Type="Edm.String" sap:label="Flag"/>
+				<Property MaxLength="3" Name="Country" Type="Edm.String" sap:label="Land"/>
+				<Property MaxLength="40" Name="EntryId" Type="Edm.String"/>
+				<NavigationProperty FromRole="FromRole_OVERVIEW_TO_DETAIL_FAV" Name="OPEN_ITEMS_SAVED_INVOICES_PER_USERSet"
+					Relationship="/SBMC/MOBILE_FIFS_SRV.OVERVIEW_TO_DETAIL_FAV" ToRole="ToRole_OVERVIEW_TO_DETAIL_FAV"/>
+			</EntityType>
+			<EntityType Name="OPEN_ITEM_BP_OVERVIEW" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Partner"/>
+				</Key>
+				<Property MaxLength="10" Name="Partner" Nullable="false" Type="Edm.String" sap:label="GeschPartner"/>
+				<Property MaxLength="50" Name="PartnerDesc" Type="Edm.String" sap:label="Beschreibung"/>
+				<Property MaxLength="50" Name="ContactName" Type="Edm.String" sap:label="Name/Ort Hauptanspr."/>
+				<Property Name="TotalAmt" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Außenstände" sap:unit="Currency"/>
+				<Property Name="OverdueAmt" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Überfälliger Betrag" sap:unit="Currency"/>
+				<Property Name="PromisedAmt" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Versprochen" sap:unit="Currency"/>
+				<Property MaxLength="5" Name="Currency" Type="Edm.String" sap:label="Währung" sap:semantics="currency-code"/>
+				<Property Name="LastPayDate" Precision="7" Type="Edm.DateTime" sap:label="Letzte Zahlung"/>
+				<Property Name="LastDunndate" Precision="7" Type="Edm.DateTime" sap:label="Ltz. Mahnung"/>
+				<Property Name="OverdueAmtInt1" Precision="15" Scale="14" Type="Edm.Decimal" sap:unit="Currency"/>
+				<Property Name="OverdueAmtInt2" Precision="15" Scale="14" Type="Edm.Decimal" sap:unit="Currency"/>
+				<Property Name="OverdueAmtInt3" Precision="15" Scale="14" Type="Edm.Decimal" sap:unit="Currency"/>
+				<Property Name="OverdueAmtInt4" Precision="15" Scale="14" Type="Edm.Decimal" sap:unit="Currency"/>
+				<Property MaxLength="1" Name="DeliveryBlock" Type="Edm.String"/>
+				<Property Name="Creditlimit" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Kreditlimit" sap:unit="Currency"/>
+				<Property Name="DeltaToLimit" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Kreditlimit" sap:unit="Currency"/>
+				<Property MaxLength="35" Name="Lid" Type="Edm.String" sap:label="Bestellnummer"/>
+				<Property MaxLength="10" Name="AppFilter" Type="Edm.String"/>
+				<Property Name="FscmPrio" Type="Edm.Int32" sap:label="Bewertung"/>
+				<Property Name="ThisYearSales" Precision="15" Scale="14" Type="Edm.Decimal" sap:unit="SalesCurrency"/>
+				<Property MaxLength="5" Name="SalesCurrency" Type="Edm.String" sap:label="Währung" sap:semantics="currency-code"/>
+				<Property MaxLength="40" Name="SalesBukrs" Type="Edm.String"/>
+				<Property MaxLength="1" Name="OldDataDueToCurrentLoad" Type="Edm.String"/>
+				<Property MaxLength="1" Name="AddedFavorite" Type="Edm.String"/>
+				<Property MaxLength="3" Name="Country" Type="Edm.String" sap:label="Land"/>
+				<NavigationProperty FromRole="FromRole_OVERVIEW_TO_DETAIL" Name="OPEN_ITEM_BP_DETAILVIEWSet"
+					Relationship="/SBMC/MOBILE_FIFS_SRV.OVERVIEW_TO_DETAIL" ToRole="ToRole_OVERVIEW_TO_DETAIL"/>
+			</EntityType>
+			<EntityType Name="APP_OI_USER_LOG" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="UserId"/>
+				</Key>
+				<Property MaxLength="12" Name="UserId" Nullable="false" Type="Edm.String" sap:label="Benutzername"/>
+				<Property MaxLength="120" Name="CollSegments" Type="Edm.String"/>
+				<Property MaxLength="255" Name="Countries" Type="Edm.String"/>
+				<Property Name="CountSame" Type="Edm.Int16" sap:label="Int2"/>
+			</EntityType>
+			<EntityType Name="OPEN_ITEMS_SAVED_INVOICES_PER_USER" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="UserId"/>
+					<PropertyRef Name="SapDocumentId"/>
+					<PropertyRef Name="SprCompany"/>
+					<PropertyRef Name="FiscalYear"/>
+				</Key>
+				<Property MaxLength="12" Name="UserId" Nullable="false" Type="Edm.String" sap:label="Benutzername"/>
+				<Property MaxLength="10" Name="SapDocumentId" Nullable="false" Type="Edm.String" sap:label="Belegnummer"/>
+				<Property MaxLength="4" Name="SprCompany" Nullable="false" Type="Edm.String" sap:label="Buchungskreis"/>
+				<Property MaxLength="4" Name="FiscalYear" Nullable="false" Type="Edm.String" sap:label="Geschäftsjahr"/>
+				<Property MaxLength="40" Name="EntryId" Type="Edm.String"/>
+				<Property MaxLength="1" Name="OldDataDueToCurrentLoad" Type="Edm.String" sap:label="Flag"/>
+				<Property Name="DocumentDate" Precision="7" Type="Edm.DateTime" sap:label="Belegdatum"/>
+				<Property Name="ItemAmountLocalCur" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Betrag" sap:unit="ItemLocalCur"/>
+				<Property MaxLength="5" Name="ItemLocalCur" Type="Edm.String" sap:label="Währung" sap:semantics="currency-code"/>
+				<Property MaxLength="5" Name="ItemItemCur" Type="Edm.String" sap:label="Währung" sap:semantics="currency-code"/>
+				<Property Name="NetDueDate" Precision="7" Type="Edm.DateTime" sap:label="Nettofälligkeit"/>
+				<Property MaxLength="1" Name="Openitem" Type="Edm.String"/>
+				<Property MaxLength="10" Name="Partner" Type="Edm.String" sap:label="GeschPartner"/>
+				<Property MaxLength="50" Name="SegmentTxt" Type="Edm.String" sap:label="Text"/>
+				<Property MaxLength="35" Name="Lid" Type="Edm.String" sap:label="Bestellnummer"/>
+				<Property MaxLength="1" Name="SalesRelated" Type="Edm.String"/>
+				<Property Name="DaysSinceDueDate" Type="Edm.Int32" sap:label="Zahl"/>
+				<Property Name="FinPromisedAmt" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Versprochen" sap:unit="FinP2pCurr"/>
+				<Property Name="FinPaidAmount" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Gezahlt" sap:unit="FinP2pCurr"/>
+				<Property Name="FinP2pDueDate" Precision="7" Type="Edm.DateTime" sap:label="Versprochen bis"/>
+				<Property MaxLength="1" Name="FinP2pState" Type="Edm.String" sap:label="Stand"/>
+				<Property Name="FinNoOfInst" Type="Edm.Int32" sap:label="Raten"/>
+				<Property Name="FinNxtInstDue" Precision="7" Type="Edm.DateTime"/>
+				<Property Name="FinNxtInstAmt" Precision="15" Scale="14" Type="Edm.Decimal" sap:label="Offener Betrag" sap:unit="FinP2pCurr"/>
+				<Property MaxLength="5" Name="FinP2pCurr" Type="Edm.String" sap:label="Währung" sap:semantics="currency-code"/>
+				<Property MaxLength="12" Name="DisputeCase" Type="Edm.String" sap:label="Fall-ID"/>
+				<Property MaxLength="60" Name="DisputeReason" Type="Edm.String" sap:label="Text"/>
+				<Property Name="LastUpdate" Precision="0" Type="Edm.DateTime" sap:label="Zeitstempel"/>
+				<NavigationProperty FromRole="FromRole_INVOICE_TO_ATTACHMENT_LIST_SVD" Name="ATTACHMENT_INFO_LIST_SVDSet"
+					Relationship="/SBMC/MOBILE_FIFS_SRV.INVOICE_TO_ATTACHMENT_LIST_SVD" ToRole="ToRole_INVOICE_TO_ATTACHMENT_LIST_SVD"/>
+			</EntityType>
+			<EntityType Name="ATTACHMENT_INFO_LIST" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Bukrs"/>
+					<PropertyRef Name="Gjahr"/>
+					<PropertyRef Name="Belnr"/>
+					<PropertyRef Name="ArcDocId"/>
+				</Key>
+				<Property MaxLength="4" Name="Bukrs" Nullable="false" Type="Edm.String" sap:label="Buchungskreis"/>
+				<Property MaxLength="4" Name="Gjahr" Nullable="false" Type="Edm.String" sap:label="Geschäftsjahr"/>
+				<Property MaxLength="10" Name="Belnr" Nullable="false" Type="Edm.String" sap:label="Belegnummer"/>
+				<Property MaxLength="40" Name="ArcDocId" Nullable="false" Type="Edm.String" sap:label="Dok-Id"/>
+				<Property MaxLength="2" Name="ArchivId" Type="Edm.String" sap:label="ContRepID"/>
+				<Property Name="ArDate" Precision="7" Type="Edm.DateTime" sap:label="Ablagedatum"/>
+				<Property MaxLength="27" Name="Reserve" Type="Edm.String" sap:label="Reserve"/>
+				<Property MaxLength="10" Name="ArObject" Type="Edm.String" sap:label="Dokumentart"/>
+				<Property Name="AttachmentCount" Type="Edm.Int32" sap:label="Zahl"/>
+			</EntityType>
+			<EntityType Name="ATTACHMENT_INFO_LIST_SVD" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="UserId"/>
+					<PropertyRef Name="Bukrs"/>
+					<PropertyRef Name="Gjahr"/>
+					<PropertyRef Name="Belnr"/>
+					<PropertyRef Name="ArcDocId"/>
+				</Key>
+				<Property MaxLength="30" Name="UserId" Nullable="false" Type="Edm.String" sap:label="Benutzer-Id"/>
+				<Property MaxLength="4" Name="Bukrs" Nullable="false" Type="Edm.String" sap:label="Buchungskreis"/>
+				<Property MaxLength="4" Name="Gjahr" Nullable="false" Type="Edm.String" sap:label="Geschäftsjahr"/>
+				<Property MaxLength="10" Name="Belnr" Nullable="false" Type="Edm.String" sap:label="Belegnummer"/>
+				<Property MaxLength="40" Name="ArcDocId" Nullable="false" Type="Edm.String" sap:label="Dok-Id"/>
+				<Property MaxLength="2" Name="ArchivId" Type="Edm.String" sap:label="ContRepID"/>
+				<Property Name="ArDate" Precision="7" Type="Edm.DateTime" sap:label="Ablagedatum"/>
+				<Property MaxLength="27" Name="Reserve" Type="Edm.String" sap:label="Reserve"/>
+				<Property MaxLength="10" Name="ArObject" Type="Edm.String" sap:label="Dokumentart"/>
+				<Property Name="AttachmentCount" Type="Edm.Int32" sap:label="Zahl"/>
+			</EntityType>
+			<EntityType Name="ATTACHMENT_BINARY" m:HasStream="true" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="ArchivId"/>
+					<PropertyRef Name="ArcDocId"/>
+					<PropertyRef Name="Reserve"/>
+				</Key>
+				<Property MaxLength="2" Name="ArchivId" Nullable="false" Type="Edm.String" sap:label="ContRepID"/>
+				<Property MaxLength="40" Name="ArcDocId" Nullable="false" Type="Edm.String" sap:label="Dok-Id"/>
+				<Property MaxLength="27" Name="Reserve" Nullable="false" Type="Edm.String" sap:label="Reserve"/>
+				<Property Name="BinaryFile" Type="Edm.Binary" sap:label="binärer String"/>
+				<Property MaxLength="100" Name="Mimetype" Type="Edm.String"/>
+			</EntityType>
+			<Association Name="INVOICE_TO_ATTACHMENT_LIST" sap:content-version="1">
+				<End Multiplicity="1" Role="FromRole_INVOICE_TO_ATTACHMENT_LIST" Type="/SBMC/MOBILE_FIFS_SRV.OPEN_ITEM_BP_DETAILVIEW"/>
+				<End Multiplicity="*" Role="ToRole_INVOICE_TO_ATTACHMENT_LIST" Type="/SBMC/MOBILE_FIFS_SRV.ATTACHMENT_INFO_LIST"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_INVOICE_TO_ATTACHMENT_LIST">
+						<PropertyRef Name="FiscalYear"/>
+						<PropertyRef Name="SprCompany"/>
+						<PropertyRef Name="SapDocumentId"/>
+					</Principal>
+					<Dependent Role="ToRole_INVOICE_TO_ATTACHMENT_LIST">
+						<PropertyRef Name="Gjahr"/>
+						<PropertyRef Name="Bukrs"/>
+						<PropertyRef Name="Belnr"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="OVERVIEW_TO_DETAIL" sap:content-version="1">
+				<End Multiplicity="1" Role="FromRole_OVERVIEW_TO_DETAIL" Type="/SBMC/MOBILE_FIFS_SRV.OPEN_ITEM_BP_OVERVIEW"/>
+				<End Multiplicity="*" Role="ToRole_OVERVIEW_TO_DETAIL" Type="/SBMC/MOBILE_FIFS_SRV.OPEN_ITEM_BP_DETAILVIEW"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_OVERVIEW_TO_DETAIL">
+						<PropertyRef Name="Partner"/>
+					</Principal>
+					<Dependent Role="ToRole_OVERVIEW_TO_DETAIL">
+						<PropertyRef Name="Partner"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="REGION_TO_COUNTRY" sap:content-version="1">
+				<End Multiplicity="1" Role="FromRole_REGION_TO_COUNTRY" Type="/SBMC/MOBILE_FIFS_SRV.REGION_SELECTION"/>
+				<End Multiplicity="*" Role="ToRole_REGION_TO_COUNTRY" Type="/SBMC/MOBILE_FIFS_SRV.COUNTRY_SELECTION"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_REGION_TO_COUNTRY">
+						<PropertyRef Name="Region"/>
+					</Principal>
+					<Dependent Role="ToRole_REGION_TO_COUNTRY">
+						<PropertyRef Name="Region"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="INVOICE_TO_ATTACHMENT_LIST_SVD" sap:content-version="1">
+				<End Multiplicity="1" Role="FromRole_INVOICE_TO_ATTACHMENT_LIST_SVD" Type="/SBMC/MOBILE_FIFS_SRV.OPEN_ITEMS_SAVED_INVOICES_PER_USER"/>
+				<End Multiplicity="*" Role="ToRole_INVOICE_TO_ATTACHMENT_LIST_SVD" Type="/SBMC/MOBILE_FIFS_SRV.ATTACHMENT_INFO_LIST_SVD"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_INVOICE_TO_ATTACHMENT_LIST_SVD">
+						<PropertyRef Name="UserId"/>
+						<PropertyRef Name="SapDocumentId"/>
+						<PropertyRef Name="SprCompany"/>
+						<PropertyRef Name="FiscalYear"/>
+					</Principal>
+					<Dependent Role="ToRole_INVOICE_TO_ATTACHMENT_LIST_SVD">
+						<PropertyRef Name="UserId"/>
+						<PropertyRef Name="Belnr"/>
+						<PropertyRef Name="Bukrs"/>
+						<PropertyRef Name="Gjahr"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="OVERVIEW_TO_DETAIL_FAV" sap:content-version="1">
+				<End Multiplicity="*" Role="FromRole_OVERVIEW_TO_DETAIL_FAV" Type="/SBMC/MOBILE_FIFS_SRV.OPEN_ITEMS_SAVED_PER_USER"/>
+				<End Multiplicity="*" Role="ToRole_OVERVIEW_TO_DETAIL_FAV" Type="/SBMC/MOBILE_FIFS_SRV.OPEN_ITEMS_SAVED_INVOICES_PER_USER"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_OVERVIEW_TO_DETAIL_FAV">
+						<PropertyRef Name="Partner"/>
+						<PropertyRef Name="UserId"/>
+					</Principal>
+					<Dependent Role="ToRole_OVERVIEW_TO_DETAIL_FAV">
+						<PropertyRef Name="Partner"/>
+						<PropertyRef Name="UserId"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="/SBMC/MOBILE_FIFS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet EntityType="/SBMC/MOBILE_FIFS_SRV.REGION_SELECTION" Name="REGION_SELECTIONSet" sap:content-version="1" sap:creatable="false"
+					sap:deletable="false" sap:requires-filter="true" sap:searchable="true" sap:updatable="false"/>
+				<EntitySet EntityType="/SBMC/MOBILE_FIFS_SRV.COUNTRY_SELECTION" Name="COUNTRY_SELECTIONSet" sap:content-version="1" sap:creatable="false"
+					sap:deletable="false" sap:requires-filter="true" sap:searchable="true" sap:updatable="false"/>
+				<EntitySet EntityType="/SBMC/MOBILE_FIFS_SRV.APP_MESSAGES" Name="APP_MESSAGESSet" sap:content-version="1" sap:creatable="false"
+					sap:requires-filter="true" sap:searchable="true" sap:updatable="false"/>
+				<EntitySet EntityType="/SBMC/MOBILE_FIFS_SRV.OPEN_ITEM_BP_DETAILVIEW" Name="OPEN_ITEM_BP_DETAILVIEWSet" sap:content-version="1"
+					sap:creatable="false" sap:deletable="false" sap:requires-filter="true" sap:searchable="true" sap:updatable="false"/>
+				<EntitySet EntityType="/SBMC/MOBILE_FIFS_SRV.OPEN_ITEMS_SAVED_PER_USER" Name="OPEN_ITEMS_SAVED_PER_USERSet" sap:content-version="1"
+					sap:requires-filter="true" sap:searchable="true"/>
+				<EntitySet EntityType="/SBMC/MOBILE_FIFS_SRV.OPEN_ITEM_BP_OVERVIEW" Name="OPEN_ITEM_BP_OVERVIEWSet" sap:content-version="1"
+					sap:creatable="false" sap:deletable="false" sap:requires-filter="true" sap:searchable="true" sap:updatable="false"/>
+				<EntitySet EntityType="/SBMC/MOBILE_FIFS_SRV.APP_OI_USER_LOG" Name="APP_OI_USER_LOGSet" sap:content-version="1" sap:deletable="false"
+					sap:requires-filter="true" sap:searchable="true"/>
+				<EntitySet EntityType="/SBMC/MOBILE_FIFS_SRV.OPEN_ITEMS_SAVED_INVOICES_PER_USER" Name="OPEN_ITEMS_SAVED_INVOICES_PER_USERSet"
+					sap:content-version="1" sap:requires-filter="true" sap:searchable="true"/>
+				<EntitySet EntityType="/SBMC/MOBILE_FIFS_SRV.ATTACHMENT_INFO_LIST" Name="ATTACHMENT_INFO_LISTSet" sap:content-version="1"
+					sap:creatable="false" sap:deletable="false" sap:requires-filter="true" sap:searchable="true" sap:updatable="false"/>
+				<EntitySet EntityType="/SBMC/MOBILE_FIFS_SRV.ATTACHMENT_INFO_LIST_SVD" Name="ATTACHMENT_INFO_LIST_SVDSet" sap:content-version="1"
+					sap:requires-filter="true" sap:searchable="true"/>
+				<EntitySet EntityType="/SBMC/MOBILE_FIFS_SRV.ATTACHMENT_BINARY" Name="ATTACHMENT_BINARYSet" sap:content-version="1" sap:creatable="false"
+					sap:deletable="false" sap:requires-filter="true" sap:searchable="true" sap:updatable="false"/>
+				<EntitySet EntityType="/SBMC/MOBILE_FIFS_SRV.APP_USER_PREFERENCES" Name="APP_USER_PREFERENCESSet" sap:content-version="1"
+					sap:deletable="false" sap:requires-filter="true" sap:searchable="true"/>
+				<AssociationSet Association="/SBMC/MOBILE_FIFS_SRV.INVOICE_TO_ATTACHMENT_LIST_SVD" Name="INVOICE_TO_ATTACHMENT_LIST_SVDSet"
+					sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+					<End EntitySet="OPEN_ITEMS_SAVED_INVOICES_PER_USERSet" Role="FromRole_INVOICE_TO_ATTACHMENT_LIST_SVD"/>
+					<End EntitySet="ATTACHMENT_INFO_LIST_SVDSet" Role="ToRole_INVOICE_TO_ATTACHMENT_LIST_SVD"/>
+				</AssociationSet>
+				<AssociationSet Association="/SBMC/MOBILE_FIFS_SRV.INVOICE_TO_ATTACHMENT_LIST" Name="INVOICE_TO_ATTACHMENT_LISTSet" sap:content-version="1"
+					sap:creatable="false" sap:deletable="false" sap:updatable="false">
+					<End EntitySet="OPEN_ITEM_BP_DETAILVIEWSet" Role="FromRole_INVOICE_TO_ATTACHMENT_LIST"/>
+					<End EntitySet="ATTACHMENT_INFO_LISTSet" Role="ToRole_INVOICE_TO_ATTACHMENT_LIST"/>
+				</AssociationSet>
+				<AssociationSet Association="/SBMC/MOBILE_FIFS_SRV.REGION_TO_COUNTRY" Name="REGION_TO_COUNTRYSet" sap:content-version="1"
+					sap:creatable="false" sap:deletable="false" sap:updatable="false">
+					<End EntitySet="REGION_SELECTIONSet" Role="FromRole_REGION_TO_COUNTRY"/>
+					<End EntitySet="COUNTRY_SELECTIONSet" Role="ToRole_REGION_TO_COUNTRY"/>
+				</AssociationSet>
+				<AssociationSet Association="/SBMC/MOBILE_FIFS_SRV.OVERVIEW_TO_DETAIL_FAV" Name="OVERVIEW_TO_DETAIL_FAVSet" sap:content-version="1"
+					sap:creatable="false" sap:deletable="false" sap:updatable="false">
+					<End EntitySet="OPEN_ITEMS_SAVED_PER_USERSet" Role="FromRole_OVERVIEW_TO_DETAIL_FAV"/>
+					<End EntitySet="OPEN_ITEMS_SAVED_INVOICES_PER_USERSet" Role="ToRole_OVERVIEW_TO_DETAIL_FAV"/>
+				</AssociationSet>
+				<AssociationSet Association="/SBMC/MOBILE_FIFS_SRV.OVERVIEW_TO_DETAIL" Name="OVERVIEW_TO_DETAILSet" sap:content-version="1"
+					sap:creatable="false" sap:deletable="false" sap:updatable="false">
+					<End EntitySet="OPEN_ITEM_BP_OVERVIEWSet" Role="FromRole_OVERVIEW_TO_DETAIL"/>
+					<End EntitySet="OPEN_ITEM_BP_DETAILVIEWSet" Role="ToRole_OVERVIEW_TO_DETAIL"/>
+				</AssociationSet>
+			</EntityContainer>
+			<atom:link href="http://senldogogps.springer-sbm.com:8000/sap/opu/odata/SBMC/MOBILE_FIFS_SRV/$metadata" rel="self"
+				xmlns:atom="http://www.w3.org/2005/Atom"/>
+			<atom:link href="http://senldogogps.springer-sbm.com:8000/sap/opu/odata/SBMC/MOBILE_FIFS_SRV/$metadata" rel="latest-version"
+				xmlns:atom="http://www.w3.org/2005/Atom"/>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

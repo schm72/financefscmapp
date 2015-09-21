@@ -1,0 +1,136 @@
+.spacerTop {
+	margin-top: 2rem;
+}
+
+/* change the send button of the search item - so we can use this item also for another story with message send to the backend */
+div[id*="UserMessageField-search"]:after{
+    /* https://sapui5.hana.ondemand.com/sdk/test-resources/sap/ui/core/Icon.html */
+    content: "\e0a8";
+}
+
+div[id*="openItemINV"] .sapUiIcon:before{
+  font-size: 70%;
+  margin-bottom:10px;
+}
+
+.classRedIcon .sapUiIcon:before{
+  color: #D24335;
+}
+.classGreenicon .sapUiIcon:before{
+  color: #008E74;
+}
+
+/* color the open item view list - we have he sublist which is also a TR table row 
+   -> therefore we have actually 2 rows for one entry = 1 row main columns and 1 row sub content which pops in on demand
+   -> therefore the content change the css class to "classEvery2Color" when we have no subcontent
+   -> but when there is subcontent we need this two selektors for a zebra colored theme */
+.classStripColor .sapMListTblSubRow:nth-of-type(4n+0), .classStripColor .sapMLIB.sapMListTblRow:nth-of-type(4n-1) {
+  background: #EBEBE5;
+}
+.classEvery2Color .sapMLIB.sapMListTblRow:nth-of-type(2n) {
+  background: #EBEBE5;
+}
+
+/* more space between multicombo select boxes  */
+.RegionSel{
+	margin-top: 1em;
+}
+.CountrySel{
+	margin-top: 1em;
+}
+
+.sapMSLIImgThumbIcon {
+  font-size: 1.5rem;
+  color: #9BAEA2;
+  margin-right: 0.5rem;
+}
+
+.offlineLabel{
+	margin-top: 2em;
+}
+
+div[id*="MessagesB"] .sapMBtnIcon:before {
+  color: #E8920C;
+}
+
+.classNewMessage .sapMStdTileIconDiv  {
+    color: #E8920C;
+}
+
+.classAllRead .sapMStdTileIconDiv  {
+    color: #007cc0;
+}
+
+div[id*="idOIListTable"] .sapMListTbl .sapMText, div[id*="idOIListTable"] .sapMListTbl .sapMLabel {
+  font-size: 83%;
+}
+
+div[id*="idOIListTable"] .sapMObjectIdentifierText .sapMText {
+  font-size: 75%;
+}
+
+div[id*="idOIListTable"] .sapMListTblHeader th {
+  font-size: 99%;
+}
+
+div[id*="idOIListTable"]  .sapMSLITitleOnly {
+  font-size: 85%;
+}
+
+
+div[id*="idOIListTable"] .sapMObjectNumberEmph>.sapMObjectNumberText {
+  font-weight: normal;
+  font-size: 85%;
+}
+
+div[id*="idOIListTable"]  .sapMObjectNumberEmph>.sapMObjectNumberUnit {
+    margin-left: 0.1px;
+}
+
+.sapMListTblSubCnt {
+  padding: .2rem 0 .5rem .3rem;
+}
+
+.oiswitch .sapMSwtHandle {
+    width: .6rem;
+    height: .6rem;
+}
+.oiswitch .sapMSwtHandle[data-sap-ui-swt="On"] {
+    left: 60%;
+}
+.oiswitch  .sapMSwtLabelOff {
+    font-size: .8rem;
+    line-height: 1.3rem;
+}
+.oiswitch  .sapMSwtLabelOn {
+    font-size: .8rem;
+    line-height: 1.3rem;
+    width: .9rem;
+}
+.oiswitch  .sapMSwtTextOff {
+    left: 2.2rem;
+}
+.oiswitch .sapMSwt {
+    width: 2.5rem;
+    height: 1.3rem;
+}
+.oiswitch .sapMSwtAcceptReject .sapMSwtHandle {
+    border-width: 0.1rem;
+}
+.oiswitch .sapMSwtAcceptReject.sapMSwtOff .sapMSwtHandle {
+    border-color: #CDD4BF;
+}
+.oiswitch .sapMSwtAcceptReject .sapMSwtLabelOff::before {
+    color: #CDD4BF;
+    opacity: 0.8;
+}
+.oiswitch .sapMSwtAcceptReject.sapMSwtOff {
+    border-color: #EBEBE5;
+    opacity: 0.6;
+}
+.sapMListBGTranslucent .sapMLIB {
+    background-color: rgba(255,255,255,0);
+}
+.margin_bottom_px {
+	margin-bottom:10px;
+}

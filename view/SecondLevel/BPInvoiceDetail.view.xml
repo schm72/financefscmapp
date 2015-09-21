@@ -1,0 +1,73 @@
+<mvc:View
+	controllerName="com.springer.springerfscmapp.view.SecondLevel.BPInvoiceDetail"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<Page 
+		id="invoiceDetail"
+		showNavButton="true"
+		enableScrolling="true"
+		navButtonPress="onNavBack"
+		class="sapUiFioriObjectPage"
+		title="{i18n>detailInvoice}">
+		<content>
+			<ObjectHeader
+                    id="openItemINV"
+					number="{SapDocumentId}"
+					icon="{
+						path: 'Openitem', 
+                    	formatter: 'com.springer.springerfscmapp.util.Formatter.getOpenitemIcon'
+                    }"
+				>
+				<ObjectAttribute title="Partner" text="{ path: 'Partner', formatter: 'com.springer.springerfscmapp.util.Formatter.overlayTenZero' }"/>
+				<ObjectAttribute title="Company Code" text="{SprCompany}"/>
+				<ObjectAttribute title="Document date" text="{ path: 'DocumentDate', formatter: 'com.springer.springerfscmapp.util.Formatter.dateSimple2' }"/>
+				<ObjectAttribute title="Segment Text"  text="{SegmentTxt}"/>
+			</ObjectHeader>
+			<IconTabBar
+				select="onDetailSelect"
+				id="idIconTabBar">
+				<items>
+					<IconTabFilter key="Details" text="Details" icon="sap-icon://hint">
+						<content>
+							<core:Fragment fragmentName="com.springer.springerfscmapp.view.HelpDialogs.DetailInvoiceInfo" type="XML" />
+						</content>
+					</IconTabFilter>
+                    <IconTabFilter key="Attached" text="Attached" icon="sap-icon://attachment">
+						<content>
+							<Table  id="attachmentList" 
+								class="classStripColor"
+								inset="false" 
+								title="{i18n>InvoiceDetailAttach}"
+								noDataText="No Attachments">
+								<columns>
+									<Column id="ArchItemA" minScreenWidth="Tablet" ><Text text="Archive ID"/></Column>
+									<Column id="ArchItemB" ><Text text="Upload Date"/></Column>
+									<Column id="ArchItemC" ><Text text="Format"/></Column>
+									<Column id="ArchItemD" ><Text text="Type"/></Column>
+								</columns>
+								<items>
+								<!-- handled by fragment: DetailInvoiceAttach -->
+								</items>
+							</Table>
+						</content>
+                    </IconTabFilter>
+                    <IconTabFilter key="Actions" text="Actions" icon="sap-icon://action-settings">
+						<content>
+							<core:Fragment fragmentName="com.springer.springerfscmapp.view.HelpDialogs.DetailInvoiceAction" type="XML" />
+						</content>
+                    </IconTabFilter>
+                    <IconTabFilter key="Notes" text="Notes" icon="sap-icon://request">
+						<content>
+							<core:Fragment fragmentName="com.springer.springerfscmapp.view.HelpDialogs.DetailInvoiceNote" type="XML" /> 
+						</content>
+                    </IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Toolbar>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

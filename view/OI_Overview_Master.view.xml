@@ -1,0 +1,67 @@
+<mvc:View
+	controllerName="com.springer.springerfscmapp.view.OI_Overview_Master"
+	displayBlock="true"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page
+		id="page"
+		title="{i18n>masterTitle}"
+		showNavButton="true"
+		navButtonPress="onNavBack"> 
+		<subHeader>
+			<Bar id="searchBar">
+				<contentMiddle>
+					<Button id="refreshOIButton" icon="sap-icon://refresh" press="refreshData" visible="false"></Button>
+					<SearchField
+						id="OpenItemSearchText1"
+						showRefreshButton="{device>/isNoTouch}"
+						placeholder="{i18n>masterSearchPlaceholder}"
+						search="onItemSearch1"
+						tooltip="{i18n>masterSearchTooltip}"
+						width="100%"
+					    visible="false">
+					</SearchField>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		<content>
+			<List
+				id="list"
+				items="{/OPEN_ITEM_BP_OVERVIEWSet}"
+				mode="{device>/listMode}"
+				noDataText="{i18n>masterListNoDataText}"
+				select="onSelect"
+                growingThreshold="20"
+				growing="true"
+				growingScrollToLoad="true">
+				<items>
+					<ObjectListItem
+						type="{device>/listItemType}"
+						press="onSelect"
+						title="{PartnerDesc}"
+					>
+						<ObjectAttribute title="Id" text="{ path: 'Partner', formatter: 'com.springer.springerfscmapp.util.Formatter.overlayTenZero' }"/>
+						<ObjectAttribute title="Country" text="{ path: 'Country', formatter: 'com.springer.springerfscmapp.util.Formatter.getLongCountry' }"/>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<Toolbar>
+				<content>
+					<Button icon="sap-icon://list" press="onListView"></Button>
+					<ToolbarSpacer />
+					<SearchField
+						id="OpenItemSearchText2"
+						showRefreshButton="true"
+						placeholder="{i18n>masterSearchPlaceholder2}"
+						search="onItemSearch2"
+						width="100%"
+					    visible="false">
+					</SearchField>
+				</content>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

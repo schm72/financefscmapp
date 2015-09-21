@@ -1,0 +1,31 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <ViewSettingsDialog confirm="handleConfirm">
+        <sortItems>
+            <ViewSettingsItem text="FSCM Priority"   key="FscmPrio" selected="true" />
+            <ViewSettingsItem text="Partner"         key="Partner" />
+            <ViewSettingsItem text="Partner Name"    key="PartnerDesc" />
+            <ViewSettingsItem text="Country"         key="Country" />
+            <ViewSettingsItem text="Outstanding"     key="TotalAmt" />
+            <ViewSettingsItem text="Overdue"         key="OverdueAmt" />
+            <ViewSettingsItem text="Overdue >90"     key="OverdueAmtInt4" />
+            <ViewSettingsItem text="Delta To Limit"  key="DeltaToLimit" />
+            <ViewSettingsItem text="This Year Sales" key="ThisYearSales" />
+            <ViewSettingsItem text="Delivery Block"  key="DeliveryBlock" />
+        </sortItems>
+<!--    
+		<groupItems>
+            <ViewSettingsItem text="DeliveryBlock" key="DeliveryBlock" />
+        </groupItems>
+        <filterItems>
+            <ViewSettingsFilterItem text="Overdue Amount" key="OverdueAmt" multiSelect="false">
+                <items>
+                    <ViewSettingsItem text="Overdue Days 01-30" key="OverdueAmtInt1" />
+                    <ViewSettingsItem text="Overdue Days 31-60" key="OverdueAmtInt2" />
+                    <ViewSettingsItem text="Overdue Days 61-90" key="OverdueAmtInt3" />
+                    <ViewSettingsItem text="Overdue Days  > 90" key="OverdueAmtInt4" />
+                </items>
+            </ViewSettingsFilterItem>
+        </filterItems>
+-->
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

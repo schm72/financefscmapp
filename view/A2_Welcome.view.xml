@@ -1,0 +1,85 @@
+<mvc:View
+	controllerName="com.springer.springerfscmapp.view.A2_Welcome"
+	xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page 
+	    title="{i18n>welcomeTitle}"
+	    enableScrolling="false">
+		<!-- 
+		<headerContent>
+			<core:Icon id="detailIcon" src="sap-icon://alert"
+				visible="{parts:[{path:'device>/isOffline'}, {path:'device>/isPhone'}], formatter:'.onlineIconVisible'}"></core:Icon>
+		</headerContent>
+        -->
+        <content>
+            <TileContainer
+             id="AvailableApps"
+             tileDelete="handleTileDelete"
+             width="100%"  
+             height="100%"  
+			>
+                <StandardTile
+                    id="ProfileTile"
+                    icon="sap-icon://person-placeholder"
+                    type="None"
+                    number="Profile"
+                    numberUnit="User Infos"
+                    title=""
+                    info="Customizing"
+                    press="onProfile"
+                />
+                <StandardTile 
+                    id="OpenItemsOverview"
+                    icon="sap-icon://monitor-payments"
+                    type="None"
+                    number="Overview"
+                    numberUnit="FSCM Partner"
+                    title="0 Partner"
+                    info="FSCM"
+    				press="onOIVIEW"
+                />
+                <StandardTile 
+                    id="OpenItemsSaved"
+                    icon="sap-icon://monitor-payments"
+                    type="None"
+                    number="Favorites"
+                    numberUnit="FSCM Partner"
+                    title="0 Favorites"
+                    info="FSCM"
+    				press="onOISAVED"
+                />
+                <StandardTile 
+                    id="MessageCollectorTile"
+                    icon="sap-icon://letter"
+                    type="None"
+                    number="Messages"
+                    numberUnit=""
+                    title="0 Messages"
+                    info="Infos / Contact"
+    				press="onMessageCollector"
+                />
+            </TileContainer>
+        </content>
+		<footer>
+			<Bar id="ExitButton">
+			    <contentLeft>
+                    <Button 
+                      id="MessagesB"
+                      text="Messages" 
+                      press="onMessageCollector"
+					  width="100%"/>
+				</contentLeft>
+				<contentRight>
+                    <Button 
+                      id="EXITID"
+                      text="EXIT" 
+                      press="onEnde"
+					  width="100%"
+					  visible="false"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

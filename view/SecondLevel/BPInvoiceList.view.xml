@@ -1,0 +1,36 @@
+<mvc:View 
+    controllerName="com.springer.springerfscmapp.view.SecondLevel.BPInvoiceList"
+    xmlns:core="sap.ui.core"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:table="sap.ui.table"
+	xmlns="sap.m">
+	<Page enableScrolling="true" navButtonPress="onNavBack" showNavButton="true" title="{i18n>InvoiceDetailBPtitle}" id="invoiceOverviewBP">
+		<subHeader>
+			<Bar id="OpenItemListSearch">
+				<contentMiddle>
+					<SearchField id="InvoiceSearchText" placeholder="{i18n>InvoiceSearchPlaceholder}" search="onInvoiceSearch" showRefreshButton="true" width="100%"></SearchField>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		<content>
+			<Table  id="idInvListTable" 
+                    class="classStripColor"
+                    noDataText="{i18n>InvListNoDataText}"
+                    growing="true"
+                    growingScrollToLoad="true"
+                    growingThreshold="10" 
+                    inset="false">
+				<columns>
+					<Column id="ColumnA"><Text text="Status"/></Column>
+					<Column id="ColumnB"><Text text="Amount"/></Column>
+					<Column id="ColumnC" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline"><Text text="Doc Id"/></Column>
+					<Column id="ColumnD" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline"><Text text="Date"/></Column>
+				</columns>
+				<items>
+				<!-- controller action: dynamic bind of aggregation depending of former navigation  -->
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

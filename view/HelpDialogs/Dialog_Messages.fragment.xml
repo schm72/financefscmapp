@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <ViewSettingsDialog confirm="handleConfirm">
+        <sortItems>
+            <ViewSettingsItem text="Type" key="MessageType" selected="true" />
+            <ViewSettingsItem text="Message" key="Message" />
+            <ViewSettingsItem text="Time" key="ChangeTime" />
+        </sortItems>
+        <groupItems>
+            <ViewSettingsItem text="Type" key="MessageType" />
+            <ViewSettingsItem text="Time" key="ChangeTime" />
+        </groupItems>
+        <filterItems>
+            <ViewSettingsFilterItem text="Type" key="MessageType" multiSelect="false">
+                <items>
+                    <ViewSettingsItem text="Success"  key="MessageType___EQ___S" />
+                    <ViewSettingsItem text="Warnings" key="MessageType___EQ___W" />
+                    <ViewSettingsItem text="Errors"   key="MessageType___EQ___E" />
+                </items>
+            </ViewSettingsFilterItem>
+            <ViewSettingsFilterItem text="Time" key="ChangeTime" multiSelect="false">
+                <items>
+                    <ViewSettingsItem text="Items Today"     key="ChangeTime___GT___TODAY" />
+                    <ViewSettingsItem text="Items Yesterday" key="ChangeTime___BT___TODAY___YESTERDAY" />
+                    <ViewSettingsItem text="Old Items"       key="ChangeTime___LE___OLD" />
+                </items>
+            </ViewSettingsFilterItem>
+        </filterItems>
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

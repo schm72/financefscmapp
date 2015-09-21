@@ -1,0 +1,116 @@
+<mvc:View controllerName="com.springer.springerfscmapp.view.SecondLevel.MessageCollector" xmlns:core="sap.ui.core"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns="sap.m">
+	<Page enableScrolling="true" navButtonPress="onNavBack" showNavButton="true" title="{i18n>messageTitle}">
+		<subHeader>
+			<Bar id="MessageSearch">
+				<contentMiddle>
+					<SearchField id="MessageSearchText" placeholder="{i18n]MessageSearch}" search="onMessageSearch" showRefreshButton="true" width="100%"></SearchField>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		<content>
+			<Table 
+                noDataText="No Messages Found"
+                growing="true" 
+                growingScrollToLoad="true" 
+                growingThreshold="7" 
+                mode="MultiSelect"
+                id="idMessageTable"
+				items="{ 
+                    path: '/APP_MESSAGESSet',
+                    filters: [ 
+                        { 
+                            path : 'Application', 
+                            operator : 'EQ', 
+                            value1: 'SPRINGERFSCMAPP' 
+                        },
+                        {
+                            path : 'MessageStatus',
+                            operator : 'NE', 
+                            value1: 'DELETED' 
+                        }
+                    ],
+                    sorter: [
+                        { 
+                            path: 'ChangeTime', 
+                            descending: true 
+                        }
+                    ],
+                    parameters: {select: 'EntryId,UserId,Application,Origin,MessageType,Message,ChangeTime,Solved,MessageStatus'}  
+                }">
+				<headerToolbar>
+					<Toolbar>
+						<!--<Label  text="Messages"/>-->
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://delete" text="Delete" press="handleDeleteMessage"/>
+						<Button icon="sap-icon://accept" text="Solve" press="handleSolveMessage"/>
+						<Button icon="sap-icon://drop-down-list" press="handleViewSettingsDialogButtonPressed"/>
+					</Toolbar>
+				</headerToolbar>
+				<infoToolbar>
+					<Toolbar active="true" id="vsdFilterBar" press="[handleViewSettingsDialogFilterBarPressed, views.control.HelpDialogs]" visible="false">
+						<Label id="vsdFilterLabel" text="?"/>
+					</Toolbar>
+				</infoToolbar>
+				<columns>
+					<Column width="3em" minScreenWidth="Tablet" >
+						<Text text="Type"/>
+					</Column>
+					<Column  width="4em">
+						<Text text="Solved"/>
+					</Column>
+					<Column minScreenWidth="Tablet">
+						<Text text="Last Change Time"/>
+					</Column>
+					<Column demandPopin="true" >
+						<Text text="Message"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectStatus 
+                                icon="{ 
+                                    path: 'MessageType',
+                                    formatter: 'com.springer.springerfscmapp.util.Formatter.MessageStateIcon' 
+                                }"
+                                state="{ 
+                                    path: 'MessageType', 
+                                    formatter: 'com.springer.springerfscmapp.util.Formatter.MessageState'
+                                }"/>
+							<ObjectStatus 
+                                icon="{ 
+                                    path: 'Solved', 
+                                    formatter: 'com.springer.springerfscmapp.util.Formatter.MessageIconSolved'
+                                }" 
+                                state="{ 
+                                    path: 'Solved', 
+                                    formatter: 'com.springer.springerfscmapp.util.Formatter.MessageStateSolved'
+                                }"/>
+							<Text text="{
+                                    path: 'ChangeTime', 
+                                    formatter: 'com.springer.springerfscmapp.util.Formatter.dateSimple' 
+                                }"/>
+							<ObjectIdentifier 
+                                title="{Message}"
+                                text="Source: {Origin}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<Bar id="FootMessageUser">
+				<contentMiddle>
+					<SearchField
+						id="UserMessageField"
+						showRefreshButton="false"
+						placeholder="{i18n>UserMessage}"
+						search="onViewUserMessage"
+						width="100%">
+					</SearchField>
+				</contentMiddle>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>
