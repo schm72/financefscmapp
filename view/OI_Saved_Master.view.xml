@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="com.springer.springerfscmapp.view.OI_Saved_Master"
+	controllerName="com.springer.financefscmapp.view.OI_Saved_Master"
 	displayBlock="true"
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
@@ -41,12 +41,13 @@
 						press="onSelect"
 						title="{PartnerDesc}"
 					>
-						<ObjectAttribute title="Id" text="{ path: 'Partner', formatter: 'com.springer.springerfscmapp.util.Formatter.overlayTenZero' }"/>
-						<ObjectAttribute title="Country" text="{ path: 'Country', formatter: 'com.springer.springerfscmapp.util.Formatter.getLongCountry' }"/>
+						<ObjectAttribute title="Id" text="{ path: 'Partner', formatter: 'com.springer.financefscmapp.util.Formatter.overlayTenZero' }"/>
+						<ObjectAttribute title="Country" text="{ path: 'Country', formatter: 'com.springer.financefscmapp.util.Formatter.getLongCountry' }"/>
 					</ObjectListItem>
 				</items>
 			</List>
 		</content>
+		
 		<footer>
 			<Toolbar>
 				<content>

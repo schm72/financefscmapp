@@ -1,7 +1,7 @@
-jQuery.sap.require("com.springer.springerfscmapp.util.Formatter");
-jQuery.sap.require("com.springer.springerfscmapp.util.Controller");
+jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
+jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
-com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmapp.view.SecondLevel.BPInvoiceList_SVD", {
+com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.SecondLevel.BPInvoiceList_SVD", {
 
 	_UserPreferences: {},
 	currentEntity: null,
@@ -25,7 +25,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 		this.currentEntity = oParameters.arguments.entity;
 		var sAggregationPath = "/" + this.currentEntity + "/OPEN_ITEMS_SAVED_INVOICES_PER_USERSet";
         var oTable = this.byId("idInvListTable");
-		oTable.bindAggregation("items",sAggregationPath,sap.ui.xmlfragment("com.springer.springerfscmapp.view.HelpDialogs.RowFiDocument", this));
+		oTable.bindAggregation("items",sAggregationPath,sap.ui.xmlfragment("com.springer.financefscmapp.view.HelpDialogs.RowFiDocument", this));
 	},
 
 	onAfterShow: function() {

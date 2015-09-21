@@ -1,5 +1,5 @@
 <mvc:View 
-    controllerName="com.springer.springerfscmapp.view.SecondLevel.Profile" 
+    controllerName="com.springer.financefscmapp.view.SecondLevel.Profile" 
     xmlns:core="sap.ui.core" 
 	xmlns:mvc="sap.ui.core.mvc" 
 	xmlns:f="sap.ui.layout.form" 

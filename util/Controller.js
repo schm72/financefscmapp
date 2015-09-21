@@ -1,6 +1,6 @@
-jQuery.sap.declare("com.springer.springerfscmapp.util.Controller");
+jQuery.sap.declare("com.springer.financefscmapp.util.Controller");
 
-sap.ui.core.mvc.Controller.extend("com.springer.springerfscmapp.util.Controller", {
+sap.ui.core.mvc.Controller.extend("com.springer.financefscmapp.util.Controller", {
 	/**
 	 * get the event bus of the applciation component
 	 * @returns {Object} the event bus

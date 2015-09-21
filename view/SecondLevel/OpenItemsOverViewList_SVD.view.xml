@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.springer.springerfscmapp.view.SecondLevel.OpenItemsOverViewList_SVD"
+<mvc:View controllerName="com.springer.financefscmapp.view.SecondLevel.OpenItemsOverViewList_SVD"
           xmlns="sap.m"
           xmlns:core="sap.ui.core"
           xmlns:mvc="sap.ui.core.mvc"
@@ -69,56 +69,56 @@
 							<ObjectNumber wrapping="false"
 								number="{ 
                                     path: 'TotalAmt', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 }"
 								unit="{ 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 							<ObjectNumber wrapping="false"
 								number="{ 
                                     path: 'OverdueAmt', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 }"
 								unit="{ 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 							<ObjectNumber wrapping="false"
 								number="{ 
                                     path: 'OverdueAmtInt1', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 }"
 								unit="{ 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 							<ObjectNumber wrapping="false"
 								number="{ 
                                     path: 'OverdueAmtInt2', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 }"
 								unit="{ 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 							<ObjectNumber wrapping="false"
 								number="{ 
                                     path: 'OverdueAmtInt3', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 }"
 								unit="{ 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 							<ObjectNumber wrapping="false"
 								number="{ 
                                     path: 'OverdueAmtInt4', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 }"
 								unit="{ 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 							<Text wrapping="false"
 								text="{DeliveryBlock}"
@@ -127,35 +127,35 @@
 							<ObjectNumber wrapping="false"
 								number="{ 
                                     path: 'Creditlimit', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 }"
 								unit="{ 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 							<ObjectNumber wrapping="false"
 								number="{ 
                                     path: 'DeltaToLimit', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 }"
 								unit="{ 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
                             <ObjectNumber
                                 wrapping="false"
 							    number="{ 
                                     path: 'ThisYearSales', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 }"
                                 unit="{ 
                                     path: 'SalesCurrency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }"/>
                             <Switch type="AcceptReject"
                                     state="{ 
                                     path: 'AddedFavorite', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.addedFav' }"
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.addedFav' }"
                                     class="oiswitch"
                                     change="onAddFav"
                                 />

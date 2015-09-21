@@ -1,7 +1,7 @@
-jQuery.sap.declare("com.springer.springerfscmapp.Component");
-jQuery.sap.require("com.springer.springerfscmapp.MyRouter");
+jQuery.sap.declare("com.springer.financefscmapp.Component");
+jQuery.sap.require("com.springer.financefscmapp.MyRouter");
 
-sap.ui.core.UIComponent.extend("com.springer.springerfscmapp.Component", {
+sap.ui.core.UIComponent.extend("com.springer.financefscmapp.Component", {
 	metadata: {
 		name: "Springer FSCM App",
 		version: "0.9.0",
@@ -11,7 +11,7 @@ sap.ui.core.UIComponent.extend("com.springer.springerfscmapp.Component", {
 			components: []
 		},
 
-		rootView: "com.springer.springerfscmapp.view.App",
+		rootView: "com.springer.financefscmapp.view.App",
 
 		config: {
 			resourceBundle: "i18n/messageBundle.properties",
@@ -23,9 +23,9 @@ sap.ui.core.UIComponent.extend("com.springer.springerfscmapp.Component", {
 
 		routing: {
 			config: {
-				routerClass: com.springer.springerfscmapp.MyRouter,
+				routerClass: com.springer.financefscmapp.MyRouter,
 				viewType: "XML",
-				viewPath: "com.springer.springerfscmapp.view",
+				viewPath: "com.springer.financefscmapp.view",
 				targetAggregation: "detailPages",
 				clearTarget: false
 			},
@@ -191,7 +191,7 @@ sap.ui.core.UIComponent.extend("com.springer.springerfscmapp.Component", {
 
 		// always use absolute paths relative to our own component
 		// (relative paths will fail if running in the Fiori Launchpad)
-		var oRootPath = jQuery.sap.getModulePath("com.springer.springerfscmapp");
+		var oRootPath = jQuery.sap.getModulePath("com.springer.financefscmapp");
 
 		// set i18n model
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
@@ -200,10 +200,10 @@ sap.ui.core.UIComponent.extend("com.springer.springerfscmapp.Component", {
 		this.setModel(i18nModel, "i18n");
 
 		var oModel;
-		var externalURL = com.springer.springerfscmapp.dev.devapp.externalURL;
+		var externalURL = com.springer.financefscmapp.dev.devapp.externalURL;
 		var appContext = null;
-		if (com.springer.springerfscmapp.dev.devapp.devLogon) {
-			appContext = com.springer.springerfscmapp.dev.devapp.devLogon.appContext;
+		if (com.springer.financefscmapp.dev.devapp.devLogon) {
+			appContext = com.springer.financefscmapp.dev.devapp.devLogon.appContext;
 		}
 		if (window.cordova && appContext && !window.sap_webide_companion && !externalURL) {
 			var url = appContext.applicationEndpointURL + "/";
@@ -386,7 +386,7 @@ sap.ui.core.UIComponent.extend("com.springer.springerfscmapp.Component", {
 		this.setModel(oDeviceModel, "device");
 
 		if (window.cordova) {
-			com.springer.springerfscmapp.dev.devapp.deviceModel = oDeviceModel;
+			com.springer.financefscmapp.dev.devapp.deviceModel = oDeviceModel;
 		}
 		this.getRouter().initialize();
 	},

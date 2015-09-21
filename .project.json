@@ -20,10 +20,10 @@
     "resourceModelName": "i18n"
   },
   "hybrid": {
-    "appname": "springerfscmapp",
-    "appid": "com.springer.springerfscmapp",
-    "appdesc": "springer SAP FSCM app",
-    "appversion": "0.9.0",
+    "appname": "financefscmapp",
+    "appid": "com.springer.financefscmapp",
+    "appdesc": "Financial facts and FSCm Features",
+    "appversion": "0.9.1",
     "debugMode": false,
     "appIcon": {
       "defaultIcon": "res/Logo_Springer_FSCM_app.png",

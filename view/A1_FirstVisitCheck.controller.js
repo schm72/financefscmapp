@@ -1,7 +1,7 @@
-jQuery.sap.require("com.springer.springerfscmapp.util.Formatter");
-jQuery.sap.require("com.springer.springerfscmapp.util.Controller");
+jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
+jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
-com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmapp.view.A1_FirstVisitCheck", {
+com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.A1_FirstVisitCheck", {
 
 	bReplace: false,
 	selectedCountries: "",
@@ -86,7 +86,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 		oEventBus.subscribe("FirstVisitCheck", "OfflineMode", this.offlineMode, this);
 		// READ: reading user preferences for this app -> to check if we only and iof the user already exist
 		var oModel = this.getView().getModel();
-		//oModel.read("APP_USER_PREFERENCESSet", null, ["$filter=Application eq 'SPRINGERFSCMAPP'"], true,
+		//oModel.read("APP_USER_PREFERENCESSet", null, ["$filter=Application eq 'financefscmapp'"], true,
 		oModel.read("APP_USER_PREFERENCESSet", null, null, true,
 			function(oData, oResponse) {
 				if (oData.results[0]) {
@@ -214,7 +214,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 							input.entry = oData.results[0];
 
 							if (input.entry.LastvisitTime) {
-								that.UserPreferences.lastvisit = com.springer.springerfscmapp.util.Formatter.dateSimple(input.entry.LastvisitTime);
+								that.UserPreferences.lastvisit = com.springer.financefscmapp.util.Formatter.dateSimple(input.entry.LastvisitTime);
 							}
 							that.UserPreferences.firstStart = true;
 							that.UserPreferences.onlineStatus = true;

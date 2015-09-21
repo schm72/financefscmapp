@@ -1,5 +1,5 @@
 <mvc:View 
-    controllerName="com.springer.springerfscmapp.view.SecondLevel.BPInvoiceList"
+    controllerName="com.springer.financefscmapp.view.SecondLevel.BPInvoiceList"
     xmlns:core="sap.ui.core"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:mvc="sap.ui.core.mvc"

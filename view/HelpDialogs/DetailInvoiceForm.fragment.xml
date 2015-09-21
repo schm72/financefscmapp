@@ -7,7 +7,7 @@
 					
 					<Label text="Net Due Date"/>
 					<Text text="{ path: 'NetDueDate', 
-						          formatter: 'com.springer.springerfscmapp.util.Formatter.dateSimple2' }"
+						          formatter: 'com.springer.financefscmapp.util.Formatter.dateSimple2' }"
 					/>
 					
 					<Label text="Days Since Due Date"/>
@@ -17,9 +17,9 @@
 					
 					<Label text="Amount Local Currency"/>
 					<Text  text="{ path: 'ItemAmountLocalCur', 
-						           formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt' } 
+						           formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt' } 
 						         { path: 'ItemLocalCur', 
-						           formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView' }"
+						           formatter: 'com.springer.financefscmapp.util.Formatter.currencyView' }"
 					/>
 					
 					<Label text="License ID"/>
@@ -27,7 +27,7 @@
 				
 					<Label text="Active Dispute Case"/>
 					<Switch type="AcceptReject" change="onAddFav" class="oiswitch margin_bottom_px" enabled="false"
-					    state="{ path: 'DisputeCase', formatter: 'com.springer.springerfscmapp.util.Formatter.isSomething' }" />
+					    state="{ path: 'DisputeCase', formatter: 'com.springer.financefscmapp.util.Formatter.isSomething' }" />
 					<Label id="DisV1" visible="false" text="Dispute Case ID"/> <Text id="DisV2" visible="false" text="{DisputeCase}"/>
 					<Label id="DisV3" visible="false" text="Reason"/> <Text id="DisV4" visible="false" text="{DisputeReason}"/>
 					

@@ -1,7 +1,7 @@
-jQuery.sap.require("com.springer.springerfscmapp.util.Formatter");
-jQuery.sap.require("com.springer.springerfscmapp.util.Controller");
+jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
+jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
-com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmapp.view.SecondLevel.MessageCollector", {
+com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.SecondLevel.MessageCollector", {
 
 	_oDialog: null,
 	parameter: 0,
@@ -71,7 +71,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 		var oEntry = {
 			EntryId: "EXTERN",
 			UserId: "EXTERN",
-			Application: "SPRINGERFSCMAPP",
+			Application: "financefscmapp",
 			Origin: origin,
 			MessageType: messageType,
 			Message: message,
@@ -110,7 +110,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 
 	handleViewSettingsDialogButtonPressed: function(oEvent) {
 		if (!this._oDialog) {
-			this._oDialog = sap.ui.xmlfragment("com.springer.springerfscmapp.view.HelpDialogs.Dialog_Messages", this);
+			this._oDialog = sap.ui.xmlfragment("com.springer.financefscmapp.view.HelpDialogs.Dialog_Messages", this);
 		}
 		// toggle compact style
 		jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oDialog);
@@ -301,7 +301,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 	},
 	onUserMessage: function(sChannel, sEvent, message) {
 		var oModel = this.getView().getModel();
-		sap.ui.controller("com.springer.springerfscmapp.view.SecondLevel.MessageCollector").onNewMessage(oModel, message, "U", "UserMessage");
+		sap.ui.controller("com.springer.financefscmapp.view.SecondLevel.MessageCollector").onNewMessage(oModel, message, "U", "UserMessage");
 	},
 
 	onNavBack: function() {

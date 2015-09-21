@@ -1,7 +1,7 @@
-jQuery.sap.require("com.springer.springerfscmapp.util.Formatter");
-jQuery.sap.require("com.springer.springerfscmapp.util.Controller");
+jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
+jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
-com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmapp.view.App", {
+com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.App", {
 	/**
 	 * initializing controller, subscribe two "OfflineStore" channel event
 	 */
@@ -28,10 +28,10 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 			console.log("refreshing oData Model with offline store");
 			this.getView().setBusy(true);
 			//ask refreshing store after flush
-			com.springer.springerfscmapp.dev.devapp.refreshing = true;
-			if (com.springer.springerfscmapp.dev.devapp.devLogon) {
+			com.springer.financefscmapp.dev.devapp.refreshing = true;
+			if (com.springer.financefscmapp.dev.devapp.devLogon) {
 				console.log("refreshing offline store");
-				com.springer.springerfscmapp.dev.devapp.devLogon.flushAppOfflineStore();
+				com.springer.financefscmapp.dev.devapp.devLogon.flushAppOfflineStore();
 			}
 		} else {
 			this.getView().getModel().refresh();

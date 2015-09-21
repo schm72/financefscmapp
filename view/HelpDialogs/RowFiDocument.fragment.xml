@@ -3,27 +3,27 @@
 			<cells>
 				<ObjectStatus  icon="{ 
 						path: 'Openitem', 
-                    	formatter: 'com.springer.springerfscmapp.util.Formatter.getOpenitemIcon'
+                    	formatter: 'com.springer.financefscmapp.util.Formatter.getOpenitemIcon'
                     }"
                     state="{ 
                         path: 'Openitem', 
-                        formatter: 'com.springer.springerfscmapp.util.Formatter.OpenitemState'
+                        formatter: 'com.springer.financefscmapp.util.Formatter.OpenitemState'
                     }"
                     />
 				<ObjectNumber
 					wrapping="false"
 					number="{ 
                         path: 'ItemAmountLocalCur', 
-                        formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                        formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                     }"
 					unit="{ 
                         path: 'ItemLocalCur', 
-                        formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                        formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                     }" />
 				<Text wrapping="false" text="{SapDocumentId}"/>
 				<Text wrapping="false" text="{ 
                                     path: 'DocumentDate', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.dateSimple2'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.dateSimple2'
                                 }"/>
 			</cells>
 		</ColumnListItem>

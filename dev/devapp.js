@@ -1,7 +1,7 @@
-jQuery.sap.declare("com.springer.springerfscmapp.dev.devapp");
-jQuery.sap.require("com.springer.springerfscmapp.dev.devlogon");
+jQuery.sap.declare("com.springer.financefscmapp.dev.devapp");
+jQuery.sap.require("com.springer.financefscmapp.dev.devlogon");
 
-com.springer.springerfscmapp.dev.devapp = {
+com.springer.financefscmapp.dev.devapp = {
 	smpInfo: {},
 	entityName: null,
 	navName: null,
@@ -37,7 +37,7 @@ com.springer.springerfscmapp.dev.devapp = {
 	//========================================================================
 	onDeviceReady: function() {
 		console.log("onDeviceReady");
-		var that = com.springer.springerfscmapp.dev.devapp;
+		var that = com.springer.financefscmapp.dev.devapp;
 		$.getJSON(".project.json", function(data) {
 			if (data && data.hybrid && data.hybrid.plugins.kapsel.logon.selected) {
 				that.smpInfo.server = data.hybrid.msType === 0 ? data.hybrid.hcpmsServer : data.hybrid.server;
@@ -56,7 +56,7 @@ com.springer.springerfscmapp.dev.devapp = {
 					"https": data.hybrid.msType === 0 ? "true" : "false",
 					"serverPort": that.smpInfo.port
 				};
-				that.devLogon = new com.springer.springerfscmapp.dev.devlogon();
+				that.devLogon = new com.springer.financefscmapp.dev.devlogon();
 				that.devLogon.doLogonInit(context, that.smpInfo.appID, that.entityName, that.navName);
 			} else {
 				startApp();
@@ -69,7 +69,7 @@ com.springer.springerfscmapp.dev.devapp = {
 	//========================================================================
 	deviceOnline: function() {
 		console.log("deviceOnline");
-		var that = com.springer.springerfscmapp.dev.devapp;
+		var that = com.springer.financefscmapp.dev.devapp;
 		//sap.m.MessageToast.show("Device is Online", { duration: 1000});
 		if (that.isLoaded && that.deviceModel) {
 			that.deviceModel.setProperty("/isOffline", false);
@@ -81,7 +81,7 @@ com.springer.springerfscmapp.dev.devapp = {
 	//========================================================================
 	deviceOffline: function() {
 		console.log("deviceOffline");
-		var that = com.springer.springerfscmapp.dev.devapp;
+		var that = com.springer.financefscmapp.dev.devapp;
 		//sap.m.MessageToast.show("Device is Offline", { duration: 1000});
 		if (that.isLoaded && that.deviceModel) {
 			that.deviceModel.setProperty("/isOffline", true);

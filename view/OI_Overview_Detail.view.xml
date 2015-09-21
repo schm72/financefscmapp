@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="com.springer.springerfscmapp.view.OI_Overview_Detail"
+	controllerName="com.springer.financefscmapp.view.OI_Overview_Detail"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
@@ -17,8 +17,8 @@
                     id="BPDetailHeader"
 					title="{PartnerDesc}"
 				>
-				<ObjectAttribute title="Partner" text="{ path: 'Partner', formatter: 'com.springer.springerfscmapp.util.Formatter.overlayTenZero' }"/>
-				<ObjectAttribute title="Country" text="{ path: 'Country', formatter: 'com.springer.springerfscmapp.util.Formatter.getLongCountry' }"/>
+				<ObjectAttribute title="Partner" text="{ path: 'Partner', formatter: 'com.springer.financefscmapp.util.Formatter.overlayTenZero' }"/>
+				<ObjectAttribute title="Country" text="{ path: 'Country', formatter: 'com.springer.financefscmapp.util.Formatter.getLongCountry' }"/>
 			</ObjectHeader>
 			<IconTabBar
 				select="onDetailSelect"
@@ -26,22 +26,22 @@
 				<items>
 					<IconTabFilter key="Details" text="Details" icon="sap-icon://hint">
 						<content>
-							<core:Fragment fragmentName="com.springer.springerfscmapp.view.HelpDialogs.BPdetailInfoForm" type="XML" />
+							<core:Fragment fragmentName="com.springer.financefscmapp.view.HelpDialogs.BPdetailInfoForm" type="XML" />
 						</content>
 					</IconTabFilter>
                     <IconTabFilter key="Invoices" text="Invoices" icon="sap-icon://batch-payments">
 						<content>
-							<core:Fragment fragmentName="com.springer.springerfscmapp.view.HelpDialogs.BPdetailAttachForm" type="XML" />
+							<core:Fragment fragmentName="com.springer.financefscmapp.view.HelpDialogs.BPdetailAttachForm" type="XML" />
 						</content>
                     </IconTabFilter>
                     <IconTabFilter key="Actions" text="Actions" icon="sap-icon://action-settings">
 						<content>
-							<core:Fragment fragmentName="com.springer.springerfscmapp.view.HelpDialogs.BPdetailActionForm" type="XML" />
+							<core:Fragment fragmentName="com.springer.financefscmapp.view.HelpDialogs.BPdetailActionForm" type="XML" />
 						</content>
                     </IconTabFilter>
                     <IconTabFilter key="Notes" text="Notes" icon="sap-icon://request">
 						<content>
-							<core:Fragment fragmentName="com.springer.springerfscmapp.view.HelpDialogs.BPdetailNoteForm" type="XML" /> 
+							<core:Fragment fragmentName="com.springer.financefscmapp.view.HelpDialogs.BPdetailNoteForm" type="XML" /> 
 						</content>
                     </IconTabFilter>
 				</items>

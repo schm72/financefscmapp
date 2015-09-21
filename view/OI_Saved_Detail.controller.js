@@ -1,7 +1,7 @@
-jQuery.sap.require("com.springer.springerfscmapp.util.Formatter");
-jQuery.sap.require("com.springer.springerfscmapp.util.Controller");
+jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
+jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
-com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmapp.view.OI_Saved_Detail", {
+com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.OI_Saved_Detail", {
 	
 	/**
 	 * Called when the detail list controller is instantiated.
@@ -59,7 +59,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 /*
 			var oIconTabBar = oView.byId("idIconTabBar");
 			oIconTabBar.getItems().forEach(function(oItem) {
-				oItem.bindElement(com.springer.springerfscmapp.util.Formatter.uppercaseFirstChar(oItem.getKey()));
+				oItem.bindElement(com.springer.financefscmapp.util.Formatter.uppercaseFirstChar(oItem.getKey()));
 			});
 
 			// Which tab?
@@ -98,7 +98,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 	showEmptyView : function () {
 		this.getRouter().myNavToWithoutHash({ 
 			currentView : this.getView(),
-			targetViewName : "com.springer.springerfscmapp.view.HelpDialogs.NotFound",
+			targetViewName : "com.springer.financefscmapp.view.HelpDialogs.NotFound",
 			targetViewType : "XML"
 		});
 	},
@@ -121,7 +121,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 		} 
 
 		var partner = oEvent.getSource().getBindingContext().getProperty("Partner");
-		partner = com.springer.springerfscmapp.util.Formatter.overlayTenZero(partner);
+		partner = com.springer.financefscmapp.util.Formatter.overlayTenZero(partner);
 		var that = this;
 		var oModel = this.getView().getModel();
 		oModel.read("OPEN_ITEM_BP_OVERVIEWSet", null, ["$filter=Partner eq '" + partner + "'"], true,
@@ -168,7 +168,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 		if (!this._deleteConfirmDialog) {
 			var id = this.getView().getId();
 			var frgId = id + "-_dialog_DeleteConfirm";
-			this._deleteConfirmDialog = sap.ui.xmlfragment(frgId, "com.springer.springerfscmapp.view.HelpDialogs.Dialog_DeleteConfirm", this);
+			this._deleteConfirmDialog = sap.ui.xmlfragment(frgId, "com.springer.financefscmapp.view.HelpDialogs.Dialog_DeleteConfirm", this);
 			this.getView().addDependent(this._deleteConfirmDialog);
 		}
 		this._deleteConfirmDialog.open();
@@ -211,7 +211,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 
 	refreshData : function() {
 		var model = this.getView().getModel();
-		if (com.springer.springerfscmapp.dev.devapp.isLoaded) {
+		if (com.springer.financefscmapp.dev.devapp.isLoaded) {
 			var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
 			if (UserPreferences.onlineStatus) {
 				var oEventBus = this.getEventBus();

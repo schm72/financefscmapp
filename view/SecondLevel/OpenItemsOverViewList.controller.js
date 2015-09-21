@@ -1,7 +1,7 @@
-jQuery.sap.require("com.springer.springerfscmapp.util.Formatter");
-jQuery.sap.require("com.springer.springerfscmapp.util.Controller");
+jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
+jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
-com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmapp.view.SecondLevel.OpenItemsOverViewList", {
+com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.SecondLevel.OpenItemsOverViewList", {
 	_oDialog: null,
 	showTexts: false,
 	//documentView: false,
@@ -177,7 +177,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 
 	handleViewSettingsDialogButtonPressed: function(oEvent) {
 		if (!this._oDialog) {
-			this._oDialog = sap.ui.xmlfragment("com.springer.springerfscmapp.view.HelpDialogs.Dialog_OpenItems", this);
+			this._oDialog = sap.ui.xmlfragment("com.springer.financefscmapp.view.HelpDialogs.Dialog_OpenItems", this);
 		}
 		// toggle compact style
 		jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oDialog);
@@ -313,7 +313,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 		} 
 
 		var partner = oEvent.getSource().getBindingContext().getProperty("Partner");
-		partner = com.springer.springerfscmapp.util.Formatter.overlayTenZero(partner);
+		partner = com.springer.financefscmapp.util.Formatter.overlayTenZero(partner);
 		var that = this;
 		var oModel = this.getView().getModel();
 		oModel.read("OPEN_ITEM_BP_OVERVIEWSet", null, ["$filter=Partner eq '" + partner + "'"], true,

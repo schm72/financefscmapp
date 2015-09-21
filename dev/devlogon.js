@@ -1,7 +1,7 @@
-jQuery.sap.declare("com.springer.springerfscmapp.dev.devlogon");
-jQuery.sap.require("com.springer.springerfscmapp.dev.devapp");
+jQuery.sap.declare("com.springer.financefscmapp.dev.devlogon");
+jQuery.sap.require("com.springer.financefscmapp.dev.devapp");
 
-sap.ui.base.ManagedObject.extend("com.springer.springerfscmapp.dev.devlogon", {
+sap.ui.base.ManagedObject.extend("com.springer.financefscmapp.dev.devlogon", {
 	appContext: null,
 	appOfflineStore: {},
 
@@ -9,10 +9,10 @@ sap.ui.base.ManagedObject.extend("com.springer.springerfscmapp.dev.devlogon", {
 	 * constructor
 	 ********************************************************************/
 	constructor: function() {
-		if (typeof com.springer.springerfscmapp.dev.devlogon.__instance === "object") {
-			return com.springer.springerfscmapp.dev.devlogon.__instance;
+		if (typeof com.springer.financefscmapp.dev.devlogon.__instance === "object") {
+			return com.springer.financefscmapp.dev.devlogon.__instance;
 		}
-		com.springer.springerfscmapp.dev.devlogon.__instance = this;
+		com.springer.financefscmapp.dev.devlogon.__instance = this;
 	},
 
 	/********************************************************************
@@ -358,7 +358,7 @@ sap.ui.base.ManagedObject.extend("com.springer.springerfscmapp.dev.devlogon", {
 		sap.ui.getCore().setModel(UserPreferences, "UserPreferences");
 
 		startApp();
-		com.springer.springerfscmapp.dev.devapp.isLoaded = true;
+		com.springer.financefscmapp.dev.devapp.isLoaded = true;
 	},
 
 	/********************************************************************
@@ -372,8 +372,8 @@ sap.ui.base.ManagedObject.extend("com.springer.springerfscmapp.dev.devlogon", {
 			this.appOfflineStore.startTime = new Date();
 
 			var reqObj = {};
-			if (com.springer.springerfscmapp.dev.devapp.definedStore) {
-				reqObj = com.springer.springerfscmapp.dev.devapp.definedStore;
+			if (com.springer.financefscmapp.dev.devapp.definedStore) {
+				reqObj = com.springer.financefscmapp.dev.devapp.definedStore;
 			} else {
 				reqObj[this.appOfflineStore.entity + "DR"] = this.appOfflineStore.definedStore;
 			}
@@ -405,7 +405,7 @@ sap.ui.base.ManagedObject.extend("com.springer.springerfscmapp.dev.devlogon", {
 	offlineRefreshErrorCallback: function(e) {
 		console.log("failed to refresh offline store.");
 		//reset flag
-		com.springer.springerfscmapp.dev.devapp.refreshing = false;
+		com.springer.financefscmapp.dev.devapp.refreshing = false;
 
 		//publish ui5 offlineStore Synced event
 		var oEventBus = sap.ui.getCore().getEventBus();
@@ -423,7 +423,7 @@ sap.ui.base.ManagedObject.extend("com.springer.springerfscmapp.dev.devlogon", {
 		var duration = (endTime - this.appOfflineStore.startTimeRefresh) / 1000;
 		console.log("Store refreshed in  " + duration + " seconds");
 
-		com.springer.springerfscmapp.dev.devapp.refreshing = false;
+		com.springer.financefscmapp.dev.devapp.refreshing = false;
 
 		//publish ui5 offlineStore Synced event
 		var oEventBus = sap.ui.getCore().getEventBus();
@@ -464,7 +464,7 @@ sap.ui.base.ManagedObject.extend("com.springer.springerfscmapp.dev.devlogon", {
 
 	/********************************************************************
 	 * flush offline store error Callback function
-	 * if com.springer.springerfscmapp.dev.devapp.refreshing is set to true,
+	 * if com.springer.financefscmapp.dev.devapp.refreshing is set to true,
 	 * application will continue to call refreshAppOfflineStore() to refresh the offline store.
 	 * @param{Object} e the returned error object
 	 ********************************************************************/
@@ -472,7 +472,7 @@ sap.ui.base.ManagedObject.extend("com.springer.springerfscmapp.dev.devlogon", {
 		console.log("Failed to flush offline store.");
 		console.error("An error occurred: " + JSON.stringify(e));
 
-		if (com.springer.springerfscmapp.dev.devapp.refreshing) {
+		if (com.springer.financefscmapp.dev.devapp.refreshing) {
 			this.refreshAppOfflineStore();
 		}
 
@@ -481,7 +481,7 @@ sap.ui.base.ManagedObject.extend("com.springer.springerfscmapp.dev.devlogon", {
 
 	/********************************************************************
 	 * flush offlient store success Callback function
-	 * if com.springer.springerfscmapp.dev.devapp.refreshing is set to true,
+	 * if com.springer.financefscmapp.dev.devapp.refreshing is set to true,
 	 * application will continue to call refreshAppOfflineStore() to refresh the offline store.
 	 ********************************************************************/
 	flushStoreCallback: function() {
@@ -489,14 +489,14 @@ sap.ui.base.ManagedObject.extend("com.springer.springerfscmapp.dev.devlogon", {
 		var duration = (endTime - this.appOfflineStore.startTimeRefresh) / 1000;
 		console.log("Store flushed in  " + duration + " seconds");
 
-		if (com.springer.springerfscmapp.dev.devapp.refreshing) {
+		if (com.springer.financefscmapp.dev.devapp.refreshing) {
 			this.refreshAppOfflineStore();
 		}
 	},
 
 	/********************************************************************
 	 * flush offline store, push changed data to server, need to be online
-	 * if com.springer.springerfscmapp.dev.devapp.refreshing is set to true,
+	 * if com.springer.financefscmapp.dev.devapp.refreshing is set to true,
 	 * application will continue to call refreshAppOfflineStore() to refresh the offline store.
 	 ********************************************************************/
 	flushAppOfflineStore: function() {

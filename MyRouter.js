@@ -1,8 +1,8 @@
 jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
 jQuery.sap.require("sap.ui.core.routing.Router");
-jQuery.sap.declare("com.springer.springerfscmapp.MyRouter");
+jQuery.sap.declare("com.springer.financefscmapp.MyRouter");
 
-sap.ui.core.routing.Router.extend("com.springer.springerfscmapp.MyRouter", {
+sap.ui.core.routing.Router.extend("com.springer.financefscmapp.MyRouter", {
 
 	/**
 	 * constructor

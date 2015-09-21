@@ -1,7 +1,7 @@
-jQuery.sap.require("com.springer.springerfscmapp.util.Formatter");
-jQuery.sap.require("com.springer.springerfscmapp.util.Controller");
+jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
+jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
-com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmapp.view.SecondLevel.Profile", {
+com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.SecondLevel.Profile", {
 
     userDetails: {},
 
@@ -47,7 +47,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
                     vUserIdActive.setTitle("Active");
                     vUserIdActive.setInfo("Active");
                     vUserIdActive.setInfoState(sap.ui.core.ValueState.Success);
-                    vUserIdActive.setDescription("Active Since: " + com.springer.springerfscmapp.util.Formatter.dateSimple2(that.userDetails.LastvisitTime));
+                    vUserIdActive.setDescription("Active Since: " + com.springer.financefscmapp.util.Formatter.dateSimple2(that.userDetails.LastvisitTime));
                     vUserIdActive.setType(sap.m.ListType.Inactive);
                 } else {
                     vUserIdActive.setTitle("Inactive");
@@ -60,7 +60,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
                     vUserIdActive.setInfo("Inactive");
                     vUserIdActive.setInfo("OFFLINE");
                 }
-                vDevidemodel.setDescription("Last Visit: " + com.springer.springerfscmapp.util.Formatter.dateSimple(that.userDetails.LastvisitTime));
+                vDevidemodel.setDescription("Last Visit: " + com.springer.financefscmapp.util.Formatter.dateSimple(that.userDetails.LastvisitTime));
 
                 var vUserIdViewMode  = that.getView().byId("UserIdViewMode");
                 if (that.userDetails.PrefereListMode === "X") {
@@ -148,7 +148,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
         //if ( this.userDetails.UserActive !== "X") {
             var vMessage = "Activation Request for User" + this.userDetails.UserId;
             var oModel = this.getView().getModel();
-            sap.ui.controller("com.springer.springerfscmapp.view.SecondLevel.MessageCollector").onNewMessage(oModel, vMessage, "W", "UserProfile");
+            sap.ui.controller("com.springer.financefscmapp.view.SecondLevel.MessageCollector").onNewMessage(oModel, vMessage, "W", "UserProfile");
         //}
 	},
 	onNavBack : function() {

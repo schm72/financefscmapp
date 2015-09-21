@@ -1,8 +1,8 @@
-jQuery.sap.declare("com.springer.springerfscmapp.util.Formatter");
-jQuery.sap.require("com.springer.springerfscmapp.util.DateHandler");
+jQuery.sap.declare("com.springer.financefscmapp.util.Formatter");
+jQuery.sap.require("com.springer.financefscmapp.util.DateHandler");
 jQuery.sap.require("sap.ui.core.format.NumberFormat");
 
-com.springer.springerfscmapp.util.Formatter = {
+com.springer.financefscmapp.util.Formatter = {
 
 	uppercaseFirstChar: function(sStr) {
 		return sStr.charAt(0).toUpperCase() + sStr.slice(1);
@@ -106,7 +106,7 @@ com.springer.springerfscmapp.util.Formatter = {
 		}
 	},
 	delAppId: function(value) {
-		return value.replace("SPRINGERFSCMAPP", "");
+		return value.replace("financefscmapp", "");
 	},
 	multiFormatInv: function(amount, currency, docDate) {
 		var vCur = currency;

@@ -25,97 +25,97 @@
 		                <Switch type="AcceptReject"
 		                        state="{ 
 									path: 'AddedFavorite', 
-									formatter: 'com.springer.springerfscmapp.util.Formatter.addedFav' }"
+									formatter: 'com.springer.financefscmapp.util.Formatter.addedFav' }"
 		                        class="oiswitch margin_bottom_px"
 		                        change="onAddFav"
 		                    />
 						<Label text="Delivery Block"/>
 						<Text text="{ 
                                     path: 'DeliveryBlock', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.deliveryBlock'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.deliveryBlock'
                                 }"  class="margin_bottom_px" />
 						<Label text="Total Amount"/>
 						<Text text="{ 
                                     path: 'TotalAmt', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 } { 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 						<Label text="Overdue Amount"/>
 						<Text text="{ 
                                     path: 'OverdueAmt', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 } { 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 						<Label text="Overdue 0-30"/>
 						<Text text="{ 
                                     path: 'OverdueAmtInt1', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 } { 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 						<Label text="Overdue 31-60"/>
 						<Text text="{ 
                                     path: 'OverdueAmtInt2', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 } { 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 						<Label text="Overdue 61-90"/>
 						<Text text="{ 
                                     path: 'OverdueAmtInt3', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 } { 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 						<Label text="Overdue >90"/>
 						<Text text="{ 
                                     path: 'OverdueAmtInt4', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 } { 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }"   class="margin_bottom_px" />
 						<Label text="Credit Limit"/>
 						<Text text="{ 
                                     path: 'Creditlimit', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 } { 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 						<Label text="Delte to Limit"/>
 						<Text text="{ 
                                     path: 'DeltaToLimit', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 } { 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }"  class="margin_bottom_px" />
                                 
 						<Label text="Promised Amount"/>
 						<Text text="{ 
                                     path: 'PromisedAmt', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 } { 
                                     path: 'Currency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }"  class="margin_bottom_px" />
                                 
                                 
 						<Label text="Gross sales y.t.d."/>
 						<Text text="{ 
                                     path: 'ThisYearSales', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
                                 } { 
                                     path: 'SalesCurrency', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
 
 				</f:content>

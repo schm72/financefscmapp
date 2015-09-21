@@ -24,7 +24,7 @@
 					
 					<Label text="Net Due Date"/>
 					<Text text="{ path: 'NetDueDate', 
-						          formatter: 'com.springer.springerfscmapp.util.Formatter.dateSimple2' }"
+						          formatter: 'com.springer.financefscmapp.util.Formatter.dateSimple2' }"
 					/>
 					
 					<Label text="Days Since Due Date"/>
@@ -33,8 +33,8 @@
 					/>
 					
 					<Label text="Amount Local Currency"/>
-					<Text  text="{ path: 'ItemAmountLocalCur', formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt' } 
-						         { path: 'ItemLocalCur',  formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView' }"
+					<Text  text="{ path: 'ItemAmountLocalCur', formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt' } 
+						         { path: 'ItemLocalCur',  formatter: 'com.springer.financefscmapp.util.Formatter.currencyView' }"
 					/>
 					
 					<Label text="License ID"/>
@@ -44,7 +44,7 @@
 				
 					<Label text="Active Dispute Case"/>
 					<Switch type="AcceptReject" class="oiswitch margin_bottom_px" enabled="false"
-					    state="{ path: 'DisputeCase', formatter: 'com.springer.springerfscmapp.util.Formatter.isSomething' }" />
+					    state="{ path: 'DisputeCase', formatter: 'com.springer.financefscmapp.util.Formatter.isSomething' }" />
 					<Label id="DisV1" visible="false" text="Dispute Case ID"/> <Text id="DisV2" visible="false" text="{DisputeCase}"/>
 					<Label id="DisV3" visible="false" text="Reason"/> 
 					<Text class="margin_bottom_px" id="DisV4" visible="false" text="{DisputeReason}"/>
@@ -52,26 +52,26 @@
 					
 					<Label text="Active Promise2Pay"/>
 					<Switch type="AcceptReject" class="oiswitch margin_bottom_px" enabled="false"
-					    state="{ path: 'FinPromisedAmt', formatter: 'com.springer.springerfscmapp.util.Formatter.isGreaterZero' }" />
+					    state="{ path: 'FinPromisedAmt', formatter: 'com.springer.financefscmapp.util.Formatter.isGreaterZero' }" />
 					    
 					<Label id="PspV1" visible="false" text="Promised Amount"/> 
 					<Text id="PspV2" visible="false" 
-							text="{ path: 'FinPromisedAmt', formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt' } 
-						          { path: 'FinP2pCurr',     formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView' }" />
+							text="{ path: 'FinPromisedAmt', formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt' } 
+						          { path: 'FinP2pCurr',     formatter: 'com.springer.financefscmapp.util.Formatter.currencyView' }" />
 						          
 					<Label id="PspV3" visible="false" text="Paid Amount"/> 
 					<Text id="PspV4" visible="false" 
-							text="{ path: 'FinPaidAmount', formatter: 'com.springer.springerfscmapp.util.Formatter.currencyInt' } 
-						          { path: 'FinP2pCurr',    formatter: 'com.springer.springerfscmapp.util.Formatter.currencyView' }" />
+							text="{ path: 'FinPaidAmount', formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt' } 
+						          { path: 'FinP2pCurr',    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView' }" />
 						          
 					<Label id="PspV5" visible="false" text="P2p Due Date"/> 
-					<Text  id="PspV6" visible="false" text="{ path: 'FinP2pDueDate',  formatter: 'com.springer.springerfscmapp.util.Formatter.dateSimple2' }"/>
+					<Text  id="PspV6" visible="false" text="{ path: 'FinP2pDueDate',  formatter: 'com.springer.financefscmapp.util.Formatter.dateSimple2' }"/>
 					
 					<Label id="PspV7" visible="false" text="P2p State"/> 
 					<Text  id="PspV8" visible="false" text="{FinP2pState}"/>
 					
 					<Label id="PspV9" visible="false" text="Next Installment Due Date"/> 
-					<Text  id="PspV10" visible="false" text="{ path: 'FinNxtInstDue', formatter: 'com.springer.springerfscmapp.util.Formatter.dateSimple2' }"/>
+					<Text  id="PspV10" visible="false" text="{ path: 'FinNxtInstDue', formatter: 'com.springer.financefscmapp.util.Formatter.dateSimple2' }"/>
 					    
 				</f:content>
 			</f:SimpleForm>

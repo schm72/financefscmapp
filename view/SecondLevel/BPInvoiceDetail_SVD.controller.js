@@ -1,7 +1,7 @@
-jQuery.sap.require("com.springer.springerfscmapp.util.Formatter");
-jQuery.sap.require("com.springer.springerfscmapp.util.Controller");
+jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
+jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
-com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmapp.view.SecondLevel.BPInvoiceDetail_SVD", {
+com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.SecondLevel.BPInvoiceDetail_SVD", {
 	
 	sEntityPath:null,
 	
@@ -113,7 +113,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 			case "Attached":
 				var sAggregationPath = this.sEntityPath + "/ATTACHMENT_INFO_LIST_SVDSet";
 		        var oTable = this.getView().byId("attachmentList");
-				oTable.bindAggregation("items",sAggregationPath,sap.ui.xmlfragment("com.springer.springerfscmapp.view.HelpDialogs.DetailInvoiceAttach", this));
+				oTable.bindAggregation("items",sAggregationPath,sap.ui.xmlfragment("com.springer.financefscmapp.view.HelpDialogs.DetailInvoiceAttach", this));
 
 				//sap.m.MessageToast.show("Attach"); 
 				break;
@@ -132,7 +132,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 	showEmptyView : function () {
 		this.getRouter().myNavToWithoutHash({ 
 			currentView : this.getView(),
-			targetViewName : "com.springer.springerfscmapp.view.HelpDialogs.NotFound",
+			targetViewName : "com.springer.financefscmapp.view.HelpDialogs.NotFound",
 			targetViewType : "XML"
 		});
 	},

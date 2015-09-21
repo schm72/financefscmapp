@@ -1,7 +1,7 @@
-jQuery.sap.require("com.springer.springerfscmapp.util.Formatter");
-jQuery.sap.require("com.springer.springerfscmapp.util.Controller");
+jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
+jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
-com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmapp.view.A2_Welcome", {
+com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.A2_Welcome", {
 
 	vDevice: "unset",
 	bReplace: false,
@@ -169,15 +169,15 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 	// call a method from another controller / here the central message handling
 	onSuccessMessage: function(sChannel, sEvent, message) {
 		var oModel = this.getView().getModel();
-		sap.ui.controller("com.springer.springerfscmapp.view.SecondLevel.MessageCollector").onNewMessage(oModel, message, "S", "MainScreen");
+		sap.ui.controller("com.springer.financefscmapp.view.SecondLevel.MessageCollector").onNewMessage(oModel, message, "S", "MainScreen");
 	},
 	onNewMessage: function(sChannel, sEvent, message) {
 		var oModel = this.getView().getModel();
-		sap.ui.controller("com.springer.springerfscmapp.view.SecondLevel.MessageCollector").onNewMessage(oModel, message, "N", "MainScreen");
+		sap.ui.controller("com.springer.financefscmapp.view.SecondLevel.MessageCollector").onNewMessage(oModel, message, "N", "MainScreen");
 	},
 	onErrorMessage: function(sChannel, sEvent, message) {
 		var oModel = this.getView().getModel();
-		sap.ui.controller("com.springer.springerfscmapp.view.SecondLevel.MessageCollector").onNewMessage(oModel, message, "E", "Error");
+		sap.ui.controller("com.springer.financefscmapp.view.SecondLevel.MessageCollector").onNewMessage(oModel, message, "E", "Error");
 	}
 
 });

@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.springer.springerfscmapp.view.SecondLevel.MessageCollector" xmlns:core="sap.ui.core"
+<mvc:View controllerName="com.springer.financefscmapp.view.SecondLevel.MessageCollector" xmlns:core="sap.ui.core"
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns="sap.m">
 	<Page enableScrolling="true" navButtonPress="onNavBack" showNavButton="true" title="{i18n>messageTitle}">
 		<subHeader>
@@ -22,7 +22,7 @@
                         { 
                             path : 'Application', 
                             operator : 'EQ', 
-                            value1: 'SPRINGERFSCMAPP' 
+                            value1: 'financefscmapp' 
                         },
                         {
                             path : 'MessageStatus',
@@ -72,24 +72,24 @@
 							<ObjectStatus 
                                 icon="{ 
                                     path: 'MessageType',
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.MessageStateIcon' 
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.MessageStateIcon' 
                                 }"
                                 state="{ 
                                     path: 'MessageType', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.MessageState'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.MessageState'
                                 }"/>
 							<ObjectStatus 
                                 icon="{ 
                                     path: 'Solved', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.MessageIconSolved'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.MessageIconSolved'
                                 }" 
                                 state="{ 
                                     path: 'Solved', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.MessageStateSolved'
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.MessageStateSolved'
                                 }"/>
 							<Text text="{
                                     path: 'ChangeTime', 
-                                    formatter: 'com.springer.springerfscmapp.util.Formatter.dateSimple' 
+                                    formatter: 'com.springer.financefscmapp.util.Formatter.dateSimple' 
                                 }"/>
 							<ObjectIdentifier 
                                 title="{Message}"

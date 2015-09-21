@@ -2,7 +2,7 @@
 	<ColumnListItem press="handleSelectionChange" type="Navigation">
 		<cells>
 			<Text text="{ArcDocId}" wrapping="false"/>
-			<Text text="{ path: 'ArDate', formatter: 'com.springer.springerfscmapp.util.Formatter.dateSimple2' }" wrapping="false"/>
+			<Text text="{ path: 'ArDate', formatter: 'com.springer.financefscmapp.util.Formatter.dateSimple2' }" wrapping="false"/>
 			<Text text="{Reserve}" wrapping="false"/>
 			<Text text="{ArObject}" wrapping="false"/>
 		</cells>

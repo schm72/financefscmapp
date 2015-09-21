@@ -4,14 +4,14 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta charset="UTF-8">
 
-		<title>springerfscmapp</title>
+		<title>financefscmapp</title>
 
 		<script id="sap-ui-bootstrap"
 			src="resources/sap-ui-core.js"
 			data-sap-ui-libs="sap.m"
 			data-sap-ui-theme="sap_bluecrystal"
 			data-sap-ui-xx-bindingSyntax="complex"
-			data-sap-ui-resourceroots='{"com.springer.springerfscmapp": "./"}'>
+			data-sap-ui-resourceroots='{"com.springer.financefscmapp": "./"}'>
 		</script>
 
 		<script type="text/javascript" src="cordova.js"></script>
@@ -19,7 +19,7 @@
 
 		<script>
 			jQuery.sap.require("sap.ui.thirdparty.datajs");
-			jQuery.sap.require("com.springer.springerfscmapp.dev.devapp");
+			jQuery.sap.require("com.springer.financefscmapp.dev.devapp");
 
 			function getUrlParameterName(sParam)
 			{
@@ -41,14 +41,14 @@
 					new sap.m.Shell({
 						app: new sap.ui.core.ComponentContainer({
 							height : "100%",
-							name : "com.springer.springerfscmapp"
+							name : "com.springer.financefscmapp"
 						})
 					}).placeAt("content");
 				});
 			}
 			
 			if (window.cordova || getUrlParameterName("companionbuster")) {
-				com.springer.springerfscmapp.dev.devapp.initialize();
+				com.springer.financefscmapp.dev.devapp.initialize();
 			}
 			else {
 				startApp();

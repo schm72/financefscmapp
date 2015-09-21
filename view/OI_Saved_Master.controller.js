@@ -1,7 +1,7 @@
-jQuery.sap.require("com.springer.springerfscmapp.util.Formatter");
-jQuery.sap.require("com.springer.springerfscmapp.util.Controller");
+jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
+jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
-com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmapp.view.OI_Saved_Master", {
+com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.OI_Saved_Master", {
 
 	/**
 	 * Called when the master list controller is instantiated.
@@ -48,7 +48,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 		//Load the detail view in desktop
 		this.getRouter().myNavToWithoutHash({
 			currentView: this.getView(),
-			targetViewName: "com.springer.springerfscmapp.view.OI_Saved_Detail",
+			targetViewName: "com.springer.financefscmapp.view.OI_Saved_Detail",
 			targetViewType: "XML"
 		});
 		//Wait for the list to be loaded once
@@ -203,7 +203,7 @@ com.springer.springerfscmapp.util.Controller.extend("com.springer.springerfscmap
 
 	refreshData : function() {
 		this.getView().setBusy(true); 
-		if (com.springer.springerfscmapp.dev.devapp.isLoaded) {
+		if (com.springer.financefscmapp.dev.devapp.isLoaded) {
 			var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
 			if (UserPreferences.onlineStatus) {
 				var oEventBus = this.getEventBus();
