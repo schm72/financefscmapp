@@ -66,6 +66,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			navigator.onLine = true;
 		}
 
+
 		this.UserPreferences.device = vDevice;
 		sap.ui.getCore().setModel(this.UserPreferences, "UserPreferences");
 	},
@@ -86,7 +87,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		oEventBus.subscribe("FirstVisitCheck", "OfflineMode", this.offlineMode, this);
 		// READ: reading user preferences for this app -> to check if we only and iof the user already exist
 		var oModel = this.getView().getModel();
-		//oModel.read("APP_USER_PREFERENCESSet", null, ["$filter=Application eq 'financefscmapp'"], true,
+		//oModel.read("APP_USER_PREFERENCESSet", null, ["$filter=Application eq 'FINANCEFSCMAPP'"], true,
 		oModel.read("APP_USER_PREFERENCESSet", null, null, true,
 			function(oData, oResponse) {
 				if (oData.results[0]) {
@@ -239,7 +240,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			},
 			function(oError) {
 				that.getView().setBusy(false);
-				sap.m.MessageToast.show("Communication error");
+				console.log("Communication error");
 			}
 		);
 		this.getRouter().navTo("_A2_Welcome", {
@@ -258,7 +259,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		this.UserPreferences.firstStart = true;
 		this.UserPreferences.onlineStatus = false;
 
-		if (typeof input !== "undefined") {
+		if (Object.keys(input).length > 0) {
 			this.UserPreferences.selectedRegions = input.entry.Regions;
 			this.UserPreferences.selectedCountries = input.entry.Countries;
 			this.UserPreferences.CountFscmSel = input.entry.CountFscmSel;
@@ -369,7 +370,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 					}
 				},
 				function(oError) {
-					sap.m.MessageToast.show("Send failed " + oError);
+					console.log("Send failed " + oError);
 				}
 			);
 		} else {
@@ -379,22 +380,25 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			var oEntry = {
 				"UserId": "EXTERN",
 				"UserActive": "",
-				"UserCategory": "AppVersion_1.0",
+				"UserCategory": "APP_VERSION_1.0",
 				"CreationDate": vDate,
 				"LastvisitTime": null,
-				"PrefereListMode": " ",
+				"PrefereListMode": "X",
 				"AppStartScreen": 1,
 				"Regions": this.selectedRegions,
 				"Countries": this.selectedCountries,
 				"NewMessage": "X",
-				"PreferedOiFilter": "ALL"
+				"PreferedOiFilter": "ONLY_OI"
 			};
-			oModel.create("/APP_USER_PREFERENCESSet", oEntry, null, function() {
-				sap.m.MessageToast.show("User Data Saved: " + oEntry.Category);
-			}, function(oError) {
-				sap.m.MessageToast.show("Send failed " + oError);
-			});
-			this.getView().setBusy(false);
+			oModel.create("/APP_USER_PREFERENCESSet", oEntry, null, 
+				function() {
+					that.getView().setBusy(false);
+					console.log("User Data Saved: " + oEntry.Category);
+				}, function(oError) {
+					that.getView().setBusy(false);
+					console.log("Send failed " + oError);
+				}
+			);
 		}
 
 		if (noNavBack !== true) {

@@ -26,10 +26,10 @@
 					<Column id="ColumnB"><Text text="Amount"/></Column>
 					<Column id="ColumnC" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline"><Text text="Doc Id"/></Column>
 					<Column id="ColumnD" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline"><Text text="Date"/></Column>
-					<!--<Column id="ColumnE" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline"><Text text="Segment Text"/></Column>-->
+					<Column id="ColumnE" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline"><Text text="License ID"/></Column>
 				</columns>
 				<items>
-				<!-- controller action: dynamic bind of aggregation depending of former navigation  -->
+				<!-- controller action with fragment: RowFiDocument.fragment.xml -> dynamic bind of aggregation depending of former navigation  -->
 				</items>
 			</Table>
 		</content>

@@ -68,6 +68,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		var contextModel = sap.ui.getCore().getModel("ContextModel");
 		contextModel.backentity = this.currentEntity;
 		contextModel.isOpen = oItem.getBindingContext().getProperty("Openitem");
+		contextModel.invoice = oItem.getBindingContext().getProperty("SapDocumentId");
 		contextModel.disputeCase = oItem.getBindingContext().getProperty("DisputeCase");
 		contextModel.FinPromisedAmt = oItem.getBindingContext().getProperty("FinPromisedAmt");
 		sap.ui.getCore().setModel(contextModel, "ContextModel");

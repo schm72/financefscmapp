@@ -164,7 +164,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 	
 	refreshData : function() {
-		this.getView().getModel().refresh();
+		this.getView().getModel().refresh(true);
 	},
 	
 	onNavBack : function() {

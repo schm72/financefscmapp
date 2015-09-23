@@ -13,7 +13,7 @@
                 noDataText="No Messages Found"
                 growing="true" 
                 growingScrollToLoad="true" 
-                growingThreshold="7" 
+                growingThreshold="20" 
                 mode="MultiSelect"
                 id="idMessageTable"
 				items="{ 
@@ -22,7 +22,11 @@
                         { 
                             path : 'Application', 
                             operator : 'EQ', 
+<<<<<<< HEAD
+                            value1: 'FINANCEFSCMAPP' 
+=======
                             value1: 'financefscmapp' 
+>>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
                         },
                         {
                             path : 'MessageStatus',

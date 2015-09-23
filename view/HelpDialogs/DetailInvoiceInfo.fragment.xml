@@ -39,8 +39,7 @@
 					
 					<Label text="License ID"/>
 					<Text class="margin_bottom_px" text="{Lid}" />
-				
-				
+
 				
 					<Label text="Active Dispute Case"/>
 					<Switch type="AcceptReject" class="oiswitch margin_bottom_px" enabled="false"

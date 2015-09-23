@@ -57,7 +57,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 
 			// react dirrefrent  in differen modes
 			if (this.UserPreferences.mode === "OnlineModeNew") {
-				this.getEventBus().publish("MessageCollector", "SuccessMessage", "Welcome for the first time :-) ");
+				this.getEventBus().publish("MessageCollector", "SuccessMessage", "Welcome for the first time :)");
 			} else if (this.UserPreferences.onlineStatus) {
 				this.getEventBus().publish("MessageCollector", "NewMessage", "Last visit: " + this.UserPreferences.lastvisit);
 			} else {

@@ -60,6 +60,14 @@
               iconInset="false"
               type="Navigation"
               press="onChangeWLmode" />
+            <StandardListItem
+              id="LogUploadID"
+              description="Technical Help Log"
+              iconDensityAware="false"
+              iconInset="false"
+              type="Navigation"
+              press="onLogHandler"
+              visible="false" />
           </List>
 		</content>
 		<!--<footer>

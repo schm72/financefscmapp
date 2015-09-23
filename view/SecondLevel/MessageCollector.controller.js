@@ -71,7 +71,11 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		var oEntry = {
 			EntryId: "EXTERN",
 			UserId: "EXTERN",
+<<<<<<< HEAD
+			Application: "FINANCEFSCMAPP",
+=======
 			Application: "financefscmapp",
+>>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
 			Origin: origin,
 			MessageType: messageType,
 			Message: message,
@@ -220,14 +224,12 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		var that = this;
 		var oModel = this.getView().getModel();
 		var listItems = this.getView().byId("idMessageTable").getSelectedItems();
-		var item    = {};
-        var context = {};
+		var oItem   = {};
         var entryId = "";
 		this.countCalls = listItems.length;
 		for (var i = 0; i < listItems.length; i++) {
-			item = listItems[i];
-			context = item.getBindingContext();
-			entryId = context.getProperty("EntryId");
+			oItem = listItems[i].getBindingContext();
+			entryId = oItem.getProperty("EntryId");
 			oModel.read("APP_MESSAGESSet", null, ["$filter=EntryId eq '" + entryId + "'"], true,
 				function(oData, oResponse) {
 					if (oData.results[0]) {

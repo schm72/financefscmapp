@@ -34,7 +34,7 @@
                                     path: 'DeliveryBlock', 
                                     formatter: 'com.springer.financefscmapp.util.Formatter.deliveryBlock'
                                 }"  class="margin_bottom_px" />
-						<Label text="Total Amount"/>
+						<Label text="Outstanding"/>
 						<Text text="{ 
                                     path: 'TotalAmt', 
                                     formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
@@ -90,7 +90,7 @@
                                     path: 'Currency', 
                                     formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
-						<Label text="Delte to Limit"/>
+						<Label text="Delta to Limit"/>
 						<Text text="{ 
                                     path: 'DeltaToLimit', 
                                     formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'

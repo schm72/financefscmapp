@@ -222,6 +222,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	 * @param {sap.m.ObjectListItem} oItem selected Item
 	 */
 	showDetail: function(oItem) {
+
 		// If we're on a phone, include nav in history; if not, don't.
 		var bReplace = jQuery.device.is.phone ? false : true;
 		this.getRouter().navTo("_OI_Overview_Detail", {
@@ -232,6 +233,9 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 	
 	refreshData : function() {
+<<<<<<< HEAD
+		this.getView().getModel().refresh(true);
+=======
 		this.getView().setBusy(true); 
 		if (com.springer.financefscmapp.dev.devapp.isLoaded) {
 			var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
@@ -247,6 +251,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			this.getView().byId("list").getBinding("items").filter(filters);
 		}
 		this.getView().setBusy(false); 
+>>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
 	},
 	
 	onListView: function() {

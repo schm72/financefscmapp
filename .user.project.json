@@ -1,7 +1,7 @@
 {
   "run": [
     {
-      "filePath": "/springerfscmapp/index.html",
+      "filePath": "/financefscmapp/index.html",
       "previewMode": 0,
       "dataMode": 1,
       "workspace": "withoutWorkspace",
@@ -22,9 +22,9 @@
       ],
       "hashParameter": "",
       "_metadata": {
-        "id": 1934493,
+        "id": 1174205,
         "runnerId": "webapprunner",
-        "displayName": "Springer FSCM Facts"
+        "displayName": "Springer Finance FSCM Feature  Fact Sheet"
       }
     }
   ]

@@ -359,6 +359,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			contextModel = new sap.ui.model.json.JSONModel();
 		}
 		contextModel.partner = oItem.getBindingContext().getProperty("Partner");
+		//contextModel.partner = oItem.getBindingContext().getProperty("PartnerMail");
 		if (this._UserPreferences.PreferedOiFilter === "ONLY_OI") {
 			contextModel.onlyOI  = true;
 		} else {
@@ -374,7 +375,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 	
 	refreshData : function() {
-		this.getView().getModel().refresh();
+        this.getView().getModel().refresh(true);
 	}
 
 });

@@ -10,16 +10,24 @@
 		navButtonPress="onNavBack"
 		class="sapUiFioriObjectPage"
 		title="{i18n>detailInvoice}">
+		<headerContent>
+			<core:Icon id="detailIcon" src="sap-icon://sales-document"></core:Icon>
+        </headerContent>
 		<content>
 			<ObjectHeader
                     id="openItemINV"
-					number="{SapDocumentId}"
 					icon="{
 						path: 'Openitem', 
                     	formatter: 'com.springer.financefscmapp.util.Formatter.getOpenitemIcon'
                     }"
 				>
+<<<<<<< HEAD
+				<ObjectAttribute title="Partner" text="{ path: 'Partner', formatter: 'com.springer.financefscmapp.util.Formatter.overlayTenZero' }"
+								 active="true" press="navToPartner" />
+				<ObjectAttribute title="Document ID" text="{SapDocumentId}"/>
+=======
 				<ObjectAttribute title="Partner" text="{ path: 'Partner', formatter: 'com.springer.financefscmapp.util.Formatter.overlayTenZero' }"/>
+>>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
 				<ObjectAttribute title="Company Code" text="{SprCompany}"/>
 				<ObjectAttribute title="Document date" text="{ path: 'DocumentDate', formatter: 'com.springer.financefscmapp.util.Formatter.dateSimple2' }"/>
 				<ObjectAttribute title="Segment Text"  text="{SegmentTxt}"/>
@@ -33,15 +41,22 @@
 							<core:Fragment fragmentName="com.springer.financefscmapp.view.HelpDialogs.DetailInvoiceInfo" type="XML" />
 						</content>
 					</IconTabFilter>
-                    <IconTabFilter key="Attached" text="Attached" icon="sap-icon://attachment">
+                    <IconTabFilter key="Attachments" text="Attachments" icon="sap-icon://attachment">
 						<content>
 							<Table  id="attachmentList" 
-								class="classStripColor"
+								class="classEvery2Color"
 								inset="false" 
+								mode="MultiSelect"
 								title="{i18n>InvoiceDetailAttach}"
 								noDataText="No Attachments">
+								<headerToolbar>
+									<Toolbar>
+										<ToolbarSpacer/>
+										<Button icon="sap-icon://letter" text="Send per mail" press="sendInvoicesPerMail"/>
+									</Toolbar>
+								</headerToolbar>
 								<columns>
-									<Column id="ArchItemA" minScreenWidth="Tablet" ><Text text="Archive ID"/></Column>
+									<Column id="ArchItemA" minScreenWidth="Tablet" ><Text text="Attachment ID"/></Column>
 									<Column id="ArchItemB" ><Text text="Upload Date"/></Column>
 									<Column id="ArchItemC" ><Text text="Format"/></Column>
 									<Column id="ArchItemD" ><Text text="Type"/></Column>
@@ -65,9 +80,5 @@
 				</items>
 			</IconTabBar>
 		</content>
-		<footer>
-			<Toolbar>
-			</Toolbar>
-		</footer>
 	</Page>
 </mvc:View>

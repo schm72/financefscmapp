@@ -321,19 +321,20 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 						if(addedFavorite) {
 							oData.results[0].AddedFavorite = "X";
 							sap.m.MessageToast.show("Added Favorite: " + partner );
+							oModel.update("OPEN_ITEMS_SAVED_PER_USERSet(Partner='" + partner + "',UserId='EXTERN')", oData.results[0], null, 
+								function() {
+									that.getView().setBusy(false); 
+								},
+								function(oError) {
+									that.getView().setBusy(false); 
+									sap.m.MessageToast.show("Update failed" + oError);
+								}
+							);
 						} else {
 							oData.results[0].AddedFavorite = "";
 							sap.m.MessageToast.show("Removed Favorite: " + partner );
+							that.deleteItem();
 						}
-						oModel.update("OPEN_ITEMS_SAVED_PER_USERSet(Partner='" + partner + "',UserId='EXTERN')", oData.results[0], null, 
-							function() {
-								that.getView().setBusy(false); 
-							},
-							function(oError) {
-								that.getView().setBusy(false); 
-								sap.m.MessageToast.show("Update failed" + oError);
-							}
-						);
 					} else {
 						that.getView().setBusy(false); 
 						sap.m.MessageToast.show("No data received");
@@ -346,6 +347,51 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			);
 	},
 
+	openDeleteConfirmDialog: function () {
+		if (!this._deleteConfirmDialog) {
+			var id = this.getView().getId();
+			var frgId = id + "-_dialog_DeleteConfirm";
+			this._deleteConfirmDialog = sap.ui.xmlfragment(frgId, "com.springer.financefscmapp.view.HelpDialogs.Dialog_DeleteConfirm", this);
+			this.getView().addDependent(this._deleteConfirmDialog);
+		}
+		this._deleteConfirmDialog.open();
+	},
+	
+	confirmDelete: function() {
+		if (this._deleteConfirmDialog) {
+			this._deleteConfirmDialog.close();
+		}
+		if(this.getView().getBindingContext()){ 
+			var model = this.getView().getModel();
+			if (model){
+				this.getView().setBusy(true);
+				model.remove(this.getView().getBindingContext().getPath(), {
+					success: jQuery.proxy(function(oData, oResponse){
+						this.getView().setBusy(false);
+						this.openDialog("i18n>deleteSuccess");
+						if(sap.ui.Device.system.phone) {
+							this.onNavBack();
+						}
+					},this), 
+					error: jQuery.proxy(function(){
+						this.getView().setBusy(false);
+						this.openDialog("i18n>deleteFailed");
+					},this)
+				});
+			}
+		}
+	},
+
+	closeDeleteConfirmDialog: function() {
+		if (this._deleteConfirmDialog) {
+			this._deleteConfirmDialog.close();
+		}
+	},
+	
+	deleteItem: function(){
+		this.openDeleteConfirmDialog();
+	},
+	
 	// Take care of the navigation through the hierarchy when the user selects a table row
 	handleSelectionChange: function(oEvent) {
 
@@ -380,12 +426,14 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 				var oEventBus = this.getEventBus();
 				oEventBus.publish("OfflineStore", "Refreshing");
 			} else {
-				var filters = [];
-				this.getView().byId("idOIListTable").getBinding("items").filter(filters);
+				//var filters = [];
+				//this.getView().byId("idOIListTable").getBinding("items").filter(filters);
+        		this.getView().getModel().refresh(true);
 			}
 		} else {
-			var filters = [];
-			this.getView().byId("idOIListTable").getBinding("items").filter(filters);
+			//var filters = [];
+			//this.getView().byId("idOIListTable").getBinding("items").filter(filters);
+        	this.getView().getModel().refresh(true);
 		}
 	}
 

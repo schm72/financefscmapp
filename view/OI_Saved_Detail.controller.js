@@ -130,19 +130,20 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 						if(addedFavorite) {
 							oData.results[0].AddedFavorite = "X";
 							sap.m.MessageToast.show("Added Favorite: " + partner );
+							oModel.update("OPEN_ITEM_BP_OVERVIEWSet('" + partner + "')", oData.results[0], null, 
+								function() {
+									that.getView().setBusy(false); 
+								},
+								function(oError) {
+									that.getView().setBusy(false); 
+									sap.m.MessageToast.show("Update failed" + oError);
+								}
+							);
 						} else {
 							oData.results[0].AddedFavorite = "";
 							sap.m.MessageToast.show("Removed Favorite: " + partner );
+							that.deleteItem();
 						}
-						oModel.update("OPEN_ITEM_BP_OVERVIEWSet('" + partner + "')", oData.results[0], null, 
-							function() {
-								that.getView().setBusy(false); 
-							},
-							function(oError) {
-								that.getView().setBusy(false); 
-								sap.m.MessageToast.show("Update failed" + oError);
-							}
-						);
 					} else {
 						that.getView().setBusy(false); 
 						sap.m.MessageToast.show("No data received");
@@ -210,17 +211,20 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 
 	refreshData : function() {
+<<<<<<< HEAD
+=======
 		var model = this.getView().getModel();
+>>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
 		if (com.springer.financefscmapp.dev.devapp.isLoaded) {
 			var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
 			if (UserPreferences.onlineStatus) {
 				var oEventBus = this.getEventBus();
 				oEventBus.publish("OfflineStore", "Refreshing");
 			} else {
-				model.refresh();
+				this.getView().getModel().refresh(true);
 			}
 		} else {
-			model.refresh();
+			this.getView().getModel().refresh(true);
 		}
 	},
 	
