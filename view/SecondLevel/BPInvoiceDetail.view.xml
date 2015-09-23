@@ -21,21 +21,9 @@
                     	formatter: 'com.springer.financefscmapp.util.Formatter.getOpenitemIcon'
                     }"
 				>
-<<<<<<< HEAD
-
 				<ObjectAttribute title="Partner" text="{ path: 'Partner', formatter: 'com.springer.financefscmapp.util.Formatter.overlayTenZero' }"
 								 active="true" press="navToPartner" />
 				<ObjectAttribute title="Document ID" text="{SapDocumentId}"/>
-
-=======
-<<<<<<< HEAD
-				<ObjectAttribute title="Partner" text="{ path: 'Partner', formatter: 'com.springer.financefscmapp.util.Formatter.overlayTenZero' }"
-								 active="true" press="navToPartner" />
-				<ObjectAttribute title="Document ID" text="{SapDocumentId}"/>
-=======
-				<ObjectAttribute title="Partner" text="{ path: 'Partner', formatter: 'com.springer.financefscmapp.util.Formatter.overlayTenZero' }"/>
->>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
->>>>>>> 668a4c7dd86954ec012a0a58c8e927b9f6daf9e6
 				<ObjectAttribute title="Company Code" text="{SprCompany}"/>
 				<ObjectAttribute title="Document date" text="{ path: 'DocumentDate', formatter: 'com.springer.financefscmapp.util.Formatter.dateSimple2' }"/>
 				<ObjectAttribute title="Segment Text"  text="{SegmentTxt}"/>

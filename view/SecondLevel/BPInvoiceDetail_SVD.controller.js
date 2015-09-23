@@ -2,18 +2,10 @@ jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
 jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
 com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.SecondLevel.BPInvoiceDetail_SVD", {
-<<<<<<< HEAD
-
 	sEntityPath: null,
 	parameter: 0,
 	countCalls: 0,
 	mailaddress: "",
-
-=======
-	
-	sEntityPath:null,
-	
->>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
 	/**
 	 * Called when the detail list controller is instantiated.
 	 */
@@ -142,15 +134,9 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 				break;
 			case "Attachments":
 				var sAggregationPath = this.sEntityPath + "/ATTACHMENT_INFO_LIST_SVDSet";
-<<<<<<< HEAD
 				var oTable = this.getView().byId("attachmentList");
 				oTable.bindAggregation("items", sAggregationPath, sap.ui.xmlfragment(
 					"com.springer.financefscmapp.view.HelpDialogs.DetailInvoiceAttach", this));
-=======
-		        var oTable = this.getView().byId("attachmentList");
-				oTable.bindAggregation("items",sAggregationPath,sap.ui.xmlfragment("com.springer.financefscmapp.view.HelpDialogs.DetailInvoiceAttach", this));
-
->>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
 				//sap.m.MessageToast.show("Attach"); 
 				break;
 			case "Actions":
@@ -162,21 +148,12 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			default:
 		}
 	},
-<<<<<<< HEAD
 
 	showEmptyView: function() {
 		this.getRouter().myNavToWithoutHash({
 			currentView: this.getView(),
 			targetViewName: "com.springer.financefscmapp.view.HelpDialogs.NotFound",
 			targetViewType: "XML"
-=======
-	
-	showEmptyView : function () {
-		this.getRouter().myNavToWithoutHash({ 
-			currentView : this.getView(),
-			targetViewName : "com.springer.financefscmapp.view.HelpDialogs.NotFound",
-			targetViewType : "XML"
->>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
 		});
 	},
 

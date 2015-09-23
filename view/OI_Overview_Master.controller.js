@@ -233,25 +233,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 	
 	refreshData : function() {
-<<<<<<< HEAD
 		this.getView().getModel().refresh(true);
-=======
-		this.getView().setBusy(true); 
-		if (com.springer.financefscmapp.dev.devapp.isLoaded) {
-			var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
-			if (UserPreferences.onlineStatus) {
-				var oEventBus = this.getEventBus();
-				oEventBus.publish("OfflineStore", "Refreshing");
-			} else {
-				var filters = [];
-				this.getView().byId("list").getBinding("items").filter(filters);
-			}
-		} else {
-			var filters = [];
-			this.getView().byId("list").getBinding("items").filter(filters);
-		}
-		this.getView().setBusy(false); 
->>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
 	},
 	
 	onListView: function() {

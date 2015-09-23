@@ -202,10 +202,6 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 
 	refreshData : function() {
-<<<<<<< HEAD
-=======
-		this.getView().setBusy(true); 
->>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
 		if (com.springer.financefscmapp.dev.devapp.isLoaded) {
 			var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
 			if (UserPreferences.onlineStatus) {

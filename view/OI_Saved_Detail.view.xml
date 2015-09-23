@@ -32,14 +32,11 @@
                     <IconTabFilter key="Invoices" text="Invoices" icon="sap-icon://batch-payments">
 						<content>
 							<core:Fragment fragmentName="com.springer.financefscmapp.view.HelpDialogs.BPdetailAttachForm" type="XML" />
-<<<<<<< HEAD
 						</content>
                     </IconTabFilter>
                     <IconTabFilter key="Actions" text="Actions" icon="sap-icon://action-settings">
 						<content>
 							<core:Fragment fragmentName="com.springer.financefscmapp.view.HelpDialogs.BPdetailActionForm" type="XML" />
-=======
->>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
 						</content>
                     </IconTabFilter>
                     <IconTabFilter key="Notes" text="Notes" icon="sap-icon://request">

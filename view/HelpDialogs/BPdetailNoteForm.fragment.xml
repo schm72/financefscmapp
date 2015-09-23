@@ -25,7 +25,6 @@
 						<Label text="Entry Id"/>
 						<Text text="{EntryId}"  class="margin_bottom_px" />
 
-
 				</f:content>
 			</f:SimpleForm>
 		</l:content>

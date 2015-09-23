@@ -21,14 +21,10 @@
                     	formatter: 'com.springer.financefscmapp.util.Formatter.getOpenitemIcon'
                     }"
 				>
-<<<<<<< HEAD
 		<attributes>
 				<ObjectAttribute title="Partner" text="{ path: 'Partner', formatter: 'com.springer.financefscmapp.util.Formatter.overlayTenZero' }"
 								 active="true" press="navToPartner" />
 				<ObjectAttribute title="Document ID" text="{SapDocumentId}"/>
-=======
-				<ObjectAttribute title="Partner" text="{ path: 'Partner', formatter: 'com.springer.financefscmapp.util.Formatter.overlayTenZero' }"/>
->>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
 				<ObjectAttribute title="Company Code" text="{SprCompany}"/>
 				<ObjectAttribute title="Document date" text="{ path: 'DocumentDate', formatter: 'com.springer.financefscmapp.util.Formatter.dateSimple2' }"/>
 				<ObjectAttribute title="Segment Text"  text="{SegmentTxt}"/> 

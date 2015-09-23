@@ -169,7 +169,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		var archivId = oItem.getProperty("ArchivId");
 		var reserve = oItem.getProperty("Reserve");
 		var arcDocId = encodeURIComponent(oItem.getProperty("ArcDocId"));
-console.log("ArcDocId: " + arcDocId);
+
 		//Example URL: http://senldogomqs.springer-sbm.com:8003/sap/opu/odata/SBMC/MOBILE_FIFS_SRV/ATTACHMENT_BINARYSet(ArchivId='M2',Reserve='PDF',ArcDocId='005056B032E51EE597F6CD776EEA1C8E')/$value
 		oModel.read("ATTACHMENT_BINARYSet(ArchivId='" + archivId + "',Reserve='" + reserve + "',ArcDocId='" + arcDocId + "')/$value", null, null,
 			true,

@@ -1,11 +1,7 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
 	<ColumnListItem press="handleSelectionChange" type="{UIModel>/itemType}">
 		<cells>
-<<<<<<< HEAD
 			<Text text="{Belnr}_{Gjahr}.{Reserve}" wrapping="false"/>
-=======
-			<Text text="{ArcDocId}" wrapping="false"/>
->>>>>>> 2373059b0ad169526e3768e6323cb0459202d134
 			<Text text="{ path: 'ArDate', formatter: 'com.springer.financefscmapp.util.Formatter.dateSimple2' }" wrapping="false"/>
 			<Text text="{Reserve}" wrapping="false"/>
 			<Text text="{ArObject}" wrapping="false"/>
