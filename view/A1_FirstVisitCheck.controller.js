@@ -64,8 +64,17 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		if (vDevice === "Desktop" || vDevice === "undefined") {
 			this.UserPreferences.onlineStatus = true;
 			navigator.onLine = true;
+		} else if (this.UserPreferences.onlineStatus !== true) {
+			var oGetResponse = jQuery.sap.sjax({  
+				//url: "//https://senldogomps.springer-sbm.com:8020/sap/bc/ping",
+		    	url: "https://webidetestingfinancefscmapp-a5bd3c89a.dispatcher.hana.ondemand.com/sap/opu/odata/sbmc/MOBILE_FIFS_SRV/?$format=json",
+		    	type: "GET"
+			}); 
+			if (oGetResponse.success){  
+				this.UserPreferences.onlineStatus = true;
+				navigator.onLine = true;
+			}
 		}
-
 		this.UserPreferences.device = vDevice;
 		sap.ui.getCore().setModel(this.UserPreferences, "UserPreferences");
 	},
