@@ -23,10 +23,16 @@
                             path : 'Application', 
                             operator : 'EQ',
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3a01356fe2dbb06039186379344f9ad371075dd7
                             value1: 'financefscmapp' 
+<<<<<<< HEAD
+=======
 =======
                             value1: 'FINANCEFSCMAPP' 
 >>>>>>> b641721743b13eb0059a780874af5e14ed19f9f2
+>>>>>>> 3a01356fe2dbb06039186379344f9ad371075dd7
                         },
                         {
                             path : 'MessageStatus',
