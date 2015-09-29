@@ -251,7 +251,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		var contextModel = sap.ui.getCore().getModel("ContextModel");
 		var entityString = "OPEN_ITEM_BP_OVERVIEWSet('" + contextModel.partner + "')";
 		var bReplace = jQuery.device.is.phone ? false : true;
-		this.getRouter().navTo("_OI_Overview_Detail", {
+		this.getRouter().navTo("_FSCM_partner_list_Detail", {
 			from: "_BPInvoiceDetail",
 			entity: entityString
 		}, bReplace);

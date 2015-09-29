@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="com.springer.financefscmapp.view.OI_Saved_Master"
+	controllerName="com.springer.financefscmapp.view.SecondLevel.FSCM_partner_list_Master_SVD"
 	displayBlock="true"
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"

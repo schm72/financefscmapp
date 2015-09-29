@@ -126,7 +126,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 					currentView: this.getView()
 				}, this.bReplace);
 			} else {
-				this.getRouter().navTo("_OI_Overview_Master", {
+				this.getRouter().navTo("_FSCM_partner_list_Master", {
 					currentView: this.getView()
 				}, this.bReplace);
 			}
@@ -142,7 +142,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 				currentView: this.getView()
 			}, this.bReplace);
 		} else {
-			this.getRouter().navTo("_OI_Saved_Master", {
+			this.getRouter().navTo("_FSCM_partner_list_Master_SVD", {
 				currentView: this.getView()
 			}, this.bReplace);
 		}

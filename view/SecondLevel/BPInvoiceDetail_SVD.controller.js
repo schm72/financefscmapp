@@ -251,12 +251,12 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		var entityString = "OPEN_ITEM_BP_OVERVIEWSet('" + contextModel.partner + "')";
 		var bReplace = jQuery.device.is.phone ? false : true;
 		/*
-		this.getRouter().navTo("_OI_Saved_Detail", {
+		this.getRouter().navTo("_FSCM_partner_list_Detail_SVD", {
 			from: "_BPInvoiceDetail_SVD",
 			entity: entityString
 		}, bReplace);
 		*/
-		this.getRouter().navTo("_OI_Overview_Detail", {
+		this.getRouter().navTo("_FSCM_partner_list_Detail", {
 			from: "_BPInvoiceDetail",
 			entity: entityString
 		}, bReplace);

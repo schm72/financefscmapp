@@ -23,10 +23,10 @@
     "appname": "financefscmapp",
     "appid": "com.springer.financefscmapp",
     "appdesc": "Financial facts and FSCm Features",
-    "appversion": "0.9.1",
+    "appversion": "0.9.2",
     "debugMode": false,
     "appIcon": {
-      "defaultIcon": "res/Logo_Springer_FSCM_app_V2.png",
+      "defaultIcon": "res/LogoSprFSCMappV2.png",
       "ios": {
         "ios8Iphone": "",
         "ios7Iphone": "",

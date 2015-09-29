@@ -71,7 +71,11 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		var oEntry = {
 			EntryId: "EXTERN",
 			UserId: "EXTERN",
+<<<<<<< HEAD
+			Application: "financefscmapp",
+=======
 			Application: "FINANCEFSCMAPP",
+>>>>>>> b641721743b13eb0059a780874af5e14ed19f9f2
 			Origin: origin,
 			MessageType: messageType,
 			Message: message,

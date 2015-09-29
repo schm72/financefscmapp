@@ -225,7 +225,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 	onDetailView: function() {
 		var bReplace = jQuery.device.is.phone ? false : true;
-		this.getRouter().navTo("_OI_Saved_Master", {
+		this.getRouter().navTo("_FSCM_partner_list_Master_SVD", {
 			currentView: this.getView()
 		}, bReplace);
 	},

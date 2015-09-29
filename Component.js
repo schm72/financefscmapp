@@ -56,7 +56,7 @@ sap.ui.core.UIComponent.extend("com.springer.financefscmapp.Component", {
                 },
 				{
 					pattern: "OIO",
-					name: "OI_overview",
+					name: "FSCM_partner_list",
 					view: "AppSplit",
 					targetAggregation: "pages",
 					targetControl: "idAppControl",
@@ -64,16 +64,16 @@ sap.ui.core.UIComponent.extend("com.springer.financefscmapp.Component", {
                     subroutes: [
                         {
                             pattern : "OIO",
-                            name : "_OI_Overview_Master",
-                            view : "OI_Overview_Master",
+                            name : "_FSCM_partner_list_Master",
+                            view : "SecondLevel/FSCM_partner_list_Master",
                             targetAggregation : "masterPages",
                             targetControl : "idSplitAppControl",
                             viewLevel: 2,
                             subroutes : [
                                 {
                                     pattern : "OIO/{entity}/:tab:",
-                                    name : "_OI_Overview_Detail",
-                                    view : "OI_Overview_Detail",
+                                    name : "_FSCM_partner_list_Detail",
+                                    view : "SecondLevel/FSCM_partner_list_Detail",
                                     targetAggregation: "detailPages",
                                     viewLevel: 3
                                 }
@@ -91,16 +91,16 @@ sap.ui.core.UIComponent.extend("com.springer.financefscmapp.Component", {
 					subroutes: [
                         {
                             pattern : "OIS",
-                            name : "_OI_Saved_Master",
-                            view : "OI_Saved_Master",
+                            name : "_FSCM_partner_list_Master_SVD",
+                            view : "SecondLevel/FSCM_partner_list_Master_SVD",
                             targetAggregation : "masterPages",
                             targetControl : "idSplitAppControl",
                             viewLevel: 2,
                             subroutes : [
                                 {
                                     pattern : "OIS/{entity}/:tab:",
-                                    name : "_OI_Saved_Detail",
-                                    view : "OI_Saved_Detail",
+                                    name : "_FSCM_partner_list_Detail_SVD",
+                                    view : "SecondLevel/FSCM_partner_list_Detail_SVD",
                                     targetAggregation: "detailPages",
                                     viewLevel: 3
                                 }

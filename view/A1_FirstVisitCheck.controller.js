@@ -12,7 +12,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 
 	updateStatus: function(msg) {
 		// getting a DOM element from the App view and modify it
-		//sap.m.MessageToast.show(msg); 
+		//sap.m.MessageToast.show(msg);
 		//sap.Logger.debug(msg);
 		console.log(msg);
 	},
@@ -66,7 +66,6 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			navigator.onLine = true;
 		}
 
-
 		this.UserPreferences.device = vDevice;
 		sap.ui.getCore().setModel(this.UserPreferences, "UserPreferences");
 	},
@@ -87,7 +86,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		oEventBus.subscribe("FirstVisitCheck", "OfflineMode", this.offlineMode, this);
 		// READ: reading user preferences for this app -> to check if we only and iof the user already exist
 		var oModel = this.getView().getModel();
-		//oModel.read("APP_USER_PREFERENCESSet", null, ["$filter=Application eq 'FINANCEFSCMAPP'"], true,
+		//oModel.read("APP_USER_PREFERENCESSet", null, ["$filter=Application eq 'financefscmapp'"], true,
 		oModel.read("APP_USER_PREFERENCESSet", null, null, true,
 			function(oData, oResponse) {
 				if (oData.results[0]) {

@@ -1,9 +1,9 @@
 <mvc:View
-	controllerName="com.springer.financefscmapp.view.OI_Overview_Detail"
+	controllerName="com.springer.financefscmapp.view.SecondLevel.FSCM_partner_list_Detail_SVD"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
-	<Page 
+	<Page
 		id="detailPage" 
 		showNavButton="{device>/isPhone}"
 		navButtonPress="onNavBack"
@@ -51,6 +51,12 @@
 			<Toolbar id="detailToolbar">
 				<content>
 					<Button icon="sap-icon://refresh" press="refreshData"></Button>
+					<ToolbarSpacer />
+					<Button 
+						id="deleteButton"
+						press="deleteItem"
+						icon="sap-icon://delete">
+					</Button>
 				</content>
 			</Toolbar>
 		</footer>

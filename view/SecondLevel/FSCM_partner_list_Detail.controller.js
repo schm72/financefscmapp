@@ -1,7 +1,7 @@
 jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
 jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
-com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.OI_Overview_Detail", {
+com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.SecondLevel.FSCM_partner_list_Detail", {
 	
 	/**
 	 * Called when the detail list controller is instantiated.
@@ -13,7 +13,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			this.oInitialLoadFinishedDeferred.resolve();
 		} else {
 			this.getView().setBusy(true);
-			this.getEventBus().subscribe("OI_Overview_Master", "InitialLoadFinished", this.onMasterLoaded, this);
+			this.getEventBus().subscribe("FSCM_partner_list_Master", "InitialLoadFinished", this.onMasterLoaded, this);
 		}
 		this.getRouter().attachRouteMatched(this.onRouteMatched, this);
 	},
@@ -50,7 +50,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			var oView = this.getView();
 
 			// when detail navigation occurs, update the binding context
-			if (oParameters.name !== "_OI_Overview_Detail") { 
+			if (oParameters.name !== "_FSCM_partner_list_Detail") { 
 				return;
 			}
 
@@ -64,7 +64,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 
 			// Which tab?
 			var sTabKey = oParameters.arguments.tab;
-			this.getEventBus().publish("OI_Overview_Detail", "TabChanged", { sTabKey : sTabKey });
+			this.getEventBus().publish("FSCM_partner_list_Detail", "TabChanged", { sTabKey : sTabKey });
 
 			if (oIconTabBar.getSelectedKey() !== sTabKey) {
 				oIconTabBar.setSelectedKey(sTabKey);
@@ -104,11 +104,11 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 
 	fireDetailChanged : function (sEntityPath) {
-		this.getEventBus().publish("OI_Overview_Detail", "Changed", { sEntityPath : sEntityPath });
+		this.getEventBus().publish("FSCM_partner_list_Detail", "Changed", { sEntityPath : sEntityPath });
 	},
 
 	fireDetailNotFound : function () {
-		this.getEventBus().publish("OI_Overview_Detail", "NotFound");
+		this.getEventBus().publish("FSCM_partner_list_Detail", "NotFound");
 	},
 
 	onAddFav: function(oEvent) {
@@ -156,7 +156,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 
 	onDetailSelect : function(oEvent) {
 		/*
-		sap.ui.core.UIComponent.getRouterFor(this).navTo("_OI_Overview_Detail",{
+		sap.ui.core.UIComponent.getRouterFor(this).navTo("_FSCM_partner_list_Detail",{
 			entity : oEvent.getSource().getBindingContext().getPath().slice(1),
 			tab: oEvent.getParameter("selectedKey")
 		}, true);
@@ -169,7 +169,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	
 	onNavBack : function() {
 		// This is only relevant when running on phone devices
-		this.getRouter().myNavBack("OI_Overview_Master");
+		this.getRouter().myNavBack("FSCM_partner_list_Master");
 	}
 
 });
