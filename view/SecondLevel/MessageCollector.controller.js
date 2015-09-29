@@ -62,6 +62,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			}
 		};
 	},
+	
 	onNewMessage: function(oModel, message, messageType, origin) {
 		// save messgaes
 		var vSolved = "";
@@ -71,23 +72,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		var oEntry = {
 			EntryId: "EXTERN",
 			UserId: "EXTERN",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 3a01356fe2dbb06039186379344f9ad371075dd7
-			Application: "financefscmapp",
-<<<<<<< HEAD
-=======
-=======
->>>>>>> eee0db8e4f64ef180c5f5a2c035298d119d54b2c
 			Application: "FINANCEFSCMAPP",
-<<<<<<< HEAD
-=======
->>>>>>> b641721743b13eb0059a780874af5e14ed19f9f2
->>>>>>> 3a01356fe2dbb06039186379344f9ad371075dd7
->>>>>>> eee0db8e4f64ef180c5f5a2c035298d119d54b2c
 			Origin: origin,
 			MessageType: messageType,
 			Message: message,
@@ -106,7 +91,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			sap.m.MessageToast.show(message);
 		}
 	},
-
+	
 	onMessageSearch: function() {
 		// add filter for search
 		var filters = [];
@@ -116,12 +101,6 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		}
 		// update list binding
 		this.getView().byId("idMessageTable").getBinding("items").filter(filters);
-	},
-
-	onExit: function() {
-		if (this._oDialog) {
-			this._oDialog.destroy();
-		}
 	},
 
 	handleViewSettingsDialogButtonPressed: function(oEvent) {
@@ -315,7 +294,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 	onUserMessage: function(sChannel, sEvent, message) {
 		var oModel = this.getView().getModel();
-		sap.ui.controller("com.springer.financefscmapp.view.SecondLevel.MessageCollector").onNewMessage(oModel, message, "U", "UserMessage");
+		this.onNewMessage(oModel, message, "U", "UserMessage");
 	},
 
 	onNavBack: function() {
