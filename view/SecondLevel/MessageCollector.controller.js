@@ -74,14 +74,20 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 >>>>>>> 3a01356fe2dbb06039186379344f9ad371075dd7
 			Application: "financefscmapp",
 <<<<<<< HEAD
 =======
 =======
+>>>>>>> eee0db8e4f64ef180c5f5a2c035298d119d54b2c
 			Application: "FINANCEFSCMAPP",
+<<<<<<< HEAD
+=======
 >>>>>>> b641721743b13eb0059a780874af5e14ed19f9f2
 >>>>>>> 3a01356fe2dbb06039186379344f9ad371075dd7
+>>>>>>> eee0db8e4f64ef180c5f5a2c035298d119d54b2c
 			Origin: origin,
 			MessageType: messageType,
 			Message: message,
