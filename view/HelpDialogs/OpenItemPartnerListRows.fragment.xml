@@ -1,0 +1,103 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<ColumnListItem  type="Navigation" press="handleSelectionChange" id="columnListItem" >
+		<cells >
+            <ObjectNumber number="{FscmPrio}" />
+			<ObjectIdentifier text="{Partner}" wrapping="false" />
+			<Text wrapping="false"
+			    text="{Country}"/>
+			<ObjectNumber wrapping="false"
+				number="{ 
+                    path: 'TotalAmt', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
+                }"
+				unit="{ 
+                    path: 'Currency', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
+                }" />
+			<ObjectNumber wrapping="false"
+				number="{ 
+                    path: 'OverdueAmt', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
+                }"
+				unit="{ 
+                    path: 'Currency', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
+                }" />
+			<ObjectNumber wrapping="false"
+				number="{ 
+                    path: 'OverdueAmtInt1', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
+                }"
+				unit="{ 
+                    path: 'Currency', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
+                }" />
+			<ObjectNumber wrapping="false"
+				number="{ 
+                    path: 'OverdueAmtInt2', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
+                }"
+				unit="{ 
+                    path: 'Currency', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
+                }" />
+			<ObjectNumber wrapping="false"
+				number="{ 
+                    path: 'OverdueAmtInt3', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
+                }"
+				unit="{ 
+                    path: 'Currency', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
+                }" />
+			<ObjectNumber wrapping="false"
+				number="{ 
+                    path: 'OverdueAmtInt4', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
+                }"
+				unit="{ 
+                    path: 'Currency', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
+                }" />
+			<Text wrapping="false"
+				text="{DeliveryBlock}"
+				/>
+			<Text text="{PartnerDesc}" wrapping="false"  />
+			<ObjectNumber wrapping="false"
+				number="{ 
+                    path: 'Creditlimit', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
+                }"
+				unit="{ 
+                    path: 'Currency', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
+                }" />
+			<ObjectNumber wrapping="false"
+				number="{ 
+                    path: 'DeltaToLimit', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
+                }"
+				unit="{ 
+                    path: 'Currency', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
+                }" />
+            <ObjectNumber
+                wrapping="false"
+			    number="{ 
+                    path: 'ThisYearSales', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyInt'
+                }"
+                unit="{ 
+                    path: 'SalesCurrency', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
+                }"/>
+            <Switch type="AcceptReject"
+                    state="{ 
+                    path: 'AddedFavorite', 
+                    formatter: 'com.springer.financefscmapp.util.Formatter.addedFav' }"
+                    class="oiswitch"
+                    change="onAddFav"
+                />
+		</cells>
+	</ColumnListItem>
+</core:FragmentDefinition>
