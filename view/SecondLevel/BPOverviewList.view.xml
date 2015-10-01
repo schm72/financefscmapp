@@ -1,0 +1,82 @@
+<mvc:View controllerName="com.springer.financefscmapp.view.SecondLevel.BPOverviewList"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:table="sap.ui.table">
+    <Page title="{i18n>oiListTitle}"
+        enableScrolling="true"
+        showNavButton="true"
+        navButtonPress="onNavBack">
+		<subHeader>
+		  <Bar id="OpenItemListSearch">
+		    <contentMiddle>
+		    	<SearchField  id="OpenItemSearchText1"
+                              showRefreshButton="true"
+                              placeholder="{i18n>masterSearchPlaceholder}"
+                              search="onItemSearch1"
+                              width="100%">
+		    	</SearchField>
+		    </contentMiddle>
+		  </Bar>
+	    </subHeader>
+        <content> 
+            <Table  id="idOIListTable" 
+                    class="classStripColor"
+                    inset="false" 
+                    noDataText="{i18n>OIListNoDataText}"
+                    growing="true"
+                    growingScrollToLoad="true"
+                    growingThreshold="20">
+                <headerToolbar>
+                    <Toolbar id="idCrumbToolbar">
+						<Button id="oiListViewChanger" icon="sap-icon://collapse-group" press="handleViewChangeTop"/>
+                        <ToolbarSpacer />
+						<Button id="UserIdWLmode" press="handleChangeOImode" />
+                        <Button id="ioListDrpd" icon="sap-icon://drop-down-list" press="handleViewSettingsDialogButtonPressed" />
+                    </Toolbar>
+                </headerToolbar>
+                <infoToolbar>
+                    <Toolbar id="vsdFilterBar" active="true" visible="false" press="[handleViewSettingsDialogFilterBarPressed, views.control.HelpDialogs]">
+                        <Label id="vsdFilterLabel" text="?" />
+                    </Toolbar>
+                </infoToolbar>
+				<columns>
+					<Column id="oiListALLA" minScreenWidth="Desktop" ><Text text="Prio"/></Column>
+					<Column id="oiListALLB"><Text text="Partner"/></Column>
+					<Column id="oiListALLD" ><Text text="Ctry"/></Column>
+					<Column id="oiListALLC" minScreenWidth="Tablet" ><Text text="Outstanding"/></Column>
+					<Column id="oiListIA"  ><Text text="Overdue"/></Column>
+					<Column id="oiListIB" minScreenWidth="Desktop"><Text text="0-30"/></Column>
+					<Column id="oiListIC" minScreenWidth="Desktop"><Text text="31-60"/></Column>
+					<Column id="oiListID" minScreenWidth="Tablet"><Text  text="61-90"/></Column>
+					<Column id="oiListIE" minScreenWidth="Tablet"><Text  text=">90"/></Column>
+					<Column id="oiListIG" minScreenWidth="Tablet"><Text  text="Block"/></Column>
+					<Column visible="false" id="idHiddenColmnA" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline" ><Text text="Name"/></Column>
+					<Column visible="false" id="idHiddenColmnB" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline"><Text text="Credit Limit"/></Column>
+					<Column visible="false" id="idHiddenColmnC" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline"><Text text="Delta to Limit"/></Column>
+					<Column visible="false" id="idHiddenColmnD" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline"><Text text="Gross sales y.t.d."/></Column>
+					<Column visible="false" id="idHiddenColmnE" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline" ><Text text="Favorite"/></Column>
+				</columns>
+				<items>
+				<!-- controller action with fragment: com.springer.financefscmapp.view.HelpDialogs.OpenItemPartnerListRows -> dynamic bind of aggregation depending of former navigation  -->
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<Toolbar>
+				<content>
+					<Button icon="sap-icon://detail-view" press="onDetailView"></Button>
+					<ToolbarSpacer />
+					<SearchField
+						id="OpenItemSearchText2"
+						showRefreshButton="true"
+						placeholder="{i18n>masterSearchPlaceholder2}"
+						search="onItemSearch2"
+						width="100%">
+					</SearchField>
+				</content>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>
