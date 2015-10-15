@@ -4,9 +4,9 @@ jQuery.sap.require("com.springer.financefscmapp.MyRouter");
 sap.ui.core.UIComponent.extend("com.springer.financefscmapp.Component", {
 	metadata: {
 		name: "Springer FSCM App",
-		version: "0.9.6",
+		version: "0.9.9",
 		includes: [],
-		dependencies: { 
+		dependencies: {
 			libs: ["sap.m", "sap.ui.layout"],
 			components: []
 		},
@@ -132,7 +132,7 @@ sap.ui.core.UIComponent.extend("com.springer.financefscmapp.Component", {
 	 */
 	init: function() {
 		sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
-
+console.log("INIT");
 		var mConfig = this.getMetadata().getConfig();
 
 		// always use absolute paths relative to our own component
@@ -147,11 +147,12 @@ sap.ui.core.UIComponent.extend("com.springer.financefscmapp.Component", {
 
 		var oModel;
 		var externalURL = com.springer.financefscmapp.dev.devapp.externalURL;
-		var appContext = null;
+		var appContext;
 		if (com.springer.financefscmapp.dev.devapp.devLogon) {
 			appContext = com.springer.financefscmapp.dev.devapp.devLogon.appContext;
 		}
 		if (window.cordova && appContext && !window.sap_webide_companion && !externalURL) {
+console.log("ApplicationContext");
 			var url = appContext.applicationEndpointURL + "/";
 			var oHeader = {
 				"X-SMP-APPCID": appContext.applicationConnectionId
@@ -162,6 +163,7 @@ sap.ui.core.UIComponent.extend("com.springer.financefscmapp.Component", {
 			oModel = new sap.ui.model.odata.ODataModel(url, true, null, null, oHeader);
 			this._setModel(oModel);
 		} else {
+console.log("WebApp");
 			var sServiceUrl = mConfig.serviceConfig.serviceUrl;
 			if (externalURL) {
 				sServiceUrl = externalURL;
@@ -179,12 +181,17 @@ sap.ui.core.UIComponent.extend("com.springer.financefscmapp.Component", {
 			// only call customized logon dialog when in android companion app to workaround cordova browser for 'basic' auth issue
 			if ((window.sap_webide_companion || externalURL) && device) {
 				if (device.platform === 'Android') {
-					this._logon(sServiceUrl, null, null, function() {
+					if (window.sap_webide_companion) {
 						oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
 						self._setModel(oModel);
-					}, function() {
-						self._openLogonDialog(sServiceUrl);
-					}, null);
+					} else {
+						this._logon(sServiceUrl, null, null, function() {
+							oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
+							self._setModel(oModel);
+						}, function() {
+							self._openLogonDialog(sServiceUrl);
+						}, null);
+					}
 				} else {
 					var username = "";
 					var password = "";

@@ -47,12 +47,15 @@
 				});
 			}
 			
-			if (window.cordova || getUrlParameterName("companionbuster")) {
-				com.springer.financefscmapp.dev.devapp.initialize();
+			window.onload = function() {
+				if (window.cordova || getUrlParameterName("companionbuster")) {
+					com.springer.financefscmapp.dev.devapp.initialize();
+				}
+				else {
+					startApp();
+				}
 			}
-			else {
-				startApp();
-			}
+		
 		</script>
 	</head>
 

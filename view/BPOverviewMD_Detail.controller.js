@@ -2,30 +2,30 @@ jQuery.sap.require("com.springer.financefscmapp.util.Formatter");
 jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 
 com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.BPOverviewMD_Detail", {
-	
+
 	i18model: {},
-	
+
 	/**
 	 * Called when the detail list controller is instantiated.
 	 */
-	onInit : function() { 
+	onInit: function() {
 		this.getView().addEventDelegate({
 			onAfterShow: jQuery.proxy(function(evt) {
 				this.onAfterShow(evt);
 			}, this)
 		});
-		
+
 		this.getEventBus().subscribe("BPOverviewMD_Master", "FirstItemSelected", this.checkDeleteButtonVisible, this);
-		
+
 		this.oInitialLoadFinishedDeferred = jQuery.Deferred();
-		if(sap.ui.Device.system.phone) {
+		if (sap.ui.Device.system.phone) {
 			//don't wait for the master on a phone
 			this.oInitialLoadFinishedDeferred.resolve();
 		} else {
 			this.getView().setBusy(true);
 			this.getEventBus().subscribe("BPOverviewMD_Master", "InitialLoadFinished", this.onMasterLoaded, this);
 		}
-		
+
 		this.getRouter().attachRouteMatched(this.onRouteMatched, this);
 	},
 
@@ -37,6 +37,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 
 	onMasterLoaded: function(sChannel, sEvent, oData) {
+		console.log("MasterLoaded");
 		if (oData.oListItem) {
 			this.bindView(oData.oListItem.getBindingContext().getPath());
 			this.getView().setBusy(false);
@@ -44,21 +45,20 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		}
 	},
 
-	onRouteMatched : function(oEvent) {
+	onRouteMatched: function(oEvent) {
 		var oParameters = oEvent.getParameters();
-		jQuery.when(this.oInitialLoadFinishedDeferred).then(jQuery.proxy(function () {
+		jQuery.when(this.oInitialLoadFinishedDeferred).then(jQuery.proxy(function() {
 			this.getView().setBusy(false);
 			// when detail navigation occurs, update the binding context
-			if (oParameters.name !== "_BPOverviewMD_Detail") { 
+			if (oParameters.name !== "_BPOverviewMD_Detail") {
 				return;
 			}
 
 			var sEntityPath = "/" + oParameters.arguments.entity;
 			this.bindView(sEntityPath);
-			
 			// activate first tab
 			var idIconTabBar = this.getView().byId("idIconTabBar");
-			if (idIconTabBar.getSelectedKey() !== "Details" ) {
+			if (idIconTabBar.getSelectedKey() !== "Details") {
 				idIconTabBar.setSelectedKey("Details");
 			}
 		}, this));
@@ -73,17 +73,17 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			button.setVisible(true);
 		}
 	},
-	
+
 	onAfterShow: function() {
 		this.i18model = this.getView().getModel("i18n").getResourceBundle();
 	},
-	
-	bindView : function (sEntityPath) {
+
+	bindView: function(sEntityPath) {
 		var oView = this.getView();
 		oView.bindElement(sEntityPath);
 
 		//Check if the data is already on the client
-		if(!oView.getModel().getData(sEntityPath)) {
+		if (!oView.getModel().getData(sEntityPath)) {
 			// Check that the entity specified actually was found.
 			oView.getElementBinding().attachEventOnce("dataReceived", jQuery.proxy(function() {
 				var oData = oView.getModel().getData(sEntityPath);
@@ -100,98 +100,43 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		this.checkDeleteButtonVisible();
 	},
 
-	showEmptyView : function () {
-		this.getRouter().myNavToWithoutHash({ 
-			currentView : this.getView(),
-			targetViewName : "com.springer.financefscmapp.view.HelpDialogs.NotFound",
-			targetViewType : "XML"
+	showEmptyView: function() {
+		this.getRouter().myNavToWithoutHash({
+			currentView: this.getView(),
+			targetViewName: "com.springer.financefscmapp.view.HelpDialogs.NotFound",
+			targetViewType: "XML"
 		});
 	},
 
-	fireDetailChanged : function (sEntityPath) {
-		this.getEventBus().publish("BPOverviewMD_Detail", "Changed", { sEntityPath : sEntityPath });
+	fireDetailChanged: function(sEntityPath) {
+		this.getEventBus().publish("BPOverviewMD_Detail", "Changed", {
+			sEntityPath: sEntityPath
+		});
 	},
 
-	fireDetailNotFound : function () {
+	fireDetailNotFound: function() {
 		this.getEventBus().publish("BPOverviewMD_Detail", "NotFound");
 	},
 
 	onAddFav: function(oEvent) {
 
 		this.getView().setBusy(true);
-		var addedFavorite = "";
-		if( oEvent.getParameter("state") === true ) {
-		    addedFavorite = "X";
-		} 
+		this.addedFavorite = "";
+		if (oEvent.getParameter("state") === true) {
+			this.addedFavorite = "X";
+		}
 
-		var partner = oEvent.getSource().getBindingContext().getProperty("Partner");
-		partner = com.springer.financefscmapp.util.Formatter.overlayTenZero(partner);
-		this.UserPreferences.partner = partner;
-		var that = this;
+		this.currentFavoritePartner = com.springer.financefscmapp.util.Formatter.overlayTenZero(oEvent.getSource().getBindingContext().getProperty(
+			"Partner"));
+
 		var oModel = this.getView().getModel();
-
 		var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
+		// change the favorite information
 		if (UserPreferences.AppView === "OpenItemLive") {
-			oModel.read("OPEN_ITEM_BP_OVERVIEWSet", null, ["$filter=Partner eq '" + partner + "'"], true,
-				function(oData, oResponse) {
-					if (oData.results[0]) {
-						if(addedFavorite) {
-							oData.results[0].AddedFavorite = "X";
-							sap.m.MessageToast.show(that.i18model.getText("OIAddedFav") + " " +  partner );
-						} else {
-							oData.results[0].AddedFavorite = "";
-							sap.m.MessageToast.show(that.i18model.getText("OIRemovedFav") + " " +  partner );
-						}
-						oModel.update("OPEN_ITEM_BP_OVERVIEWSet('" + partner + "')", oData.results[0], null, 
-							function() {
-								that.getView().setBusy(false); 
-							},
-							function(oError) {
-								that.getView().setBusy(false); 
-								sap.m.MessageToast.show(that.i18model.getText("OIUpdatFavFail") + " " +  oError);
-							}
-						);
-					} else {
-						that.getView().setBusy(false); 
-						sap.m.MessageToast.show(that.i18model.getText("OIFavNoData"));
-					}
-				},
-				function(oError) {
-					that.getView().setBusy(false); 
-					sap.m.MessageToast.show(that.i18model.getText("ConnectionProb") + " " +  oError);
-				}
-			);
+			this.addRemoveFavorite(this.addedFavorite, oModel, "OPEN_ITEM_BP_OVERVIEWSet('" + this.currentFavoritePartner + "')", this.currentFavoritePartner,
+				this);
 		} else {
-			oModel.read("OPEN_ITEMS_SAVED_PER_USERSet", null, ["$filter=Partner eq '" + partner + "'"], true,
-				function(oData, oResponse) {
-					if (oData.results[0]) {
-						if(addedFavorite) {
-							oData.results[0].AddedFavorite = "X";
-							sap.m.MessageToast.show(that.i18model.getText("OIAddedFav") + " " +  partner );
-							oModel.update("OPEN_ITEMS_SAVED_PER_USERSet(UserId='" + UserPreferences.UserId + "',Partner='" + partner + "')", oData.results[0], null, 
-								function() {
-									that.getView().setBusy(false); 
-								},
-								function(oError) {
-									that.getView().setBusy(false); 
-									sap.m.MessageToast.show(that.i18model.getText("OIUpdatFavFail") + " " +  oError);
-								}
-							);
-						} else {
-							oData.results[0].AddedFavorite = "";
-							sap.m.MessageToast.show(that.i18model.getText("OIRemovedFav") + " " +  partner );
-							that.deleteItem();
-						}
-					} else {
-						that.getView().setBusy(false); 
-						sap.m.MessageToast.show(that.i18model.getText("OIFavNoData"));
-					}
-				},
-				function(oError) {
-					that.getView().setBusy(false); 
-					sap.m.MessageToast.show(that.i18model.getText("ConnectionProb") + " " +  oError);
-				}
-			);
+			this.openDeleteConfirmDialog();
 		}
 	},
 
@@ -207,11 +152,13 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		this._dialog.open();
 	},
 	closeDialog: function() {
+		this.getView().setBusy(false);
 		if (this._dialog) {
 			this._dialog.close();
 		}
 	},
-	openDeleteConfirmDialog: function () {
+	openDeleteConfirmDialog: function() {
+		console.log("deleteDialogStart");
 		if (!this._deleteConfirmDialog) {
 			var id = this.getView().getId();
 			var frgId = id + "-_dialog_DeleteConfirm";
@@ -220,43 +167,65 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		}
 		this._deleteConfirmDialog.open();
 	},
-	
+
 	confirmDelete: function() {
 		if (this._deleteConfirmDialog) {
 			this._deleteConfirmDialog.close();
 		}
-		if(this.getView().getBindingContext()){ 
+		if (this.currentFavoritePartner !== "") {
+			// delete from favorite table
+			var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
+			var delPath = "/OPEN_ITEMS_SAVED_PER_USERSet(UserId='" + UserPreferences.UserId + "',Partner='" + this.currentFavoritePartner +
+				"')";
 			var model = this.getView().getModel();
-			if (model){
+			if (model) {
 				this.getView().setBusy(true);
-				model.remove(this.getView().getBindingContext().getPath(), {
-					success: jQuery.proxy(function(oData, oResponse){
+				model.remove(delPath, {
+					success: jQuery.proxy(function() {
 						this.getView().setBusy(false);
-						this.openDialog("i18n>deleteSuccess");
-						//this.onNavBack();
-					},this), 
-					error: jQuery.proxy(function(){
+						UserPreferences.CountFscmFav--;
+						sap.ui.getCore().setModel(UserPreferences, "UserPreferences");
+						this.onNavBack();
+						//this.openDialog("i18n>deleteSuccess");
+					}, this),
+					error: jQuery.proxy(function() {
 						this.getView().setBusy(false);
 						this.openDialog("i18n>deleteFailed");
-					},this)
+					}, this)
 				});
 			}
 		}
 	},
 
 	closeDeleteConfirmDialog: function() {
+
+		var oSwitch = this.getView().byId("oSwitch");
+		if (this.addedFavorite === "X") {
+			oSwitch.setState(false);
+		} else {
+			oSwitch.setState(true);
+		}
+
+		this.getView().setBusy(false);
 		if (this._deleteConfirmDialog) {
 			this._deleteConfirmDialog.close();
 		}
 	},
-	
-	deleteItem: function(){
+
+	deleteItem: function(oEvent) {
+		//this.openDeleteConfirmDialog();
+		//var oModel = this.getView().getModel();
+		//var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
+		this.currentFavoritePartner = com.springer.financefscmapp.util.Formatter.overlayTenZero(oEvent.getSource().getBindingContext().getProperty("Partner"));
+		//var oDataPath = "OPEN_ITEMS_SAVED_PER_USERSet(UserId='" + UserPreferences.UserId + "',Partner='" + this.currentFavoritePartner + "')";
+		//this.addRemoveFavorite("", oModel, oDataPath, this.currentFavoritePartner, this);
 		this.openDeleteConfirmDialog();
 	},
-	
+
 	onDetailSelect: function(oEvent) {
 		var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
 		var currentEntity = this.getView().getBindingContext().getPath();
+
 		var key = oEvent.getParameters().key;
 		switch (key) {
 			case "Details":
@@ -285,28 +254,33 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 	handleSelectionChange: function(oEvent) {
 		var partner = com.springer.financefscmapp.util.Formatter.overlayTenZero(oEvent.getSource().getBindingContext().getProperty("Partner"));
-		sap.ui.controller("com.springer.financefscmapp.view.SecondLevel.BPInvoiceList").handleSelectionChange(oEvent,this,partner);
+		sap.ui.controller("com.springer.financefscmapp.view.SecondLevel.BPInvoiceList").handleSelectionChange(oEvent, this, partner);
 	},
-	refreshData : function() {
+	refreshData: function() {
+		console.log("refresh");
 		var model = this.getView().getModel();
 		var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
 		if (UserPreferences.AppView === "OpenItemLive") {
-			model.refresh(true);
+			model.refresh();
 		} else {
 			if (com.springer.financefscmapp.dev.devapp.isLoaded) {
 				if (UserPreferences.onlineStatus) {
 					var oEventBus = this.getEventBus();
 					oEventBus.publish("OfflineStore", "Refreshing");
 				} else {
-					model.refresh(true);
+					//var filters = [];
+					//this.getView().byId("list").getBinding("items").filter(filters);
+					model.refresh();
 				}
 			} else {
-				model.refresh(true);
+				//var filters = [];
+				//this.getView().byId("list").getBinding("items").filter(filters);
+				model.refresh();
 			}
 		}
 	},
-	
-	onNavBack : function() {
+
+	onNavBack: function() {
 		// This is only relevant when running on phone devices
 		this.getRouter().myNavBack("BPOverviewMD_Master");
 	}

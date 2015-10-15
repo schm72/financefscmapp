@@ -3,31 +3,16 @@
 	xmlns:f="sap.ui.layout.form"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
-	<l:Grid
-		id="BPdetailAttachFragment"
-		defaultSpan="L12 M12 S12"
-		width="auto">
-		<l:content>
-			<f:SimpleForm
-				minWidth="1024"
-				maxContainerCols="2"
-				editable="false"
-				layout="ResponsiveGridLayout"
-				title=""
-				labelSpanL="3"
-				labelSpanM="3"
-				emptySpanL="4"
-				emptySpanM="4"
-				columnsL="1"
-				columnsM="1">
-				<f:content>
-
-						<Label text="Entry Id"/>
-						<Text text="{EntryId}"  class="margin_bottom_px" />
-
-
-				</f:content>
-			</f:SimpleForm>
-		</l:content>
-	</l:Grid>
+	<Table class="classStripColor" id="idInvListTable" noDataText="{i18n>InvListNoDataText}" growing="true" growingScrollToLoad="true" growingThreshold="10" inset="false">
+		<columns>
+			<Column id="ColumnA"><Text text="Status"/></Column>
+			<Column id="ColumnB"><Text text="Amount"/></Column>
+			<Column id="ColumnC" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline"><Text text="Doc Id"/></Column>
+			<Column id="ColumnD" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline"><Text text="Date"/></Column>
+			<Column id="ColumnE" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline"><Text text="License ID"/></Column>
+		</columns>
+		<items>
+		<!-- controller action with fragment: RowFiDocument.fragment.xml -> dynamic bind of aggregation depending of former navigation  -->
+		</items>
+	</Table>
 </core:FragmentDefinition>

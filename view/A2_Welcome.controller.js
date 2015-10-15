@@ -21,12 +21,14 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 				this.onAfterShow(evt);
 			}, this)
 		});
-		this.getRouter().attachRoutePatternMatched(this.onRouteMatched, this);
+
 		// subscribe for some events whichcan be published in this controller and call a method
 		this.getEventBus().subscribe("MessageCollector", "NewMessage", this.onNewMessage, this);
 		this.getEventBus().subscribe("MessageCollector", "SuccessMessage", this.onSuccessMessage, this);
 		this.getEventBus().subscribe("MessageCollector", "ErrorMessage", this.onErrorMessage, this);
 		this.getEventBus().subscribe("A1_FirstVisitCheck", "updUserConfLoadReady", this.onupdUserConfLoadReady, this);
+		
+		this.getRouter().attachRoutePatternMatched(this.onRouteMatched, this);
 	},
 	onlineIconVisible: function(bIsOffline, bIsPhone) {
 		return bIsPhone && bIsOffline;

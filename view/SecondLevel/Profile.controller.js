@@ -4,6 +4,7 @@ jQuery.sap.require("com.springer.financefscmapp.util.Controller");
 com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.view.SecondLevel.Profile", {
 
     userDetails: {},
+	i18model: {},
 
 	onInit : function() {
 		this.getRouter().attachRouteMatched(this.onRouteMatched, this);
@@ -15,6 +16,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		if (evt.getParameter("name") !== "_Profile") {
 			return;
 		}
+		this.i18model = this.getView().getModel("i18n").getResourceBundle();
 		var externalURL = com.springer.financefscmapp.dev.devapp.externalURL;
 		var appContext = null;
 		if (com.springer.financefscmapp.dev.devapp.devLogon) {
@@ -95,13 +97,9 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 						UserPreferences.loggerstatus = true;
 					}
 					if 	(UserPreferences.loggerstatus === true) {
-						sap.Logger.upload();
 						vLogTile.setTitle("Activate Logging");
-						UserPreferences.loggerstatus = false;
 					} else {
-						sap.Logger.setLogLevel(sap.Logger.DEBUG);
 						vLogTile.setTitle("Upload Logging");
-						UserPreferences.loggerstatus = true;
 					}
 					sap.ui.getCore().setModel(UserPreferences, "UserPreferences");
 				}
@@ -162,7 +160,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
         var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
 		UserPreferences.newCollArea = true;
         sap.ui.getCore().setModel(UserPreferences,"UserPreferences");
-		var bReplace = jQuery.device.is.phone ? false : true;
+		var bReplace = sap.ui.Device.system.phone ? false : true;
 		this.getRouter().navTo("_A1_FirstVisitCheck", {
 			currentView: this.getView()
 		}, bReplace);
@@ -182,19 +180,19 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			UserPreferences.loggerstatus = true;
 		}
 		if 	(UserPreferences.loggerstatus === true) {
-			sap.Logger.upload();
-			vLogTile.setTitle("Activate Logging");
 			UserPreferences.loggerstatus = false;
-		} else {
 			sap.Logger.setLogLevel(sap.Logger.DEBUG);
 			vLogTile.setTitle("Upload Logging");
+		} else {
+			sap.Logger.upload();
+			vLogTile.setTitle("Activate Logging");
 			UserPreferences.loggerstatus = true;
 		}
 		sap.ui.getCore().setModel(UserPreferences, "UserPreferences");
 	},
 
 	onNavBack : function() {
-		var bReplace = jQuery.device.is.phone ? false : true;
+		var bReplace = sap.ui.Device.system.phone ? false : true;
 		this.getRouter().navTo("_A2_Welcome", {
 			currentView: this.getView()
 		},  bReplace);

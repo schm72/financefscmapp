@@ -15,23 +15,14 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 				this.onAfterShow(evt);
 			}, this)
 		});
-		this.oInitialLoadFinishedDeferred = jQuery.Deferred();
-		var oEventBus = this.getEventBus();
 
-		this.getView().byId("list").attachEventOnce("updateFinished", function() {
-			this.oInitialLoadFinishedDeferred.resolve();
-			oEventBus.publish("BPOverviewMD_Master", "InitialLoadFinished", {
-				oListItem: this.getView().byId("list").getItems()[0]
-			});
-		}, this);
-
-		oEventBus.subscribe("BPOverviewMD_Detail", "TabChanged", this.onDetailTabChanged, this);
-
-		//on phones, we will not have to select anything in the list so we don't need to attach to events
 		this.getRouter().attachRoutePatternMatched(this.onRouteMatched, this);
+		
+		//on phones, we will not have to select anything in the list so we don't need to attach to events
 		if (sap.ui.Device.system.phone) {
 			return;
 		}
+		var oEventBus = this.getEventBus();
 		oEventBus.subscribe("BPOverviewMD_Detail", "Changed", this.onDetailChanged, this);
 		oEventBus.subscribe("BPOverviewMD_Detail", "NotFound", this.onNotFound, this);
 	},
@@ -45,8 +36,8 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		if (sName !== "_BPOverviewMD_Master") {
 			return;
 		}
+		this.i18model = this.getView().getModel("i18n").getResourceBundle();
 
-		var oList = this.getView().byId("list");
 		var sAggregationPath = "";
 		var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
 		if (UserPreferences.AppView === "OpenItemLive") {
@@ -54,38 +45,53 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		} else {
 			sAggregationPath = "/OPEN_ITEMS_SAVED_PER_USERSet";
 		}
+		
+		this.oInitialLoadFinishedDeferred = jQuery.Deferred();
+
+		this.getView().byId("list").attachEventOnce("updateFinished", function() {
+			this.oInitialLoadFinishedDeferred.resolve();
+			this.getEventBus().publish("BPOverviewMD_Master", "InitialLoadFinished", {
+				oListItem: this.getView().byId("list").getItems()[0]
+			});
+		}, this);
+		
+		var oList = this.getView().byId("list");
 		oList.unbindAggregation("items");
 		oList.bindAggregation("items", sAggregationPath, sap.ui.xmlfragment(
 			"com.springer.financefscmapp.view.HelpDialogs.OpenItemPartnerMasterRows", this));
+		//on phones, we don`t forward to the detail screen
+		if (!sap.ui.Device.system.phone) {
+			//Load the detail view in desktop
+			this.getRouter().myNavToWithoutHash({
+				currentView: this.getView(),
+				targetViewName: "com.springer.financefscmapp.view.BPOverviewMD_Detail",
+				targetViewType: "XML"
+			});
+		}
 
-		//Load the detail view in desktop
-		this.getRouter().myNavToWithoutHash({
-			currentView: this.getView(),
-			targetViewName: "com.springer.financefscmapp.view.BPOverviewMD_Detail",
-			targetViewType: "XML"
-		});
-		
-		//Wait for the list to be loaded once
-		this.waitForInitialListLoading(function() {
-			var contextModel = sap.ui.getCore().getModel("ContextModel");
-			if (typeof contextModel !== "undefined" && typeof contextModel.navFromPartnerToMD !== "undefined" && contextModel.navFromPartnerToMD !== null) {
-				var bReplace = sap.ui.Device.system.phone ? false : true;
-				this.getRouter().navTo("_BPOverviewMD_Detail", {
-					from: "_BPOverviewMD_Master",
-					entity: contextModel.navFromPartnerToMD
-				}, bReplace);
-				contextModel.navFromPartnerToMD = null;
-			} else {
-				//On the empty hash select the first item
-				this.selectFirstItem();
-			}
-		});
-		var oEventBus = this.getEventBus();
-		oEventBus.publish("BPOverviewMD_Master", "FirstItemSelected");
+// when coming from the invoice detail then navigate to the detail
+		var contextModel = sap.ui.getCore().getModel("ContextModel");
+		if (typeof contextModel !== "undefined" && typeof contextModel.navFromPartnerToMD !== "undefined" && contextModel.navFromPartnerToMD !== null) {
+			var bReplace = sap.ui.Device.system.phone ? false : true;
+			this.getRouter().navTo("_BPOverviewMD_Detail", {
+				from: "_BPOverviewMD_Master",
+				entity: contextModel.navFromPartnerToMD
+			}, bReplace);
+			contextModel.navFromPartnerToMD = null;
+		} else {
+			this.waitForInitialListLoading(function() {
+				//on phones, we don`t forward to the detail screen
+				if (!sap.ui.Device.system.phone) {
+					//On the empty hash select the first item
+					this.selectFirstItem();
+					var oEventBus = this.getEventBus();
+					oEventBus.publish("BPOverviewMD_Master", "FirstItemSelected");
+				}
+			});
+		}
 	},
 
 	onAfterShow: function() {
-		this.i18model = this.getView().getModel("i18n").getResourceBundle();
 		var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
 		if (UserPreferences.onlineStatus) {
 			this.getView().byId("refreshOIButton").setVisible(true);
@@ -122,10 +128,6 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		});
 	},
 
-	onDetailTabChanged: function(sChanel, sEvent, oData) {
-		//this.sTab = oData.sTabKey;
-	},
-
 	/**
 	 * wait until this.oInitialLoadFinishedDeferred is resolved, and list view updated
 	 * @param{function} fnToExecute the function will be executed if this.oInitialLoadFinishedDeferred is resolved
@@ -156,6 +158,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		var oModel = this.getView().getModel();
 		var UserPreferences = sap.ui.getCore().getModel("UserPreferences");
 		var that = this;
+console.log("LengthList: " + aItems.length);
 		if (aItems.length < 1) {
 			oModel.read("APP_OI_USER_LOGSet('" + UserPreferences.UserId + "')", null, null, true,
 				function(oData, oResponse) {
@@ -257,6 +260,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 
 	refreshData: function() {
+		console.log("refreshData");
 		this.getView().setBusy(true); 
 		var model = this.getView().getModel();
 		var UserPreferences = sap.ui.getCore().getModel("UserPreferences");

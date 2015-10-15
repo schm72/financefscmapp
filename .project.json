@@ -3,7 +3,7 @@
     {
       "templateId": "fioritemplate.UI5masterDetailKapselOffline",
       "templateVersion": "1.4.0",
-      "dateTimeStamp": "Thu, 10 Sep 2015 15:16:40 GMT"
+      "dateTimeStamp": "Tue, 13 Oct 2015 11:13:09 GMT"
     }
   ],
   "mockpreview": {
@@ -16,14 +16,14 @@
   "translation": {
     "supportedLanguages": "en",
     "defaultLanguage": "en",
-    "defaultI18NPropertyFile": "i18n.properties",
+    "defaultI18NPropertyFile": "messageBundle.properties",
     "resourceModelName": "i18n"
   },
   "hybrid": {
-    "appname": "financefscmapp",
+    "appname": "SN finance App",
     "appid": "com.springer.financefscmapp",
     "appdesc": "Financial facts and FSCm Features",
-    "appversion": "0.9.2",
+    "appversion": "0.9.9",
     "debugMode": false,
     "appIcon": {
       "defaultIcon": "res/LogoSprFSCMappV2.png",
@@ -115,180 +115,76 @@
       }
     },
     "plugins": {
-      "cordova": {
-        "device": {
-          "selected": false,
-          "registry": "org.apache.cordova.device",
-          "localBuild": true,
-          "fioriClient": true
-        },
-        "network": {
-          "selected": false,
-          "registry": "org.apache.cordova.network-information",
-          "localBuild": true,
-          "fioriClient": true
-        },
-        "battery": {
-          "selected": false,
-          "registry": "org.apache.cordova.battery-status",
-          "localBuild": true,
-          "fioriClient": false
-        },
-        "accelerometer": {
-          "selected": false,
-          "registry": "org.apache.cordova.device-motion",
-          "localBuild": true,
-          "fioriClient": false
-        },
-        "comprass": {
-          "selected": false,
-          "registry": "org.apache.cordova.device-orientation",
-          "localBuild": true,
-          "fioriClient": false
-        },
-        "geolocation": {
-          "selected": false,
-          "registry": "org.apache.cordova.geolocation",
-          "localBuild": true,
-          "fioriClient": true
-        },
-        "camera": {
-          "selected": false,
-          "registry": "org.apache.cordova.camera",
-          "localBuild": true,
-          "fioriClient": true
-        },
-        "capture": {
-          "selected": false,
-          "registry": "org.apache.cordova.media-capture",
-          "localBuild": true,
-          "fioriClient": true
-        },
-        "media": {
-          "selected": false,
-          "registry": "org.apache.cordova.media",
-          "localBuild": true,
-          "fioriClient": true
-        },
-        "file": {
-          "selected": false,
-          "registry": "org.apache.cordova.file",
-          "localBuild": true,
-          "fioriClient": true
-        },
-        "transfer": {
-          "selected": false,
-          "registry": "org.apache.cordova.file-transfer",
-          "localBuild": true,
-          "fioriClient": false
-        },
-        "dialogs": {
-          "selected": false,
-          "registry": "org.apache.cordova.dialogs",
-          "localBuild": true,
-          "fioriClient": false
-        },
-        "vibration": {
-          "selected": false,
-          "registry": "org.apache.cordova.vibration",
-          "localBuild": true,
-          "fioriClient": false
-        },
-        "contacts": {
-          "selected": false,
-          "registry": "org.apache.cordova.contacts",
-          "localBuild": true,
-          "fioriClient": true
-        },
-        "globalization": {
-          "selected": false,
-          "registry": "org.apache.cordova.globalization",
-          "localBuild": true,
-          "fioriClient": false
-        },
-        "splashscreen": {
-          "selected": false,
-          "registry": "org.apache.cordova.splashscreen",
-          "localBuild": true,
-          "fioriClient": true
-        },
-        "inappbrowser": {
-          "selected": false,
-          "registry": "org.apache.cordova.inappbrowser",
-          "localBuild": true,
-          "fioriClient": false
-        },
-        "console": {
-          "selected": false,
-          "registry": "org.apache.cordova.console",
-          "localBuild": true,
-          "fioriClient": false
-        },
-        "statusbar": {
-          "selected": false,
-          "registry": "org.apache.cordova.statusbar",
-          "localBuild": false,
-          "fioriClient": true
-        }
-      },
       "kapsel": {
         "logon": {
           "selected": true,
-          "registry": "com.sap.mp.cordova.plugins.logon",
+          "registry": "kapsel-plugin-logon",
           "localBuild": true,
           "fioriClient": false
         },
         "appupdate": {
-          "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.appupdate",
+          "selected": true,
+          "registry": "kapsel-plugin-appupdate",
           "localBuild": true,
           "fioriClient": false
         },
         "logger": {
           "selected": true,
-          "registry": "com.sap.mp.cordova.plugins.logger",
+          "registry": "kapsel-plugin-logger",
           "localBuild": true,
           "fioriClient": false
         },
+        "odata": {
+          "selected": true,
+          "registry": "kapsel-plugin-odata",
+          "localBuild": true,
+          "fioriClient": false
+        },
+        "cachemanager": {
+          "selected": false,
+          "registry": "kapsel-plugin-cachemanager",
+          "localBuild": false,
+          "fioriClient": true
+        },
+        "onlineapps": {
+          "selected": false,
+          "registry": "kapsel-plugin-online",
+          "localBuild": false,
+          "fioriClient": true
+        },
         "settings": {
           "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.settings",
+          "registry": "kapsel-plugin-settings",
           "localBuild": true,
           "fioriClient": false
         },
         "push": {
           "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.push",
+          "registry": "kapsel-plugin-push",
           "localBuild": true,
           "fioriClient": false
         },
         "encryptedstorage": {
           "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.encryptedstorage",
+          "registry": "kapsel-plugin-encryptedstorage",
           "localBuild": true,
           "fioriClient": true
         },
         "authproxy": {
           "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.authproxy",
+          "registry": "kapsel-plugin-authproxy",
           "localBuild": true,
           "fioriClient": false
         },
         "barcode": {
           "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.barcodescanner",
+          "registry": "kapsel-plugin-barcodescanner",
           "localBuild": true,
           "fioriClient": true
         },
-        "odata": {
-          "selected": true,
-          "registry": "com.sap.mp.cordova.plugins.odata",
-          "localBuild": true,
-          "fioriClient": false
-        },
         "e2etrace": {
           "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.e2etrace",
+          "registry": "kapsel-plugin-e2etrace",
           "localBuild": true,
           "fioriClient": false
         },
@@ -300,59 +196,164 @@
         },
         "voicerecord": {
           "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.voicerecording",
+          "registry": "kapsel-plugin-voicerecording",
           "localBuild": true,
           "fioriClient": true
         },
         "inappmsg": {
           "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.inappmsg",
-          "localBuild": true,
+          "registry": "kapsel-plugin-inappmsg",
+          "localBuild": false,
           "fioriClient": false
         },
         "apppreferences": {
           "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.apppreferences",
+          "registry": "kapsel-plugin-apppreferences",
           "localBuild": false,
           "fioriClient": true
         },
         "attachmentviewer": {
           "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.attachmentviewer",
-          "localBuild": false,
-          "fioriClient": true
-        },
-        "cachemanager": {
-          "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.cachemanager",
+          "registry": "kapsel-plugin-attachmentviewer",
           "localBuild": false,
           "fioriClient": true
         },
         "printer": {
           "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.print",
-          "localBuild": false,
-          "fioriClient": true
-        },
-        "onlineapps": {
-          "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.online",
+          "registry": "kapsel-plugin-print",
           "localBuild": false,
           "fioriClient": true
         },
         "toolbar": {
           "selected": false,
-          "registry": "com.sap.mp.cordova.plugins.toolbar",
+          "registry": "kapsel-plugin-toolbar",
           "localBuild": false,
           "fioriClient": true
         }
       },
-      "custom": {}
+      "custom": {},
+      "cordova": {
+        "device": {
+          "selected": false,
+          "registry": "cordova-plugin-device",
+          "localBuild": true,
+          "fioriClient": true
+        },
+        "network": {
+          "selected": false,
+          "registry": "cordova-plugin-network-information",
+          "localBuild": true,
+          "fioriClient": true
+        },
+        "battery": {
+          "selected": false,
+          "registry": "cordova-plugin-battery-status",
+          "localBuild": true,
+          "fioriClient": false
+        },
+        "accelerometer": {
+          "selected": false,
+          "registry": "cordova-plugin-device-motion",
+          "localBuild": true,
+          "fioriClient": false
+        },
+        "comprass": {
+          "selected": false,
+          "registry": "cordova-plugin-device-orientation",
+          "localBuild": true,
+          "fioriClient": false
+        },
+        "geolocation": {
+          "selected": false,
+          "registry": "cordova-plugin-geolocation",
+          "localBuild": true,
+          "fioriClient": true
+        },
+        "camera": {
+          "selected": false,
+          "registry": "cordova-plugin-camera",
+          "localBuild": true,
+          "fioriClient": true
+        },
+        "capture": {
+          "selected": false,
+          "registry": "cordova-plugin-media-capture",
+          "localBuild": true,
+          "fioriClient": true
+        },
+        "media": {
+          "selected": false,
+          "registry": "cordova-plugin-media",
+          "localBuild": true,
+          "fioriClient": true
+        },
+        "file": {
+          "selected": false,
+          "registry": "cordova-plugin-file",
+          "localBuild": true,
+          "fioriClient": true
+        },
+        "transfer": {
+          "selected": false,
+          "registry": "cordova-plugin-file-transfer",
+          "localBuild": true,
+          "fioriClient": false
+        },
+        "dialogs": {
+          "selected": false,
+          "registry": "cordova-plugin-dialogs",
+          "localBuild": true,
+          "fioriClient": false
+        },
+        "vibration": {
+          "selected": false,
+          "registry": "cordova-plugin-vibration",
+          "localBuild": true,
+          "fioriClient": false
+        },
+        "contacts": {
+          "selected": false,
+          "registry": "cordova-plugin-contacts",
+          "localBuild": true,
+          "fioriClient": true
+        },
+        "globalization": {
+          "selected": false,
+          "registry": "cordova-plugin-globalization",
+          "localBuild": true,
+          "fioriClient": false
+        },
+        "splashscreen": {
+          "selected": false,
+          "registry": "cordova-plugin-splashscreen",
+          "localBuild": true,
+          "fioriClient": true
+        },
+        "inappbrowser": {
+          "selected": false,
+          "registry": "cordova-plugin-inappbrowser",
+          "localBuild": true,
+          "fioriClient": false
+        },
+        "console": {
+          "selected": false,
+          "registry": "cordova-plugin-console",
+          "localBuild": true,
+          "fioriClient": false
+        },
+        "statusbar": {
+          "selected": false,
+          "registry": "cordova-plugin-statusbar",
+          "localBuild": false,
+          "fioriClient": true
+        }
+      }
     },
     "localBuild": {
       "useCustomLib": false,
       "customLibFile": ""
-    }
+    },
+    "hybridRevision": "1"
   },
   "projectType": [
     "sap.watt.uitools.ide.fiori",
@@ -362,7 +363,15 @@
   "basevalidator": {
     "validators": [
       {
-        "validatorID": "jsValidator"
+        "validatorID": "jsValidator",
+        "configuration": {
+          "eslintConfig": {
+            "rules": {
+              "no-console": 0
+            }
+          },
+          "rulesExt": {}
+        }
       }
     ],
     "services": {

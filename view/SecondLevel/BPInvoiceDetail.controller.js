@@ -28,12 +28,11 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		if (oParameters.name !== "_BPInvoiceDetail") {
 			return;
 		}
+		this.i18model = this.getView().getModel("i18n").getResourceBundle();
 		this.sEntityPath = "/" + oParameters.arguments.entity;
 		var oView = this.getView();
 		oView.bindElement(this.sEntityPath);
 		
-		this.i18model = this.getView().getModel("i18n").getResourceBundle();
-
 		//Check if the data is already on the client
 		if (!oView.getModel().getData(this.sEntityPath)) {
 			// Check that the entity specified actually was found.
@@ -269,19 +268,6 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		this.getRouter().navTo("_BPOverviewMD_Master", {
 			currentView: this.getView()
 		}, this.bReplace);
-		
-		/*
-		this.getRouter().navTo("_BPOverviewMD_Detail", {
-			from: "_BPInvoiceDetail",
-			entity: entityString
-		}, bReplace);
-		*/
-		//oEventBus.publish("BPOverviewMD_Master", "InitialLoadFinished", {
-		//	oListItem: this.getView().byId("list").getItems()[0]
-		//});
-
-		//var oEventBus = this.getEventBus();
-		//oEventBus.publish("BPOverviewMD_Detail", "Changed", { sEntityPath : entityString });
 	},
 	
 	onNavBack: function() {

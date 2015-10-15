@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
-	<ColumnListItem  type="Navigation" press="handleSelectionChange" id="columnListItem" >
+	<ColumnListItem  type="Navigation" press="handleSelectionChange" >
 		<cells >
             <ObjectNumber number="{FscmPrio}" />
 			<ObjectIdentifier text="{Partner}" wrapping="false" />

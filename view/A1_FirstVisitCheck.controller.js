@@ -18,6 +18,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		console.log(msg);
 	},
 	onInit: function() {
+console.log("Init");
 		// method is called via the framework automatically when this view is displayed
 		// enable the waiting symbol
 		this.getView().setBusy(true);
@@ -28,8 +29,6 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 				this.onAfterShow(evt);
 			}, this)
 		});
-		// check that we are in the URL hash pattern http://domain:port/%PATTERN%
-		this.getRouter().attachRoutePatternMatched(this.onRouteMatched, this);
 		
 		// save the device type in a separat parameter,
 		// this parameter will then be saved in a JSON model which is saved for our application and can be reused in other controllers
@@ -78,10 +77,12 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		}
 		this.UserPreferences.device = vDevice;
 		sap.ui.getCore().setModel(this.UserPreferences, "UserPreferences");
+console.log("Device: " + this.UserPreferences.device);
+		this.getRouter().attachRoutePatternMatched(this.onRouteMatched, this);
 	},
 
 	onRouteMatched: function(evt) {
-		// check that the called view name is like expected
+		// check that we are in the URL hash pattern http://domain:port/%PATTERN%
 		if (evt.getParameter("name") !== "_A1_firstVisitCheck") {
 			return;
 		}
@@ -89,9 +90,10 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			this.UserPreferences = sap.ui.getCore().getModel("UserPreferences");
 		}
 		this.i18model = this.getView().getModel("i18n").getResourceBundle();
-
+		
 		// check if we are just here to reassign the collection region and countries
 		if (this.UserPreferences.newCollArea === true) {
+console.log("New Coll Area Mode");
 
 			this.getView().byId("UserCheckPage").setShowNavButton(true);
 
@@ -119,6 +121,8 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 			}
 			this.chooseCollArea();
 			return;
+		} else {
+console.log("Normal Start Mode");
 		}
 	},
 	
@@ -138,6 +142,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		oEventBus.subscribe("FirstVisitCheck", "OfflineMode", this.offlineMode, this);
 		// READ: reading user preferences for this app -> to check if we only and iof the user already exist
 		var oModel = this.getView().getModel();
+		
 		//oModel.read("APP_USER_PREFERENCESSet", null, ["$filter=Application eq 'financefscmapp'"], true,
 		oModel.read("APP_USER_PREFERENCESSet", null, null, true,
 			function(oData, oResponse) {
@@ -146,21 +151,25 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 						// we are online and received data (user already exist and preferences are clear )
 						// -> received data are saved in oData table - first entry is in this case relevat .results[0]
 						// we send this information to all methods which subscribed for this event
+console.log("Online Mode Check: " + "OnlineModeExist");
 						oEventBus.publish("FirstVisitCheck", "OnlineModeExist", {
 							entry: oData.results[0]
 						});
 					} else {
 						// we are offline
+console.log("Online Mode Check: " + "OfflineMode normal with data");
 						oEventBus.publish("FirstVisitCheck", "OfflineMode", {
 							entry: oData.results[0]
 						});
 					}
 				} else {
 					if (that.UserPreferences.onlineStatus) {
+console.log("Online Mode Check: " + "Probably new User");
 						// we are online, but there are no data for this user -> so this must be a new user
 						oEventBus.publish("FirstVisitCheck", "OnlineModeNew");
 					} else {
-						// we are offline
+						// no data - no connection
+console.log("Online Mode Check: " + "OfflineMode no data");
 						oEventBus.publish("FirstVisitCheck", "OfflineMode");
 					}
 				}

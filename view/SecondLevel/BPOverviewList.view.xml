@@ -23,7 +23,6 @@
         <content> 
             <Table  id="idOIListTable" 
                     class="classStripColor"
-                    inset="false" 
                     noDataText="{i18n>OIListNoDataText}"
                     growing="true"
                     growingScrollToLoad="true"
@@ -59,7 +58,7 @@
 					<Column visible="false" id="idHiddenColmnE" minScreenWidth="9001px" demandPopin="true" popinDisplay="Inline" ><Text text="Favorite"/></Column>
 				</columns>
 				<items>
-				<!-- controller action with fragment: com.springer.financefscmapp.view.HelpDialogs.OpenItemPartnerListRows -> dynamic bind of aggregation depending of former navigation  -->
+				<!-- controller action with fragment: com.springer.financefscmapp.view.HelpDialogs.OpenItemPartnerListRows  -->
 				</items>
 			</Table>
 		</content>

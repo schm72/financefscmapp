@@ -4,7 +4,6 @@
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
 	<l:Grid
-		id="BPdetailInfoFragment"
 		defaultSpan="L12 M12 S12"
 		width="auto">
 		<l:content>
@@ -13,7 +12,6 @@
 				maxContainerCols="2"
 				editable="false"
 				layout="ResponsiveGridLayout"
-				title=""
 				labelSpanL="3"
 				labelSpanM="3"
 				emptySpanL="4"
@@ -22,7 +20,8 @@
 				columnsM="1">
 				<f:content>
 						<Label text="Favorite"/>
-		                <Switch type="AcceptReject"
+		                <Switch id="oSwitch"
+		                		type="AcceptReject"
 		                        state="{ 
 									path: 'AddedFavorite', 
 									formatter: 'com.springer.financefscmapp.util.Formatter.addedFav' }"
@@ -117,7 +116,6 @@
                                     path: 'SalesCurrency', 
                                     formatter: 'com.springer.financefscmapp.util.Formatter.currencyView'
                                 }" />
-
 				</f:content>
 			</f:SimpleForm>
 		</l:content>

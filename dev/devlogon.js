@@ -338,7 +338,8 @@ sap.ui.base.ManagedObject.extend("com.springer.financefscmapp.dev.devlogon", {
 		var endTime = new Date();
 		var duration = (endTime - this.appOfflineStore.startTime) / 1000;
 		console.log("Offline Store opened in  " + duration + " seconds");
-	
+		//set offline client
+			
 		// creating a json model to handle properties for the user session globally
 		var UserPreferences = new sap.ui.model.json.JSONModel();
 		// recheck if offline by reaching SAP mobile platform
@@ -459,7 +460,6 @@ sap.ui.base.ManagedObject.extend("com.springer.financefscmapp.dev.devlogon", {
 					that.offlineRefreshErrorCallback(e);
 				});
 		}
-		
 	},
 
 	/********************************************************************

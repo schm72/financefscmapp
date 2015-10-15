@@ -6,6 +6,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	_oDialog: null,
 	parameter: 0,
 	countCalls: 0,
+	i18model: {},
 
 	onInit: function() {
 		this.getRouter().attachRoutePatternMatched(this.onRouteMatched, this);
@@ -17,6 +18,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 		if (evt.getParameter("name") !== "_MessageCollector") {
 			return;
 		}
+		this.i18model = this.getView().getModel("i18n").getResourceBundle();
 
 		this.parameter = 0;
 		this.countCalls = 0;
@@ -298,7 +300,7 @@ com.springer.financefscmapp.util.Controller.extend("com.springer.financefscmapp.
 	},
 
 	onNavBack: function() {
-		var bReplace = jQuery.device.is.phone ? false : true;
+		var bReplace = sap.ui.Device.system.phone ? false : true;
 		this.getRouter().navTo("_A2_Welcome", {
 			currentView: this.getView()
 		}, bReplace);

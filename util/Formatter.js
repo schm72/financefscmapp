@@ -26,6 +26,9 @@ com.springer.financefscmapp.util.Formatter = {
 		return oNumberFormat.format(value);
 	},
 	currencyInt: function(value) {
+		if(typeof value === "undefined" || value === null) {
+			return value;
+		}
 		var oNumberFormat = sap.ui.core.format.NumberFormat.getFloatInstance({
 			maxFractionDigits: 0,
 			groupingEnabled: true,

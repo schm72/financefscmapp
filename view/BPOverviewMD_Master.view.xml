@@ -28,7 +28,6 @@
 		<content>
 			<List
 				id="list"
-				items="{/OPEN_ITEM_BP_OVERVIEWSet}"
 				mode="{device>/listMode}"
 				noDataText="{i18n>masterListNoDataText}"
 				select="onSelect"
@@ -36,14 +35,7 @@
 				growing="true"
 				growingScrollToLoad="true">
 				<items>
-					<ObjectListItem
-						type="{device>/listItemType}"
-						press="onSelect"
-						title="{PartnerDesc}"
-					>
-						<ObjectAttribute title="Id" text="{ path: 'Partner', formatter: 'com.springer.financefscmapp.util.Formatter.overlayTenZero' }"/>
-						<ObjectAttribute title="Country" text="{ path: 'Country', formatter: 'com.springer.financefscmapp.util.Formatter.getLongCountry' }"/>
-					</ObjectListItem>
+				<!-- controller action with fragment: com.springer.financefscmapp.view.HelpDialogs.OpenItemPartnerMasterRows -->
 				</items>
 			</List>
 		</content>

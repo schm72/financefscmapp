@@ -4,7 +4,6 @@
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
 	<l:Grid
-		id="detailActionFragment"
 		defaultSpan="L12 M12 S12"
 		width="auto">
 		<l:content>
